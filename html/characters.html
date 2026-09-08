@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--
+  LearneCN — https://github.com/clmpnn/LearneCN
+  Copyright (C) 2026 clmpnn
+
+  This program is free software: you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along with
+  this program. If not, see <https://www.gnu.org/licenses/>.
+
+  SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#a82a1c" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171613" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LearneCN">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="Complete pinyin initials, finals and tone charts with audio, zhuyin alongside, plus every HSK character with readings, meanings and stroke order.">
+<title>LearneCN — Pinyin &amp; Hanzi</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Karla:wght@400;500;600;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&family=Spectral:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="seal" aria-hidden="true">学</span>Learne<em>CN</em></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="path.html">Path</a>
+      <a href="study.html">Study</a>
+      <a href="writing.html">Writing</a>
+      <a href="characters.html">Pinyin &amp; Hanzi</a>
+      <a href="practice.html">Practice</a>
+      <a href="progress.html">Progress</a>
+      <a href="add.html">Add</a>
+    </nav>
+    <div class="script-toggle" role="group" aria-label="Character set">
+      <button type="button" data-script="simplified" title="Simplified characters">简</button>
+      <button type="button" data-script="traditional" title="Traditional characters">繁</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="panel">
+      <header>
+        <p class="eyebrow">Reference</p>
+        <div class="sec-head"><span class="cn" lang="zh">拼音・汉字</span><h2>Pinyin &amp; Hanzi</h2></div>
+      </header>
+
+      <div class="chips" role="tablist" aria-label="Reference sections" id="tabs">
+        <button class="chip" role="tab" id="tab-pinyin" aria-controls="panel-pinyin" aria-selected="true" aria-pressed="true" data-tab="pinyin">Pinyin</button>
+        <button class="chip" role="tab" id="tab-zhuyin" aria-controls="panel-zhuyin" aria-selected="false" aria-pressed="false" data-tab="zhuyin">Zhuyin</button>
+        <button class="chip" role="tab" id="tab-hanzi" aria-controls="panel-hanzi" aria-selected="false" aria-pressed="false" data-tab="hanzi">Hanzi</button>
+      </div>
+
+      <div class="tab-panels" style="margin-top:22px">
+
+        <div role="tabpanel" id="panel-pinyin" aria-labelledby="tab-pinyin">
+          <p class="hint" style="margin-bottom:18px">
+            Every Mandarin syllable is an initial plus a final, said on one of four tones.
+            Tap anything to hear it.
+          </p>
+          <p class="group-label">Initials · 声母</p>
+          <div class="sound-grid" id="initials"></div>
+          <p class="group-label">Tones · 声调</p>
+          <div class="tone-grid" id="tones"></div>
+          <div id="finals-groups"></div>
+        </div>
+
+        <div role="tabpanel" id="panel-zhuyin" aria-labelledby="tab-zhuyin" hidden>
+          <p class="hint" style="margin-bottom:18px">
+            Zhuyin — bopomofo — spells the same sounds with symbols instead of Latin letters.
+            It is the standard system taught in Taiwan.
+          </p>
+          <div id="zhuyin-body"></div>
+        </div>
+
+        <div role="tabpanel" id="panel-hanzi" aria-labelledby="tab-hanzi" hidden>
+          <div class="toolbar">
+            <div class="chips" id="levels" role="group" aria-label="HSK level"></div>
+            <span class="spacer"></span>
+            <label class="sr-only" for="hzFilter">Filter characters</label>
+            <input type="search" id="hzFilter" placeholder="Filter by pinyin or meaning" style="max-width:250px" autocomplete="off">
+          </div>
+          <p class="status" id="hzCount"></p>
+          <div class="hanzi-grid" id="hanziGrid" style="margin-top:12px"></div>
+          <p class="hint" style="margin-top:16px">
+            Tap a character for its readings, radical and how it is built.
+            HSK levels follow the 2012 official word lists — a character sits at the level of
+            the first word that uses it. Character data from
+            <a href="https://github.com/skishore/makemeahanzi" rel="noopener">Make Me a Hanzi</a>,
+            built on <a href="https://www.unicode.org/charts/unihan.html" rel="noopener">Unihan</a> and
+            <a href="https://cc-cedict.org/" rel="noopener">CC-CEDICT</a>.
+          </p>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="modal" id="charModal" hidden role="dialog" aria-modal="true" aria-labelledby="modalChar">
+  <div class="modal-box">
+    <div class="modal-top">
+      <div class="tianzige"><span id="modalChar" lang="zh"></span></div>
+      <div>
+        <p class="pinyin" id="modalPinyin" style="font-size:1.1rem;margin:.2em 0"></p>
+        <p class="hint" id="modalLevel" style="margin:0"></p>
+      </div>
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close">✕</button>
+    </div>
+    <dl class="char-facts" id="modalFacts"></dl>
+    <div class="row" style="margin-top:20px">
+      <button class="btn" id="modalSpeak" type="button">🔊 Hear it</button>
+      <a class="btn primary" id="modalTrace" href="#">✎ Trace it</a>
+      <a class="btn" id="modalLookup" href="#">Look it up</a>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="mark" lang="zh" aria-hidden="true">学</span>
+    <span>© LearneCN</span>
+    <span class="spacer"></span>
+    <span>Dictionary <a href="https://cc-cedict.org/" rel="noopener">CC-CEDICT</a> ·
+      characters and strokes <a href="https://github.com/skishore/makemeahanzi" rel="noopener">Make Me a Hanzi</a>
+      · both CC BY-SA / CC BY</span>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script src="../js/pwa.js"></script>
+<script src="../js/characters.js"></script>
+</body>
+</html>

@@ -1,0 +1,1041 @@
+/*
+ * LearneCN — https://github.com/clmpnn/LearneCN
+ * Copyright (C) 2026 clmpnn
+ *
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+ * PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see <https://www.gnu.org/licenses/>.
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+/* ============================================================
+   LearneCN — page-level styles
+
+   In file order, because the cascade cares:
+
+     home · writing · dictionary · pinyin & hanzi · modal ·
+     practice · add · responsive · the path · study ·
+     progress · offline and install · studying with a thumb
+
+   Chrome shared by every page — header, type, controls, footer,
+   the 田字格, the bottom tab bar — lives in style.css.
+   ============================================================ */
+
+.hanzi-lg { font-family: var(--hanzi); font-size: 3.4rem; line-height: 1; }
+.hanzi-sm { font-family: var(--hanzi); font-size: 1.7rem; line-height: 1; }
+.pinyin   { font-family: var(--mono); color: var(--cinnabar); }
+
+/* ---------------- home ---------------- */
+
+.hero {
+  display: grid; grid-template-columns: 1fr auto; gap: 60px;
+  align-items: center; padding: 30px 0 54px;
+}
+.hero-copy h1 { margin-bottom: .28em; }
+.hero-copy h1 .brushline {
+  display: block; font-family: var(--brush); font-weight: 400;
+  font-size: .48em; letter-spacing: .16em; color: var(--cinnabar);
+  margin-bottom: .3em; line-height: 1;
+}
+
+/* 月洞门 — the moon gate of a Suzhou garden.
+   Round heaven, square earth: 天圆地方. */
+.moongate {
+  --gate: 300px;
+  width: var(--gate); height: var(--gate);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 34% 26%,
+      color-mix(in srgb, var(--celadon-t) 90%, transparent), var(--card) 72%);
+  border: 1px solid var(--rule);
+  box-shadow:
+    inset 0 0 0 9px var(--card),
+    inset 0 0 0 10px var(--celadon),
+    var(--shadow);
+}
+.moongate .tianzige {
+  width: calc(var(--gate) * .655);
+  box-shadow: 0 6px 20px -14px rgba(27, 24, 21, .5);
+}
+.hero-gate { margin: 0; display: flex; flex-direction: column; align-items: center; }
+.hero-gate svg { display: block; }
+#heroTarget.hero-static {
+  font-family: var(--hanzi); font-size: calc(var(--gate, 300px) * .5);
+  line-height: 1; color: var(--ink);
+}
+.hero-gate figcaption {
+  display: flex; align-items: baseline; gap: 11px; justify-content: center;
+  margin-top: 20px; font-size: .93rem; color: var(--ink-2); flex-wrap: wrap;
+}
+.hero-gate figcaption .hanzi-sm { font-family: var(--brush); font-size: 1.9rem; }
+
+.stats {
+  list-style: none; margin: 0 0 46px; padding: 22px 0;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+}
+.stats li { display: flex; flex-direction: column; gap: 3px; }
+.stats b {
+  font-family: var(--display); font-size: 1.85rem; font-weight: 600;
+  letter-spacing: -.02em; line-height: 1; font-variant-numeric: tabular-nums;
+}
+.stats span { font-size: .82rem; color: var(--muted); }
+
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.card {
+  position: relative; display: block; text-decoration: none; color: inherit;
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r);
+  padding: 24px 24px 22px; box-shadow: var(--shadow); overflow: hidden;
+  transition: border-color .16s, transform .16s;
+}
+.card:hover { border-color: var(--celadon); transform: translateY(-2px); }
+.card h3 { margin-bottom: .34em; }
+.card p { margin: 0; font-size: .92rem; color: var(--ink-2); max-width: 42ch; }
+.card-mark {
+  position: absolute; top: 8px; right: 18px;
+  font-family: var(--brush); font-size: 3.4rem; line-height: 1;
+  color: var(--cinnabar); opacity: .14; pointer-events: none;
+}
+
+/* ---------------- writing ---------------- */
+
+.write-layout { display: grid; grid-template-columns: minmax(0, 330px) 1fr; gap: 38px; }
+.canvas-col { display: flex; flex-direction: column; gap: 13px; }
+#writeGrid { width: 100%; max-width: 330px; display: grid; place-items: center; touch-action: none; }
+#writeGrid svg { display: block; }
+#writeTarget.write-static {
+  font-family: var(--hanzi); font-size: 190px; line-height: 1; color: var(--muted);
+}
+
+.char-strip {
+  display: flex; gap: 6px; flex-wrap: wrap; align-items: center;
+  padding: 11px; border: 1px solid var(--rule); border-radius: var(--r);
+  background: var(--paper); min-height: 54px;
+}
+.char-strip button {
+  font-family: var(--hanzi); font-size: 1.45rem; line-height: 1;
+  width: 44px; height: 44px; cursor: pointer; color: var(--ink);
+  border: 1px solid var(--rule); border-radius: var(--r); background: var(--card);
+  transition: border-color .14s, background .14s, color .14s;
+}
+.char-strip button:hover { border-color: var(--celadon); }
+.char-strip button[aria-pressed="true"] {
+  background: var(--cinnabar); border-color: var(--cinnabar); color: var(--on-cinnabar);
+}
+
+.quiz-feedback { font-size: .9rem; min-height: 1.5em; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.quiz-feedback.good { color: var(--celadon-d); }
+.quiz-feedback.bad  { color: var(--cinnabar); }
+
+.char-facts { display: grid; gap: 11px; margin: 0; }
+.fact { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: baseline; }
+.fact dt {
+  font: 500 .69rem/1.7 var(--mono); letter-spacing: .13em; text-transform: uppercase;
+  color: var(--muted);
+}
+.fact dd { margin: 0; font-size: .95rem; }
+.decomp { font-family: var(--hanzi); font-size: 1.2rem; }
+
+/* the character's story — set apart like a marginal note */
+.etym {
+  border-left: 3px solid var(--gamboge); padding: 11px 0 11px 15px;
+  background: var(--paper); border-radius: 0 var(--r) var(--r) 0;
+  font-size: .94rem; color: var(--ink-2); margin: 4px 0 0;
+}
+.etym b { font-family: var(--hanzi); color: var(--cinnabar); font-weight: 600; font-size: 1.1em; }
+
+/* stroke-order numerals drawn over the character */
+.stroke-num {
+  font-family: var(--mono);
+  fill: var(--cinnabar);
+  stroke: var(--card);
+  stroke-width: 3px;
+  paint-order: stroke;
+}
+
+/* ---------------- dictionary ---------------- */
+
+.dict-results { display: grid; margin-top: 18px; }
+.entry {
+  display: grid; grid-template-columns: auto 1fr; gap: 5px 22px;
+  padding: 16px 2px; border-bottom: 1px solid var(--rule-soft);
+}
+.entry:last-child { border-bottom: 0; }
+.entry-head { grid-column: 1; display: flex; align-items: baseline; gap: 11px; }
+.entry-word { font-family: var(--hanzi); font-size: 1.6rem; line-height: 1.25; }
+.entry-alt { font-family: var(--hanzi); font-size: 1.02rem; color: var(--muted); }
+.entry-body { grid-column: 2; }
+.entry-pinyin { font-family: var(--mono); font-size: .87rem; color: var(--cinnabar); letter-spacing: .02em; }
+.entry-defs { margin: 5px 0 0; padding-left: 1.15em; font-size: .94rem; color: var(--ink-2); }
+.entry-defs li { margin-bottom: 2px; }
+.entry-defs li::marker { color: var(--muted); font-family: var(--mono); font-size: .8em; }
+.entry-tools { grid-column: 1 / -1; display: flex; gap: 8px; margin-top: 8px; }
+
+.mini {
+  font: 500 .76rem/1 var(--sans); cursor: pointer; padding: 6px 10px;
+  border: 1px solid var(--rule); border-radius: var(--r);
+  background: var(--card); color: var(--muted);
+}
+.mini:hover { border-color: var(--cinnabar); color: var(--cinnabar); }
+
+progress { width: 190px; height: 5px; accent-color: var(--cinnabar); }
+
+/* ---------------- pinyin & hanzi ---------------- */
+
+.tab-panels > [hidden] { display: none; }
+
+.sound-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; }
+.sound {
+  text-align: left; cursor: pointer; padding: 11px 12px;
+  border: 1px solid var(--rule); border-radius: var(--r); background: var(--card);
+  display: grid; gap: 3px; transition: border-color .14s, background .14s;
+}
+.sound:hover { border-color: var(--celadon); background: var(--celadon-t); }
+.sound .s-p { font: 500 1.18rem/1.2 var(--mono); color: var(--ink); }
+.sound .s-z { font-family: var(--hanzi); font-size: 1rem; color: var(--cinnabar); }
+.sound .s-ex { font-size: .77rem; color: var(--muted); line-height: 1.45; }
+.sound .s-ex b { font-family: var(--hanzi); font-weight: 400; color: var(--ink-2); font-size: 1.15em; }
+
+.group-label {
+  font: 500 .71rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--gamboge-ink); margin: 28px 0 12px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--rule-soft);
+}
+.group-label:first-child { margin-top: 0; }
+.sub-label { font-size: .84rem; color: var(--muted); margin: 16px 0 9px; }
+
+.tone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(168px, 1fr)); gap: 10px; }
+.tone {
+  cursor: pointer; text-align: left; padding: 15px;
+  border: 1px solid var(--rule); border-radius: var(--r); background: var(--card);
+  transition: border-color .14s;
+}
+.tone:hover { border-color: var(--cinnabar); }
+.tone .t-n { font: 500 .69rem/1 var(--mono); letter-spacing: .15em; text-transform: uppercase; color: var(--gamboge-ink); }
+.tone .t-mark { font: 400 2.4rem/1 var(--mono); color: var(--ink); margin: 6px 0 2px; }
+.tone .t-desc { font-size: .86rem; color: var(--ink-2); }
+.tone .t-ex { font-size: .82rem; color: var(--muted); margin-top: 5px; }
+.tone .t-ex b { font-family: var(--hanzi); font-weight: 400; color: var(--ink-2); font-size: 1.2em; }
+
+.hanzi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 6px; }
+.hz {
+  aspect-ratio: 1; cursor: pointer; background: var(--card);
+  border: 1px solid var(--rule); border-radius: var(--r);
+  display: grid; place-items: center; padding: 4px;
+  transition: border-color .13s, background .13s;
+}
+.hz:hover { border-color: var(--cinnabar); background: var(--cinnabar-t); }
+.hz .h-c { font-family: var(--hanzi); font-size: 1.8rem; line-height: 1.1; color: var(--ink); }
+.hz .h-p { font: 400 .66rem/1 var(--mono); color: var(--muted); }
+
+/* ---------------- modal ---------------- */
+
+.modal[hidden] { display: none; }
+.modal {
+  position: fixed; inset: 0; z-index: 90;
+  display: grid; place-items: center; padding: 20px;
+  background: rgba(27, 24, 21, .5); backdrop-filter: blur(2px);
+}
+.modal-box {
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r);
+  width: min(540px, 100%); max-height: 86vh; max-height: 86dvh; overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 26px; box-shadow: 0 30px 70px -22px rgba(0, 0, 0, .5);
+  border-top: 3px solid var(--cinnabar);
+}
+.modal-top { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 20px; }
+.modal-top .tianzige { width: 104px; flex: none; display: grid; place-items: center; }
+.modal-top .tianzige span { font-family: var(--hanzi); font-size: 66px; line-height: 1; }
+.modal-close {
+  margin-left: auto; border: 0; background: none; cursor: pointer;
+  font-size: 1.25rem; color: var(--muted); line-height: 1; padding: 4px 6px;
+}
+.modal-close:hover { color: var(--cinnabar); }
+
+/* ---------------- practice ---------------- */
+
+.q-meta {
+  display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap;
+  font: 500 .7rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 18px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--rule-soft);
+}
+.q-meta .tag { color: var(--cinnabar); }
+
+.passage {
+  font-family: var(--hanzi); font-size: 1.14rem; line-height: 2.15;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: var(--r);
+  border-left: 3px solid var(--celadon);
+  padding: 18px 20px; margin-bottom: 20px;
+}
+.q-text { font-size: 1.28rem; margin: 0 0 20px; font-family: var(--hanzi); line-height: 1.75; }
+.q-text.latin { font-family: var(--display); font-size: 1.2rem; }
+
+.choices { display: grid; gap: 8px; margin-bottom: 18px; }
+.choice {
+  display: flex; gap: 13px; align-items: baseline; text-align: left; cursor: pointer;
+  padding: 13px 15px; border: 1px solid var(--rule); border-radius: var(--r);
+  background: var(--card); color: var(--ink); font-size: 1rem; width: 100%;
+  font-family: var(--sans); transition: border-color .13s, background .13s;
+}
+.choice:hover:not(:disabled) { border-color: var(--celadon); background: var(--celadon-t); }
+.choice .key {
+  font: 500 .72rem/1.5 var(--mono); color: var(--muted);
+  border: 1px solid var(--rule); border-radius: 2px; padding: 0 6px; flex: none;
+}
+.choice.correct { border-color: var(--celadon); background: var(--celadon-t); }
+.choice.correct .key { border-color: var(--celadon); color: var(--celadon-d); }
+.choice.wrong { border-color: var(--cinnabar); background: var(--cinnabar-t); }
+.choice.wrong .key { border-color: var(--cinnabar); color: var(--cinnabar); }
+.choice:disabled { cursor: default; }
+.choice .cn { font-family: var(--hanzi); font-size: 1.1em; }
+
+.explain {
+  border-left: 3px solid var(--celadon); background: var(--celadon-t);
+  padding: 12px 16px; border-radius: 0 var(--r) var(--r) 0;
+  font-size: .93rem; color: var(--ink-2); margin-bottom: 18px;
+}
+.explain.miss { border-left-color: var(--cinnabar); background: var(--cinnabar-t); }
+.explain strong { color: var(--ink); }
+
+.scoreline {
+  display: flex; gap: 20px; flex-wrap: wrap; align-items: baseline;
+  font-size: .86rem; color: var(--muted); font-variant-numeric: tabular-nums;
+}
+.scoreline b { color: var(--ink); font-weight: 600; font-family: var(--display); font-size: 1.05rem; }
+
+/* ---------------- add ---------------- */
+
+.choice-rows { display: grid; gap: 8px; }
+.choice-row { display: flex; gap: 11px; align-items: center; }
+.choice-row input[type="radio"] { flex: none; accent-color: var(--cinnabar); width: 18px; height: 18px; }
+.preview-img { max-width: 220px; border: 1px solid var(--rule); border-radius: var(--r); display: block; }
+.added-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 6px; }
+.added-list li {
+  font-size: .9rem; padding: 10px 13px; border: 1px solid var(--rule);
+  border-radius: var(--r); background: var(--card);
+  display: flex; gap: 12px; align-items: baseline;
+}
+.added-list .tag {
+  font: 500 .68rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--cinnabar); flex: none;
+}
+
+/* ---------------- responsive ---------------- */
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; gap: 36px; }
+  .moongate { --gate: 250px; margin: 0 auto; }
+  .write-layout { grid-template-columns: 1fr; }
+  #writeGrid { max-width: 290px; margin: 0 auto; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .moongate { --gate: 215px; }
+  .entry { grid-template-columns: 1fr; }
+  .entry-body { grid-column: 1; }
+  .fact { grid-template-columns: 1fr; gap: 1px; }
+  .hanzi-grid { grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); }
+  .stats b { font-size: 1.55rem; }
+}
+
+/* ================= the path ================= */
+/* A vertical route rather than a grid of cards: the whole point of the page
+   is that these things have an order, and a grid says they do not.
+   A vertical route rather than a grid of cards: the whole point of the page
+   is that these things have an order, and a grid says they do not. */
+
+.stage-banner {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  margin: 0 0 18px; padding: 11px 14px;
+  background: var(--paper-deep); border: 1px solid var(--rule);
+  border-left: 3px solid var(--cinnabar); border-radius: var(--r);
+  font-size: .88rem; color: var(--ink-2);
+}
+.stage-banner .cn { font-size: 1.05rem; color: var(--cinnabar); }
+.stage-banner b { color: var(--ink); }
+.stage-banner a { margin-left: auto; }
+
+.stage-list { list-style: none; margin: 26px 0 0; padding: 0; }
+
+.stage {
+  position: relative; padding: 0 0 26px 34px;
+  border-left: 2px solid var(--rule-soft);
+}
+.stage:last-child { border-left-color: transparent; padding-bottom: 0; }
+/* the node on the line */
+.stage::before {
+  content: ""; position: absolute; left: -7px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--paper); border: 2px solid var(--rule);
+}
+.stage.done { border-left-color: var(--cinnabar); }
+.stage.done::before { background: var(--cinnabar); border-color: var(--cinnabar); }
+.stage.current::before {
+  background: var(--card); border-color: var(--cinnabar);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--cinnabar) 18%, transparent);
+}
+
+.stage-head { display: flex; align-items: flex-start; gap: 13px; }
+.stage-mark {
+  font: 400 1.35rem/1.1 var(--hanzi, inherit); color: var(--cinnabar);
+  min-width: 2.6em; padding-top: 2px;
+}
+.stage-title { flex: 1 1 auto; }
+.stage-title h3 { margin: 0; font-size: 1.06rem; }
+.stage-goal { margin: 3px 0 0; font-size: .89rem; color: var(--ink-2); }
+.stage-count {
+  font: 500 .82rem/1 var(--mono, monospace); color: var(--muted);
+  font-variant-numeric: tabular-nums; padding-top: 5px; white-space: nowrap;
+}
+
+.stage-bar {
+  height: 3px; margin: 11px 0 0; border-radius: 2px;
+  background: var(--rule-soft); overflow: hidden;
+}
+.stage-bar span { display: block; height: 100%; background: var(--cinnabar); }
+
+.stage-body { margin-top: 12px; }
+/* Stages you have not reached read as quieter, but not by fading the text:
+   at .62 the muted grey fell to 2.25:1, which is decoration, not prose. The
+   marker on the rail and the colour of the rail itself already say where you
+   are, so let them. */
+.stage.ahead .stage-goal,
+.stage.ahead .stage-why { color: var(--muted); }
+.stage.ahead .stage-title h3 { font-weight: 500; }
+.stage-why {
+  margin: 0 0 10px; font-size: .86rem; color: var(--muted); max-width: 62ch;
+}
+.stage-say {
+  display: flex; flex-direction: column; gap: 4px; margin: 0 0 10px;
+  padding: 10px 13px; background: var(--paper-deep);
+  border-radius: var(--r); max-width: 62ch;
+}
+.stage-say-label {
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .09em;
+  color: var(--muted);
+}
+.stage-say .cn { font-size: 1.06rem; }
+.stage-words {
+  margin: 0 0 12px; font-size: 1rem; color: var(--ink-2);
+  line-height: 1.9; max-width: 62ch;
+}
+.stage-does { margin: 0 0 12px; padding-left: 18px; font-size: .87rem; }
+.stage-does li { margin: 4px 0; }
+.stage-does span { color: var(--muted); }
+
+@media (max-width: 560px) {
+  .stage { padding-left: 22px; }
+  /* 数和时间 is four characters; a narrow min-width wraps the mark into a
+     stack and the row stops reading as a heading. Let it size itself. */
+  .stage-mark { min-width: 0; font-size: 1.08rem; white-space: nowrap; }
+  .stage-head { gap: 12px; }
+  .stage-count { display: none; }
+}
+
+/* ================= study ================= */
+
+.btn.big { padding: 13px 26px; font-size: 1rem; }
+
+/* ---- the board of numbers ---- */
+
+.due-board {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  gap: 14px; margin-top: 22px;
+}
+.due-tile {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 15px 16px 13px; background: var(--card);
+  border: 1px solid var(--rule); border-radius: var(--r);
+}
+.due-tile b {
+  font: 600 1.85rem/1 var(--display); color: var(--cinnabar);
+  font-variant-numeric: tabular-nums;
+}
+.due-label { font-size: .86rem; font-weight: 600; margin-top: 5px; }
+.due-sub { font-size: .76rem; color: var(--muted); }
+
+/* ---- what to study ---- */
+
+.deck-config {
+  margin-top: 26px; border-top: 1px solid var(--rule-soft); padding-top: 4px;
+}
+.deck-config > summary {
+  cursor: pointer; padding: 14px 0 4px; font-weight: 600; font-size: .93rem;
+  color: var(--ink-2); list-style: none;
+}
+.deck-config > summary::-webkit-details-marker { display: none; }
+.deck-config > summary::before {
+  content: "▸"; display: inline-block; margin-right: 9px;
+  color: var(--cinnabar); transition: transform .15s;
+}
+.deck-config[open] > summary::before { transform: rotate(90deg); }
+.cfg-label {
+  font-size: .78rem; text-transform: uppercase; letter-spacing: .09em;
+  color: var(--muted); min-width: 82px; padding-top: 7px;
+}
+/* The five-per-cent dim said nothing the cursor does not, and took 认读 ·
+   Recognition from 4.54:1 to 4.36 to say it. */
+.chip.locked-on { cursor: default; }
+
+.tune { gap: 22px; flex-wrap: wrap; margin-top: 20px; }
+.tune-field { display: flex; flex-direction: column; gap: 5px; font-size: .82rem; color: var(--muted); }
+.tune-field input, .tune-field select {
+  font: 400 max(16px, .93rem) var(--sans); color: var(--ink);
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: var(--r); padding: 8px 10px; min-width: 168px;
+}
+.tune-field input { min-width: 92px; font-family: var(--mono); }
+.tune-field input:focus, .tune-field select:focus,
+input.answer-input:focus { outline: 2px solid var(--celadon); outline-offset: 1px; }
+
+/* ---- session chrome ---- */
+
+.session-bar { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.session-counts { display: flex; gap: 14px; flex-wrap: wrap; font-size: .82rem; color: var(--muted); }
+.count b { font-family: var(--mono); color: var(--ink-2); font-weight: 500; }
+.count.new b { color: var(--celadon-d); }
+.count.unlock b { color: var(--gamboge-ink); }
+.count.review b { color: var(--cinnabar); }
+.count.time { margin-left: auto; font-family: var(--mono); }
+.session-progress {
+  flex: 1 1 140px; height: 3px; background: var(--rule-soft);
+  border-radius: 2px; overflow: hidden; min-width: 100px;
+}
+.session-progress > span {
+  display: block; height: 100%; width: 0;
+  background: var(--cinnabar); transition: width .28s ease;
+}
+.mini-btn { padding: 6px 12px; font-size: .8rem; }
+
+/* ---- the card ---- */
+
+.card-stage { margin-top: 30px; min-height: 260px; }
+.card-meta {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  font-size: .78rem; color: var(--muted); margin-bottom: 22px;
+}
+.mode-tag { font-size: .78rem; }
+.tag.fresh { background: var(--celadon-t); color: var(--celadon-d); border-color: transparent; }
+
+.prompt { text-align: center; padding: 18px 0 6px; }
+.big-hanzi {
+  font-family: var(--hanzi); font-size: clamp(3.2rem, 13vw, 5.4rem);
+  line-height: 1.12; color: var(--ink); letter-spacing: .04em;
+}
+.gloss-large {
+  font: 600 clamp(1.3rem, 4.4vw, 1.85rem)/1.35 var(--display);
+  max-width: 30ch; margin: 0 auto;
+}
+.gloss-sub { font-size: .84rem; color: var(--muted); margin-top: 9px; }
+.gloss-sub.pinyin { font-family: var(--mono); color: var(--cinnabar); font-size: 1rem; }
+.ask { text-align: center; color: var(--muted); font-size: .9rem; margin: 20px 0 0; }
+.audio-prompt { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.audio-prompt .speaker { min-width: 148px; }
+.audio-prompt .hint { margin: 0; }
+
+/* ---- typed answers ---- */
+
+.typed { margin-top: 24px; display: flex; flex-direction: column; align-items: center; }
+/* The base stylesheet sizes every text input to the full column via
+   input[type="text"], which outranks a bare class. Matching that
+   specificity is what keeps the answer field from spanning the panel. */
+input.answer-input {
+  width: min(100%, 380px); text-align: center;
+  font: 400 1.5rem/1.4 var(--hanzi); color: var(--ink);
+  background: var(--card); border: 0; border-bottom: 2px solid var(--rule);
+  border-radius: 0; padding: 10px 8px;
+}
+input.answer-input[lang="en"] { font-family: var(--mono); font-size: 1.2rem; }
+input.answer-input:disabled { color: var(--muted); background: transparent; }
+input.answer-input::placeholder { color: var(--muted); opacity: .6; font-size: .95rem; }
+
+/* ---- the answer ---- */
+
+.answer {
+  margin-top: 26px; padding: 20px 22px; background: var(--card);
+  border: 1px solid var(--rule); border-left: 3px solid var(--celadon);
+  border-radius: var(--r);
+}
+.answer.is-new { border-left-color: var(--gamboge); }
+.answer-head { display: flex; align-items: baseline; gap: 13px; flex-wrap: wrap; }
+.answer-hanzi { font-family: var(--hanzi); font-size: 2rem; line-height: 1.2; }
+.answer-pinyin { font-family: var(--mono); color: var(--cinnabar); font-size: 1rem; }
+.answer-gloss { margin: 9px 0 0; font-size: 1.02rem; color: var(--ink-2); }
+.answer-extra { margin: 11px 0 0; font-size: .87rem; color: var(--muted); line-height: 1.6; }
+.answer-extra.sentence {
+  font-family: var(--hanzi); font-size: 1.06rem; color: var(--ink-2);
+  padding-left: 13px; border-left: 2px solid var(--rule);
+}
+.answer-extra.breakdown { font-family: var(--hanzi); font-size: .95rem; }
+.answer-extra.etym-note { font-style: italic; }
+.ctx-label { font-variant: small-caps; letter-spacing: .04em; }
+.ctx-word { font-size: 1.08em; color: var(--ink-2); }
+.ctx-gloss { font-size: .93em; }
+.ctx-sep { opacity: .5; }
+
+/* ---- grading ---- */
+
+.grades { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin-top: 26px; }
+.grade {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 11px 6px 9px; line-height: 1.25; position: relative;
+}
+.grade b { font-size: .93rem; font-weight: 600; }
+.grade span { font-family: var(--mono); font-size: .78rem; color: var(--muted); }
+.grade kbd {
+  font-family: var(--mono); font-size: .66rem; color: var(--muted);
+  opacity: .65; margin-top: 1px;
+}
+.grade.g1:hover, .grade.g1.suggested { border-color: var(--cinnabar); color: var(--cinnabar); }
+.grade.g2:hover, .grade.g2.suggested { border-color: var(--gamboge); color: var(--gamboge-ink); }
+.grade.g3:hover, .grade.g3.suggested { border-color: var(--celadon); color: var(--celadon-d); }
+.grade.g4:hover, .grade.g4.suggested { border-color: var(--celadon); color: var(--celadon-d); }
+.grade.suggested { background: var(--paper-deep); }
+.grade.suggested::after {
+  content: ""; position: absolute; inset-inline: 10px; bottom: 3px;
+  height: 2px; background: currentColor; opacity: .5;
+}
+.grade-note { text-align: center; margin-top: 18px; }
+
+/* ---- handwriting ---- */
+
+.hand-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 22px; }
+.write-pad { width: min(300px, 78vw); touch-action: none; }
+.write-pad svg { display: block; }
+
+@media (max-width: 620px) {
+  .grades { grid-template-columns: repeat(2, 1fr); }
+  .card-stage { min-height: 220px; }
+  .cfg-label { min-width: 100%; padding-top: 0; }
+}
+
+/* ---- tone drills ---- */
+
+.tone-syllable {
+  font: 500 clamp(2rem, 7vw, 2.9rem)/1 var(--mono);
+  color: var(--cinnabar); letter-spacing: .04em; margin-bottom: 4px;
+}
+.tone-options {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  gap: 10px; margin-top: 28px;
+}
+.tone-option {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  padding: 16px 10px 13px; cursor: pointer;
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: var(--r); color: var(--ink);
+  font: 400 .95rem var(--sans); transition: border-color .12s, background .12s;
+}
+.tone-option:hover:enabled { border-color: var(--celadon); background: var(--celadon-t); }
+.tone-option:disabled { cursor: default; }
+.tone-option .to-char { font-family: var(--hanzi); font-size: 2.1rem; line-height: 1.1; }
+.tone-option .to-pinyin { font-family: var(--mono); font-size: .92rem; color: var(--cinnabar); }
+.tone-option .to-gloss { font-size: .74rem; color: var(--muted); text-align: center; line-height: 1.35; }
+.tone-option.right { border-color: var(--celadon); background: var(--celadon-t); }
+.tone-option.wrong { border-color: var(--cinnabar); background: var(--cinnabar-t); }
+.hint.good { color: var(--celadon-d); }
+.hint.bad { color: var(--cinnabar); }
+
+/* ---- grammar cards ----
+   The pattern leads, because that is the thing being learned; the sentence
+   under it is evidence. Choices are laid out wide rather than in the tone
+   grid: a grammar answer is a word or a pair of them, not a single character,
+   and 「与其…不如」 in a 112px cell wraps into nonsense. */
+.gram-prompt { padding-bottom: 2px; }
+.gram-pattern {
+  font: 400 1.7rem/1.3 var(--hanzi); color: var(--ink);
+  letter-spacing: .01em;
+}
+.gram-title { margin-top: 6px; font-size: .84rem; color: var(--muted); }
+.gram-cloze {
+  margin: 22px auto 0; max-width: 34ch;
+  font: 400 1.35rem/1.9 var(--hanzi); text-align: center; color: var(--ink);
+}
+.gram-options {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  gap: 10px; margin-top: 24px;
+}
+.gram-option {
+  padding: 15px 12px; cursor: pointer;
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: var(--r); color: var(--ink);
+  font: 400 1.15rem var(--hanzi); min-height: 44px;
+  transition: border-color .12s, background .12s;
+}
+.gram-option:hover:enabled { border-color: var(--celadon); background: var(--celadon-t); }
+.gram-option:disabled { cursor: default; }
+.gram-option.right { border-color: var(--celadon); background: var(--celadon-t); }
+.gram-option.wrong { border-color: var(--cinnabar); background: var(--cinnabar-t); }
+.gram-answer { margin-top: 20px; }
+
+/* The grammar line in the coverage chart is a different denominator from the
+   HSK levels above it — points, not words — so it is set apart rather than
+   read as a seventh level. */
+.meter-row.grammar-row { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.meter-row.grammar-row .meter-label { font-family: var(--hanzi); }
+
+/* The pattern strip on a path stage. Chips rather than a sentence, because a
+   stage can hold twenty-five of them and a comma-separated run of 与其…不如,
+   之所以…是因为 and 唯有…才 is unreadable at any width. */
+.stage-points { margin: 12px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
+.stage-points .stage-say-label { margin-right: 2px; }
+.gram-chip {
+  font-family: var(--hanzi); font-size: .95rem; color: var(--ink);
+  background: var(--celadon-t); border: 1px solid var(--rule);
+  border-radius: var(--r); padding: 2px 8px; white-space: nowrap;
+}
+.stage.ahead .gram-chip { color: var(--muted); }
+
+/* ================= progress ================= */
+
+/* A single validated cinnabar ramp, indexed by magnitude rather than by
+   identity: ramp-1 is the least of something, ramp-5 the most. Light mode
+   runs light-to-dark on paper; dark mode runs dark-to-light, because the
+   anchor flips with the surface rather than being an inverted copy. Both
+   directions were checked for monotone lightness, step separation and
+   contrast against their own background. */
+:root {
+  --ramp-1: #d59683;
+  --ramp-2: #c06c58;
+  --ramp-3: #ac4a33;
+  --ramp-4: #98301f;
+  --ramp-5: #7a1e10;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ramp-1: #8a3324;
+    --ramp-2: #a74531;
+    --ramp-3: #c45d43;
+    --ramp-4: #dd8168;
+    --ramp-5: #f2ab97;
+  }
+}
+
+.kpi-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+  gap: 16px; margin-top: 20px;
+}
+.kpi { display: flex; flex-direction: column; gap: 2px; }
+.kpi b {
+  font: 600 2.5rem/1 var(--display); color: var(--cinnabar);
+  font-variant-numeric: tabular-nums;
+}
+.kpi-label { font-size: .9rem; font-weight: 600; margin-top: 7px; }
+.kpi-sub { font-size: .77rem; color: var(--muted); line-height: 1.45; }
+
+.chart-lede {
+  margin: 6px 0 0; font-size: .9rem; color: var(--ink-2);
+  max-width: 68ch; line-height: 1.65;
+}
+.chart { margin: 22px 0 0; }
+.chart figcaption {
+  margin-top: 12px; font-size: .83rem; color: var(--muted); line-height: 1.6;
+}
+.plot { width: 100%; height: auto; display: block; overflow: visible; }
+.plot.heat { max-width: 560px; }
+.plot.matrix { max-width: 360px; }
+.plot.square { max-width: 440px; }
+
+.grid { stroke: var(--rule-soft); stroke-width: 1; }
+.ref { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 4 4; opacity: .7; }
+.ref.diag { stroke-dasharray: 5 5; }
+text.axis {
+  font: 400 10.5px var(--mono); fill: var(--muted);
+}
+text.axis.end { text-anchor: end; }
+text.axis.mid { text-anchor: middle; }
+text.axis.strong { fill: var(--ink-2); font-family: var(--sans); font-size: 12px; }
+text.axis.value { font-size: 11.5px; fill: var(--ink-2); }
+text.axis.label { font-family: var(--sans); font-size: 11px; letter-spacing: .03em; }
+text.axis.diag-label { font-size: 10px; fill: var(--muted); text-anchor: middle; }
+.cell-value { font: 500 12px var(--mono); fill: var(--ink); text-anchor: middle; }
+.cell-value.on-dark { fill: var(--on-cinnabar); }
+
+.bar { transition: opacity .12s; }
+.bar:hover, .bar:focus-visible { opacity: .78; outline: none; }
+.heat-cell:hover, .heat-cell:focus-visible { stroke: var(--ink); stroke-width: 1.5; outline: none; }
+.heat-cell.diagonal { opacity: .5; }
+.series-line { fill: none; stroke: var(--ramp-4); stroke-width: 2; stroke-linejoin: round; }
+/* a 2px ring of surface keeps overlapping dots readable */
+.dot { stroke: var(--paper); stroke-width: 2; transition: r .12s; }
+.dot:hover, .dot:focus-visible { outline: none; stroke: var(--ink); }
+
+.chart-tip {
+  position: fixed; top: 0; left: 0; z-index: 40; pointer-events: none;
+  background: var(--ink); color: var(--paper); padding: 7px 10px;
+  border-radius: var(--r); font: 400 .8rem/1.45 var(--sans);
+  box-shadow: 0 4px 14px -6px rgba(0,0,0,.5); max-width: 220px;
+}
+.chart-tip b { font-weight: 600; }
+
+.table-view { margin-top: 14px; }
+.table-view > summary {
+  cursor: pointer; font-size: .8rem; color: var(--muted);
+  list-style: none; padding: 4px 0;
+}
+.table-view > summary::-webkit-details-marker { display: none; }
+.table-view > summary::before { content: "▸ "; color: var(--cinnabar); }
+.table-view[open] > summary::before { content: "▾ "; }
+.chart-table, .leech-table {
+  width: 100%; border-collapse: collapse; margin-top: 10px; font-size: .85rem;
+}
+.chart-table th, .chart-table td, .leech-table th, .leech-table td {
+  text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--rule-soft);
+}
+.chart-table th, .leech-table th {
+  font: 600 .74rem var(--sans); text-transform: uppercase;
+  letter-spacing: .07em; color: var(--muted);
+}
+.chart-table td:not(:first-child), .leech-table td.num {
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+}
+.chart-table { display: block; max-height: 320px; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+.leech-hanzi { font-family: var(--hanzi); font-size: 1.3rem; margin-right: 9px; }
+.leech-pinyin { font-family: var(--mono); font-size: .82rem; color: var(--cinnabar); }
+
+.meter-row {
+  display: grid; grid-template-columns: 64px 1fr auto;
+  align-items: center; gap: 14px; padding: 7px 0;
+}
+.meter-label { font-size: .85rem; font-weight: 600; }
+.meter {
+  height: 12px; background: var(--rule-soft);
+  border-radius: 3px; overflow: hidden;
+}
+.meter-fill { display: block; height: 100%; border-radius: 3px; transition: width .4s ease; }
+.meter-value {
+  font-family: var(--mono); font-size: .8rem; color: var(--muted);
+  font-variant-numeric: tabular-nums; min-width: 84px; text-align: right;
+}
+
+.btn.danger { color: var(--cinnabar); border-color: var(--cinnabar); }
+.btn.danger:hover { background: var(--cinnabar); color: var(--on-cinnabar); }
+
+@media (max-width: 620px) {
+  .kpi b { font-size: 2rem; }
+  .meter-row { grid-template-columns: 56px 1fr; }
+  .meter-value { grid-column: 2; text-align: left; }
+}
+
+/* ---- mock exam ---- */
+
+.exam-bar {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding: 11px 15px; margin-top: 4px;
+  background: var(--cinnabar-t); border: 1px solid var(--cinnabar);
+  border-radius: var(--r);
+}
+.exam-tag { font-size: .82rem; font-weight: 600; color: var(--cinnabar-d); }
+.exam-clock {
+  font: 500 1.15rem var(--mono); color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.exam-clock.urgent { color: var(--cinnabar); }
+.exam-progress { font-size: .82rem; color: var(--muted); }
+.choice.picked { border-color: var(--cinnabar); background: var(--cinnabar-t); }
+.exam-result { text-align: center; padding: 8px 0 22px; }
+.exam-score { display: flex; flex-direction: column; gap: 6px; align-items: center; margin: 10px 0 16px; }
+.exam-score b {
+  font: 600 3.4rem/1 var(--display); color: var(--cinnabar);
+  font-variant-numeric: tabular-nums;
+}
+.exam-score span { font-size: .9rem; color: var(--muted); }
+
+/* ================= offline and install ================= */
+
+.offline-badge {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(14px + var(--safe-b)); z-index: 60;
+  padding: 9px 16px; border-radius: 999px;
+  background: var(--ink); color: var(--paper);
+  font: 500 .8rem var(--sans); letter-spacing: .01em;
+  box-shadow: 0 6px 20px -10px rgba(0,0,0,.6);
+  pointer-events: none;
+}
+
+.install-sheet {
+  position: fixed; z-index: 70;
+  left: max(12px, var(--safe-l)); right: max(12px, var(--safe-r));
+  bottom: calc(12px + var(--safe-b));
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 17px 18px;
+  background: var(--card); border: 1px solid var(--rule);
+  border-radius: 12px; box-shadow: var(--shadow);
+  transform: translateY(130%); opacity: 0;
+  transition: transform .3s cubic-bezier(.22,.9,.3,1), opacity .3s;
+}
+.install-sheet.in { transform: translateY(0); opacity: 1; }
+.install-body { flex: 1; }
+.install-title { margin: 0 0 5px; font: 600 .96rem var(--sans); }
+.install-copy { margin: 0; font-size: .84rem; color: var(--ink-2); line-height: 1.55; }
+.install-copy b { font-weight: 600; color: var(--ink); }
+/* The iOS share glyph, drawn rather than typed: no font on any platform has
+   it, and a screenshot of one would not follow the theme. */
+.ios-share {
+  display: inline-block; width: .72em; height: .95em; vertical-align: -.16em;
+  margin: 0 .1em;
+  background: currentColor;
+  -webkit-mask: var(--share-mask) center/contain no-repeat;
+  mask: var(--share-mask) center/contain no-repeat;
+}
+:root {
+  --share-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 22'%3E%3Cpath d='M8 1.2 4.6 4.6l1 1L7.3 4v10h1.4V4l1.7 1.7 1-1z'/%3E%3Cpath d='M2.6 8.4h2.6v1.4H4v10.1h8V9.8h-1.2V8.4h2.6c.5 0 .9.4.9.9v11.1c0 .5-.4.9-.9.9H2.6a.9.9 0 0 1-.9-.9V9.3c0-.5.4-.9.9-.9z'/%3E%3C/svg%3E");
+}
+.install-close {
+  flex: none; align-self: center;
+  padding: 10px 14px; min-height: 44px;
+  font: 500 .82rem var(--sans); color: var(--muted);
+  background: none; border: 0; cursor: pointer;
+}
+
+/* Not shown at all on a desktop, where none of it applies. */
+@media (hover: hover) and (pointer: fine) {
+  .install-sheet { display: none; }
+}
+
+/* ---- studying with a thumb ---- */
+
+@media (pointer: coarse) {
+  /* The keyboard hints are noise on a device with no keyboard. */
+  .grade kbd, #reveal kbd { display: none; }
+
+  /* Grading sits at the bottom of the screen, where a thumb already is —
+     a toolbar above the tab bar rather than something that scrolls with the
+     card. Sticky was the first attempt and it pins over the answer it is
+     asking you to judge, which is exactly the wrong thing to hide. */
+  .grades, #revealRow {
+    position: fixed; z-index: 45;
+    left: 0; right: 0; bottom: var(--tabbar-h);
+    margin: 0;
+    padding: 8px max(12px, var(--safe-l)) 10px max(12px, var(--safe-r));
+    background: var(--paper);
+    border-top: 1px solid var(--rule);
+    box-shadow: 0 -8px 22px -18px rgba(0, 0, 0, .5);
+  }
+  .grades { gap: 7px; }
+  .grade { min-height: 60px; padding: 9px 4px; }
+  .grade b { font-size: .93rem; }
+
+  #reveal { width: 100%; min-height: 52px; font-size: 1rem; }
+
+  /* Room to scroll the last of the answer clear of that toolbar. */
+  #session { padding-bottom: 104px; }
+
+  /* The prompt is the tap target while an answer is hidden. */
+  .card-stage.tappable { cursor: pointer; }
+  .card-stage.tappable .prompt::after {
+    content: "Tap to show the answer";
+    display: block; margin-top: 22px;
+    font: 400 .82rem var(--sans); color: var(--muted);
+  }
+  .card-stage.tappable .ask { display: none; }
+
+  .write-pad { width: min(340px, 86vw); }
+  .tone-options { grid-template-columns: repeat(2, 1fr); gap: 9px; }
+  .gram-options { grid-template-columns: repeat(2, 1fr); gap: 9px; }
+  .gram-pattern { font-size: 1.45rem; }
+  .gram-cloze { font-size: 1.2rem; line-height: 1.85; }
+  .tone-option { padding: 14px 8px 12px; min-height: 96px; }
+  .tone-option .to-char { font-size: 2.4rem; }
+
+  /* Answer fields sit above the on-screen keyboard rather than behind it. */
+  input.answer-input { min-height: 52px; }
+}
+
+@media (pointer: coarse) and (min-width: 560px) {
+  .tone-options { grid-template-columns: repeat(4, 1fr); }
+}
+
+.offline-panel {
+  margin-top: 26px; padding-top: 22px;
+  border-top: 1px solid var(--rule-soft);
+}
+.offline-panel h4 {
+  margin: 0 0 4px; font: 600 .95rem var(--sans);
+}
+
+@media (max-width: 720px) {
+  /* The session bar has three jobs and a phone's worth of width. Counts and
+     the end button share the top line; the progress rule spans underneath. */
+  .session-bar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px 12px;
+    align-items: center;
+  }
+  .session-counts { font-size: .78rem; gap: 10px; }
+  .count.time { margin-left: 0; }
+  .session-progress { grid-column: 1 / -1; order: 3; }
+  .mini-btn { padding: 8px 12px; min-height: 40px; }
+
+  .card-stage { margin-top: 20px; }
+  .card-meta { margin-bottom: 14px; }
+  .answer { padding: 16px 16px; }
+  .panel { padding: 20px 16px; }
+  .due-board { gap: 10px; }
+  .due-tile { padding: 13px 13px 11px; }
+}
+
+@media (max-width: 720px) {
+  /* Four across, not two by two: the grading bar is furniture, and on a
+     664px screen a two-row version costs more than half the space the
+     answer needs. */
+  .grades { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .grade { min-height: 56px; padding: 8px 2px; gap: 2px; }
+  .grade b { font-size: .84rem; }
+  .grade span { font-size: .7rem; }
+  #session { padding-bottom: 96px; }
+
+  /* Once the answer is up, the question has done its job. The answer block
+     repeats the character larger, with its reading and meaning, so keeping
+     the prompt above it just pushes the thing you asked for off screen. */
+  .card-stage.revealed .prompt,
+  .card-stage.revealed .ask,
+  .card-stage.revealed .typed { display: none; }
+  .card-stage.revealed .answer { margin-top: 4px; }
+  .card-stage.revealed .quiz-feedback { margin-top: 0; }
+
+  /* Handwriting is the exception: the pad is the answer. */
+  .card-stage.revealed .hand-wrap { display: flex; }
+
+  .session-counts { font-size: .75rem; gap: 9px; }
+  .session-bar .mini-btn { font-size: .75rem; padding: 7px 10px; min-height: 38px; }
+  .grade-note { margin-top: 12px; font-size: .8rem; }
+}
+
+@media (max-width: 720px) {
+  /* Play and Slower belong side by side. Stacked, they cost ninety pixels
+     of a screen where the four answers have to be visible at the same time
+     as the thing being played. */
+  .audio-prompt {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 0 4px;
+  }
+  .audio-prompt .tone-syllable { grid-column: 1 / -1; margin-bottom: 2px; }
+  .audio-prompt .speaker { min-width: 0; }
+  .audio-prompt .hint { grid-column: 1 / -1; margin: 2px 0 0; font-size: .78rem; }
+
+  .tone-syllable { font-size: clamp(1.7rem, 6.4vw, 2.2rem); }
+  .tone-option { min-height: 84px; padding: 11px 8px 10px; }
+  .tone-option .to-char { font-size: 2rem; }
+  .tone-option .to-gloss {
+    font-size: .68rem; line-height: 1.3;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .tone-options { margin-top: 16px; }
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+  LearneCN — https://github.com/clmpnn/LearneCN
+  Copyright (C) 2026 clmpnn
+
+  This program is free software: you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along with
+  this program. If not, see <https://www.gnu.org/licenses/>.
+
+  SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#a82a1c" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171613" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LearneCN">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="Practice writing Chinese with stroke-order tracing for every hanzi, plus a built-in CC-CEDICT dictionary.">
+<title>LearneCN — Writing &amp; Dictionary</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Karla:wght@400;500;600;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&family=Spectral:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="seal" aria-hidden="true">学</span>Learne<em>CN</em></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="path.html">Path</a>
+      <a href="study.html">Study</a>
+      <a href="writing.html">Writing</a>
+      <a href="characters.html">Pinyin &amp; Hanzi</a>
+      <a href="practice.html">Practice</a>
+      <a href="progress.html">Progress</a>
+      <a href="add.html">Add</a>
+    </nav>
+    <div class="script-toggle" role="group" aria-label="Character set">
+      <button type="button" data-script="simplified" title="Simplified characters">简</button>
+      <button type="button" data-script="traditional" title="Traditional characters">繁</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section class="panel">
+      <header>
+        <p class="eyebrow">Stroke order</p>
+        <div class="sec-head"><span class="cn" lang="zh">书写</span><h2>Writing practice</h2></div>
+        <p class="lede">Type anything in Chinese, pick a character, and trace it inside the
+          grid. Each stroke has to start in the right place and go the right way.</p>
+      </header>
+
+      <div class="toolbar">
+        <label class="sr-only" for="writeInput">Characters to practise</label>
+        <input type="text" id="writeInput" placeholder="学习中文" value="学习" style="max-width:220px" autocomplete="off" lang="zh">
+        <button class="btn" id="loadChars" type="button">Load</button>
+      </div>
+
+      <div class="char-strip" id="charStrip" role="group" aria-label="Characters loaded"></div>
+
+      <div class="write-layout" style="margin-top:22px">
+        <div class="canvas-col">
+          <div class="tianzige" id="writeGrid"><div id="writeTarget"></div></div>
+          <p class="quiz-feedback" id="feedback" role="status" aria-live="polite"></p>
+          <div class="row">
+            <button class="btn primary" id="btnTrace" type="button">Trace it</button>
+            <button class="btn" id="btnWatch" type="button">Watch it</button>
+          </div>
+          <div class="row">
+            <button class="btn" id="btnOutline" type="button" aria-pressed="true">Outline on</button>
+            <button class="btn" id="btnNumbers" type="button" aria-pressed="true">Numbers on</button>
+            <button class="btn" id="btnHear" type="button">🔊 Hear it</button>
+          </div>
+        </div>
+
+        <div>
+          <h3 id="factsChar">Pick a character</h3>
+          <dl class="char-facts" id="charFacts"></dl>
+        </div>
+      </div>
+
+      <p class="hint" style="margin-top:18px">
+        Drag inside the grid to trace · The outline fades once you get a stroke right ·
+        Stroke data © <a href="https://github.com/skishore/makemeahanzi" rel="noopener">Make Me a Hanzi</a>,
+        served via <a href="https://www.jsdelivr.com/" rel="noopener">jsDelivr</a>
+      </p>
+    </section>
+
+    <section class="panel">
+      <header>
+        <p class="eyebrow">Chinese – English</p>
+        <div class="sec-head"><span class="cn" lang="zh">词典</span><h2>Dictionary</h2></div>
+        <p class="lede">Search by character, by pinyin with or without tone numbers, or in
+          English. 「你好」, 「ni3hao3」, 「nihao」 and 「hello」 all find the same word.</p>
+      </header>
+
+      <div class="toolbar">
+        <label class="sr-only" for="dictInput">Search the dictionary</label>
+        <input type="search" id="dictInput" placeholder="你好 · ni3hao3 · hello" autocomplete="off" style="max-width:340px">
+        <button class="btn primary" id="dictGo" type="button">Search</button>
+        <span class="spacer"></span>
+        <progress id="dictProgress" max="100" value="0" hidden></progress>
+        <span class="status" id="dictStatus">Dictionary loads on your first search.</span>
+      </div>
+
+      <div class="dict-results" id="dictResults"></div>
+
+      <p class="hint" style="margin-top:16px">
+        Data from <a href="https://cc-cedict.org/" rel="noopener">CC-CEDICT</a>
+        (CC BY-SA 4.0) · <a href="https://www.mdbg.net/chinese/dictionary" rel="noopener">Look up on MDBG ↗</a>
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="mark" lang="zh" aria-hidden="true">学</span>
+    <span>© LearneCN</span>
+    <span class="spacer"></span>
+    <span>Dictionary <a href="https://cc-cedict.org/" rel="noopener">CC-CEDICT</a> ·
+      characters and strokes <a href="https://github.com/skishore/makemeahanzi" rel="noopener">Make Me a Hanzi</a>
+      · both CC BY-SA / CC BY</span>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script src="../js/pwa.js"></script>
+<script src="../js/srs.js"></script>
+<script src="../vendor/hanzi-writer.min.js"></script>
+<script src="../js/writing.js"></script>
+</body>
+</html>

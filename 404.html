@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--
+  LearneCN — https://clmpnn.github.io/LearneCN/
+  Copyright (C) 2026 clmpnn
+  SPDX-License-Identifier: GPL-3.0-or-later
+
+  GitHub Pages serves this file for every path it cannot find, at any depth.
+  Every link and asset reference here must therefore be absolute from the site
+  root (/LearneCN/…), never relative — a relative link would resolve against
+  the missing URL the visitor typed. If you move to a custom domain, change
+  /LearneCN/ to / throughout.
+
+  Self-contained on purpose: no stylesheet, no script, no font download, so it
+  renders even when the rest of the site is unreachable.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#a82a1c" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171613" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LearneCN">
+<meta name="format-detection" content="telephone=no">
+<title>Page not found — LearneCN</title>
+<meta name="robots" content="noindex, follow">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="/LearneCN/favicon.svg" type="image/svg+xml">
+
+<style>
+  :root {
+    --paper:  #fbf8f2;
+    --ink:    #17130f;
+    --red:    #a82a1c;
+    --red-2:  #c9553f;
+    --rule:   #d9d2c6;
+    --muted:  #6f675c;
+    --serif:  ui-serif, Georgia, "Songti SC", "SimSun", "Noto Serif CJK SC", serif;
+    --ui:     system-ui, -apple-system, "Segoe UI", "PingFang SC",
+              "Microsoft YaHei", sans-serif;
+    color-scheme: light dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14120f;
+      --ink:   #efeae1;
+      --red:   #e8836f;
+      --red-2: #b8543f;
+      --rule:  #34302a;
+      --muted: #9a9186;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 2.5rem 1.25rem;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--ui);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main { width: min(46rem, 100%); text-align: center; }
+
+  /* ---- the card: a character in its practice grid, the way the site
+         presents every character it teaches ---------------------------- */
+
+  .grid {
+    --size: clamp(9rem, 34vw, 13rem);
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    margin: 0 auto;
+    border: 2px solid var(--red);
+    display: grid;
+    place-items: center;
+  }
+
+  /* dashed 田字格 guides */
+  .grid::before,
+  .grid::after {
+    content: "";
+    position: absolute;
+    background-repeat: repeat;
+    opacity: .75;
+  }
+  .grid::before {
+    inset: 6% 50% 6% auto;
+    width: 2px;
+    transform: translateX(1px);
+    background-image: repeating-linear-gradient(
+      to bottom, var(--red-2) 0 9px, transparent 9px 17px);
+  }
+  .grid::after {
+    inset: 50% 6% auto 6%;
+    height: 2px;
+    transform: translateY(-1px);
+    background-image: repeating-linear-gradient(
+      to right, var(--red-2) 0 9px, transparent 9px 17px);
+  }
+
+  .hanzi {
+    position: relative;
+    display: block;
+    font-family: var(--serif);
+    font-size: calc(var(--size) * .72);
+    line-height: 1;
+    animation: ink 900ms cubic-bezier(.22, .9, .3, 1) both;
+  }
+
+  /* the character inks in from the top, the way a brush lays it down */
+  @keyframes ink {
+    from { clip-path: inset(0 0 100% 0); opacity: .25; }
+    to   { clip-path: inset(0 0 0 0);    opacity: 1; }
+  }
+
+  .gloss {
+    margin: .9rem 0 0;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--muted);
+  }
+  .gloss b { color: var(--ink); font-weight: 600; font-style: italic; }
+
+  /* ---- message ----------------------------------------------------- */
+
+  .code {
+    margin: 2.4rem 0 0;
+    font-size: .78rem;
+    letter-spacing: .22em;
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  h1 {
+    margin: .5rem 0 0;
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+    font-weight: 600;
+    letter-spacing: -.01em;
+  }
+
+  p.say {
+    margin: .85rem auto 0;
+    max-width: 34rem;
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  /* ---- links ------------------------------------------------------- */
+
+  nav {
+    margin-top: 2.1rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .5rem .35rem;
+  }
+
+  nav a {
+    padding: .5rem .85rem;
+    border-radius: 999px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: .95rem;
+    border: 1px solid transparent;
+    transition: background-color .15s, border-color .15s, color .15s;
+  }
+  nav a:hover { background: color-mix(in srgb, var(--red) 10%, transparent);
+                color: var(--red); }
+  nav a.home { border-color: var(--red); color: var(--red); font-weight: 600; }
+  nav a.home:hover { background: var(--red); color: var(--paper); }
+
+  a:focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 3px;
+  }
+
+  footer {
+    margin-top: 2.2rem;
+    font-size: .85rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hanzi { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+
+<body>
+<main>
+
+  <div class="grid">
+    <span class="hanzi" lang="zh-Hans">迷</span>
+  </div>
+  <p class="gloss"><b>mí</b> &nbsp;— to lose the way</p>
+
+  <p class="code">4 0 4</p>
+  <h1>This page isn’t here.</h1>
+  <p class="say">
+    The address may be mistyped, or it may point at a file that has since moved.
+    Everything below still works.
+  </p>
+
+  <nav aria-label="LearneCN">
+    <a class="home" href="/LearneCN/">Home</a>
+    <a href="/LearneCN/html/path.html">The path</a>
+    <a href="/LearneCN/html/writing.html">Writing &amp; Dictionary</a>
+    <a href="/LearneCN/html/characters.html">Pinyin &amp; Hanzi</a>
+    <a href="/LearneCN/html/practice.html">Practice</a>
+    <a href="/LearneCN/html/add.html">Add</a>
+  </nav>
+
+  <footer>
+    Followed a link from inside the site?
+    <a href="https://github.com/clmpnn/LearneCN/issues/new">Tell us which one</a>.
+  </footer>
+
+</main>
+</body>
+</html>

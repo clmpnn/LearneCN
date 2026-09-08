@@ -1,0 +1,37 @@
+# Normalise line endings in the repo, check out native on each platform.
+* text=auto eol=lf
+
+# serve.ps1 needs CRLF on Windows PowerShell hosts.
+*.ps1 text eol=crlf
+
+# Treat these as text so diffs are readable.
+*.html  text diff=html
+*.css   text diff=css
+*.js    text diff=javascript
+*.json  text
+*.md    text
+*.svg   text
+
+# ---------------------------------------------------------------------------
+# Linguist: keep the GitHub language bar honest.
+# Without this the repo reads as ~99% JSON because of the question bank, and
+# the CSS/JS that actually make up the site disappear from the summary.
+# ---------------------------------------------------------------------------
+
+# Vendored third-party code — not ours, excluded from stats and diffs.
+vendor/**            linguist-vendored
+vendor/**            -diff
+
+# Generated / bulk data — excluded from stats, collapsed in diffs.
+data/**              linguist-generated
+data/questions/**    linguist-generated
+data/questions/**    -diff
+data/cedict.json     linguist-generated -diff
+data/hanzi.json      linguist-generated -diff
+data/hsk.json        linguist-generated -diff
+
+# Documentation shouldn't count as a language either.
+*.md                 linguist-documentation
+
+# The licence text is not source.
+LICENSE              linguist-generated

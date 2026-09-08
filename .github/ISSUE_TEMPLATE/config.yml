@@ -1,0 +1,17 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Dictionary definitions
+    url: https://cc-cedict.org/wiki/
+    about: Definitions come from CC-CEDICT. Corrections made there reach every project using it.
+
+  - name: Stroke order and character decomposition
+    url: https://github.com/skishore/makemeahanzi/issues
+    about: Stroke and radical data comes from Make Me a Hanzi. Report errors upstream.
+
+  - name: Stroke animation behaviour
+    url: https://github.com/chanind/hanzi-writer/issues
+    about: The tracing canvas is Hanzi Writer. Animation and quiz bugs usually belong there.
+
+  - name: LearneJP
+    url: https://github.com/clmpnn/LearneJP
+    about: The Japanese companion site.

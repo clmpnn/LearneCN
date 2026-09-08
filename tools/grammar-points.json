@@ -1,0 +1,8370 @@
+{
+ "_": [
+  "Hand-maintained source for the grammar syllabus. tools/build-learning-data.py reads",
+  "it and writes data/learn/grammar.json; tools/build-grammar-questions.py turns it into",
+  "the drills in data/questions/L*-grammar-*.json. Never edit either of those by hand.",
+  "",
+  "A point is one thing a learner can be shown, drilled on and scheduled. The fields:",
+  "  level    the HSK level that first demands it",
+  "  pattern  the shape, written the way a grammar reference would write it",
+  "  gloss    English. Scaffolding for the path and study pages, not for the drills",
+  "  note     Chinese. Printed with the drill, like every other note in the bank",
+  "  needs    words that must already be taught. Anything outside the HSK list is",
+  "           ignored for ordering — 动辄 is its own prerequisite and no syllabus",
+  "           teaches it as vocabulary — but it is recorded here because it is true",
+  "  after    points that must come first. A cycle is a build error",
+  "  near     points a learner fuses with this one. Spaced apart, the way look-alike",
+  "           characters are, and mined for distractors so the drills test the contrast",
+  "  wrong    extra distractors, in the register the point belongs to",
+  "  eg       [sentence, the span to blank, English]. The span must occur verbatim"
+ ],
+ "points": [
+  {
+   "id": "shi",
+   "level": 1,
+   "cn": "是",
+   "pattern": "A 是 B",
+   "title": "A is B",
+   "gloss": "是 links two nouns and nothing else. It is not the verb 'to be' — an adjective takes 很, not 是.",
+   "note": "「是」连接两个名词。形容词前面不用「是」，用「很」。",
+   "needs": [
+    "是",
+    "我",
+    "学生",
+    "老师"
+   ],
+   "after": [],
+   "near": [
+    "hen",
+    "you",
+    "zai"
+   ],
+   "wrong": [
+    "有",
+    "在",
+    "很"
+   ],
+   "eg": [
+    [
+     "我是学生。",
+     "是",
+     "I am a student."
+    ],
+    [
+     "他是我的老师。",
+     "是",
+     "He is my teacher."
+    ],
+    [
+     "这是什么？",
+     "是",
+     "What is this?"
+    ]
+   ]
+  },
+  {
+   "id": "bu",
+   "level": 1,
+   "cn": "不",
+   "pattern": "不 + V / Adj",
+   "title": "Not",
+   "gloss": "不 negates verbs, adjectives and the present or future. It cannot negate 有.",
+   "note": "「不」否定动词和形容词。只有「有」用「没」否定。",
+   "needs": [
+    "不",
+    "是",
+    "去",
+    "好"
+   ],
+   "after": [
+    "shi"
+   ],
+   "near": [
+    "mei"
+   ],
+   "wrong": [
+    "没",
+    "别",
+    "无"
+   ],
+   "eg": [
+    [
+     "我不是老师。",
+     "不",
+     "I am not a teacher."
+    ],
+    [
+     "他今天不来。",
+     "不",
+     "He is not coming today."
+    ],
+    [
+     "这个不好。",
+     "不",
+     "This one is not good."
+    ]
+   ]
+  },
+  {
+   "id": "mei",
+   "level": 1,
+   "cn": "没",
+   "pattern": "没(有) + V",
+   "title": "Have not, did not",
+   "gloss": "没 negates 有 and completed actions. 不 says you will not; 没 says you did not.",
+   "note": "「没」否定「有」和已经发生的事。「不去」是不打算去，「没去」是没有去过。",
+   "needs": [
+    "没有",
+    "有",
+    "去"
+   ],
+   "after": [
+    "bu",
+    "you"
+   ],
+   "near": [
+    "bu"
+   ],
+   "wrong": [
+    "不",
+    "别",
+    "无"
+   ],
+   "eg": [
+    [
+     "我没有钱。",
+     "没有",
+     "I have no money."
+    ],
+    [
+     "他昨天没来。",
+     "没",
+     "He did not come yesterday."
+    ],
+    [
+     "我没吃饭。",
+     "没",
+     "I have not eaten."
+    ]
+   ]
+  },
+  {
+   "id": "ma",
+   "level": 1,
+   "cn": "吗",
+   "pattern": "…… 吗？",
+   "title": "Yes-no question",
+   "gloss": "Put 吗 at the end of a statement and it becomes a question. Word order never changes.",
+   "note": "陈述句末尾加「吗」就是疑问句，语序不变。",
+   "needs": [
+    "吗",
+    "是",
+    "好"
+   ],
+   "after": [
+    "shi"
+   ],
+   "near": [
+    "ne",
+    "haishi"
+   ],
+   "wrong": [
+    "呢",
+    "吧",
+    "啊"
+   ],
+   "eg": [
+    [
+     "你是学生吗？",
+     "吗",
+     "Are you a student?"
+    ],
+    [
+     "他好吗？",
+     "吗",
+     "Is he well?"
+    ],
+    [
+     "你有时间吗？",
+     "吗",
+     "Do you have time?"
+    ]
+   ]
+  },
+  {
+   "id": "ne",
+   "level": 1,
+   "cn": "呢",
+   "pattern": "N 呢？",
+   "title": "And what about …?",
+   "gloss": "呢 bounces a question you have just been asked back at the other person, without repeating it.",
+   "note": "「呢」把刚问过的问题反问回去，不用重复整句。",
+   "needs": [
+    "呢",
+    "我",
+    "你"
+   ],
+   "after": [
+    "ma"
+   ],
+   "near": [
+    "ma"
+   ],
+   "wrong": [
+    "吗",
+    "吧",
+    "的"
+   ],
+   "eg": [
+    [
+     "我很好，你呢？",
+     "呢",
+     "I am well, and you?"
+    ],
+    [
+     "我去学校，他呢？",
+     "呢",
+     "I am going to school, what about him?"
+    ],
+    [
+     "我的书呢？",
+     "呢",
+     "Where is my book?"
+    ]
+   ]
+  },
+  {
+   "id": "shenme",
+   "level": 1,
+   "cn": "什么",
+   "pattern": "…… 什么 ……？",
+   "title": "What",
+   "gloss": "A question word sits where the answer would sit. Chinese does not move it to the front.",
+   "note": "疑问词放在答案的位置上，不提到句子前面。",
+   "needs": [
+    "什么",
+    "叫",
+    "名字"
+   ],
+   "after": [
+    "ma"
+   ],
+   "near": [
+    "shui",
+    "nar",
+    "ji"
+   ],
+   "wrong": [
+    "谁",
+    "哪儿",
+    "几"
+   ],
+   "eg": [
+    [
+     "你叫什么名字？",
+     "什么",
+     "What is your name?"
+    ],
+    [
+     "这是什么？",
+     "什么",
+     "What is this?"
+    ],
+    [
+     "你买什么？",
+     "什么",
+     "What are you buying?"
+    ]
+   ]
+  },
+  {
+   "id": "shui",
+   "level": 1,
+   "cn": "谁",
+   "pattern": "谁 / …… 是谁？",
+   "title": "Who",
+   "gloss": "谁 asks about a person and takes the slot the person would occupy.",
+   "note": "问人用「谁」，问东西用「什么」。",
+   "needs": [
+    "谁",
+    "是"
+   ],
+   "after": [
+    "shenme"
+   ],
+   "near": [
+    "shenme"
+   ],
+   "wrong": [
+    "什么",
+    "哪儿",
+    "几"
+   ],
+   "eg": [
+    [
+     "他是谁？",
+     "谁",
+     "Who is he?"
+    ],
+    [
+     "谁是你的老师？",
+     "谁",
+     "Who is your teacher?"
+    ],
+    [
+     "这是谁的书？",
+     "谁",
+     "Whose book is this?"
+    ]
+   ]
+  },
+  {
+   "id": "nar",
+   "level": 1,
+   "cn": "哪儿",
+   "pattern": "在 / 去 + 哪儿？",
+   "title": "Where",
+   "gloss": "哪儿 asks for a place. 哪 alone picks one out of several and needs a measure word.",
+   "note": "「哪儿」问地方；「哪」是从几个里挑一个，后面要加量词。",
+   "needs": [
+    "哪儿",
+    "在",
+    "去"
+   ],
+   "after": [
+    "shenme"
+   ],
+   "near": [
+    "shenme",
+    "shui"
+   ],
+   "wrong": [
+    "什么",
+    "谁",
+    "怎么"
+   ],
+   "eg": [
+    [
+     "你在哪儿？",
+     "哪儿",
+     "Where are you?"
+    ],
+    [
+     "你去哪儿？",
+     "哪儿",
+     "Where are you going?"
+    ],
+    [
+     "他家在哪儿？",
+     "哪儿",
+     "Where is his home?"
+    ]
+   ]
+  },
+  {
+   "id": "ji",
+   "level": 1,
+   "cn": "几",
+   "pattern": "几 + MW + N",
+   "title": "How many (under ten)",
+   "gloss": "几 expects a small number and always takes a measure word. 多少 expects any number and does not need one.",
+   "note": "「几」问十以下的数，后面一定要带量词；「多少」问的数可大可小。",
+   "needs": [
+    "几",
+    "多少",
+    "个"
+   ],
+   "after": [
+    "shenme"
+   ],
+   "near": [
+    "duoshao"
+   ],
+   "wrong": [
+    "多少",
+    "什么",
+    "怎么"
+   ],
+   "eg": [
+    [
+     "你有几个朋友？",
+     "几",
+     "How many friends do you have?"
+    ],
+    [
+     "今天几号？",
+     "几",
+     "What is the date today?"
+    ],
+    [
+     "现在几点？",
+     "几",
+     "What time is it?"
+    ]
+   ]
+  },
+  {
+   "id": "duoshao",
+   "level": 1,
+   "cn": "多少",
+   "pattern": "多少 + (MW) + N",
+   "title": "How many, how much",
+   "gloss": "多少 asks an open quantity and is the only one of the two used for prices.",
+   "note": "问价钱只能用「多少钱」，不能用「几钱」。",
+   "needs": [
+    "多少",
+    "钱"
+   ],
+   "after": [
+    "ji"
+   ],
+   "near": [
+    "ji"
+   ],
+   "wrong": [
+    "几",
+    "什么",
+    "怎么"
+   ],
+   "eg": [
+    [
+     "这个多少钱？",
+     "多少",
+     "How much is this?"
+    ],
+    [
+     "你们班有多少学生？",
+     "多少",
+     "How many students are in your class?"
+    ],
+    [
+     "你的电话是多少？",
+     "多少",
+     "What is your phone number?"
+    ]
+   ]
+  },
+  {
+   "id": "de",
+   "level": 1,
+   "cn": "的",
+   "pattern": "N/Pron + 的 + N",
+   "title": "Possessive and modifier 的",
+   "gloss": "的 hangs one thing off another. Close family and your own institutions usually drop it.",
+   "note": "「的」表示领属。家人和自己的单位后面常常省略：我妈妈、我们学校。",
+   "needs": [
+    "的",
+    "我",
+    "书",
+    "朋友"
+   ],
+   "after": [
+    "shi"
+   ],
+   "near": [
+    "debu"
+   ],
+   "wrong": [
+    "地",
+    "得",
+    "了"
+   ],
+   "eg": [
+    [
+     "这是我的书。",
+     "的",
+     "This is my book."
+    ],
+    [
+     "他是我的朋友。",
+     "的",
+     "He is my friend."
+    ],
+    [
+     "那个红色的杯子是我的。",
+     "的",
+     "That red cup is mine."
+    ]
+   ]
+  },
+  {
+   "id": "you",
+   "level": 1,
+   "cn": "有",
+   "pattern": "A 有 B",
+   "title": "To have, there is",
+   "gloss": "有 covers both possession and existence, and is negated only by 没.",
+   "note": "「有」既是「拥有」也是「存在」，否定只能用「没有」。",
+   "needs": [
+    "有",
+    "没有",
+    "朋友"
+   ],
+   "after": [
+    "shi"
+   ],
+   "near": [
+    "shi",
+    "zai"
+   ],
+   "wrong": [
+    "是",
+    "在",
+    "会"
+   ],
+   "eg": [
+    [
+     "我有一个哥哥。",
+     "有",
+     "I have an older brother."
+    ],
+    [
+     "桌子上有一本书。",
+     "有",
+     "There is a book on the table."
+    ],
+    [
+     "我没有时间。",
+     "有",
+     "I do not have time."
+    ]
+   ]
+  },
+  {
+   "id": "zai",
+   "level": 1,
+   "cn": "在",
+   "pattern": "A 在 + place",
+   "title": "To be at",
+   "gloss": "在 puts something somewhere. 有 says a place contains something; 在 says a thing is located somewhere.",
+   "note": "「在」说的是人或东西在哪里；「有」说的是那个地方有什么。",
+   "needs": [
+    "在",
+    "家",
+    "学校"
+   ],
+   "after": [
+    "you"
+   ],
+   "near": [
+    "you",
+    "shi"
+   ],
+   "wrong": [
+    "有",
+    "是",
+    "去"
+   ],
+   "eg": [
+    [
+     "我在家。",
+     "在",
+     "I am at home."
+    ],
+    [
+     "他在学校学习。",
+     "在",
+     "He studies at school."
+    ],
+    [
+     "书在桌子上。",
+     "在",
+     "The book is on the table."
+    ]
+   ]
+  },
+  {
+   "id": "hen",
+   "level": 1,
+   "cn": "很",
+   "pattern": "S + 很 + Adj",
+   "title": "Adjectival predicate",
+   "gloss": "An adjective is its own verb in Chinese. It needs a degree word in front of it — bare 我好 sounds like a comparison.",
+   "note": "形容词自己就是谓语，前面要加程度副词。只说「我好」听起来像在比较。",
+   "needs": [
+    "很",
+    "好",
+    "大"
+   ],
+   "after": [
+    "shi"
+   ],
+   "near": [
+    "shi",
+    "tai"
+   ],
+   "wrong": [
+    "是",
+    "太",
+    "不"
+   ],
+   "eg": [
+    [
+     "他很高兴。",
+     "很",
+     "He is happy."
+    ],
+    [
+     "这个很大。",
+     "很",
+     "This one is big."
+    ],
+    [
+     "今天很冷。",
+     "很",
+     "It is cold today."
+    ]
+   ]
+  },
+  {
+   "id": "tai",
+   "level": 1,
+   "cn": "太",
+   "pattern": "太 + Adj + 了",
+   "title": "Too, extremely",
+   "gloss": "太…了 is one bracket, not two words. Dropping 了 leaves the phrase unfinished.",
+   "note": "「太……了」是一个整体，后面的「了」不能省。",
+   "needs": [
+    "太",
+    "了",
+    "好"
+   ],
+   "after": [
+    "hen"
+   ],
+   "near": [
+    "hen"
+   ],
+   "wrong": [
+    "很",
+    "真",
+    "非常"
+   ],
+   "eg": [
+    [
+     "太好了！",
+     "太",
+     "Wonderful!"
+    ],
+    [
+     "这个太贵了。",
+     "太",
+     "This is too expensive."
+    ],
+    [
+     "今天太热了。",
+     "太",
+     "It is far too hot today."
+    ]
+   ]
+  },
+  {
+   "id": "dou",
+   "level": 1,
+   "cn": "都",
+   "pattern": "S + 都 + V",
+   "title": "All, both",
+   "gloss": "都 comes after what it sums up and before the verb — never at the front of the sentence.",
+   "note": "「都」放在它总结的那些人或事的后面、动词的前面。",
+   "needs": [
+    "都",
+    "我们",
+    "是"
+   ],
+   "after": [
+    "shi"
+   ],
+   "near": [
+    "ye"
+   ],
+   "wrong": [
+    "也",
+    "还",
+    "很"
+   ],
+   "eg": [
+    [
+     "我们都是学生。",
+     "都",
+     "We are all students."
+    ],
+    [
+     "他们都去。",
+     "都",
+     "They are all going."
+    ],
+    [
+     "这些都很好。",
+     "都",
+     "These are all good."
+    ]
+   ]
+  },
+  {
+   "id": "ye",
+   "level": 1,
+   "cn": "也",
+   "pattern": "S + 也 + V",
+   "title": "Also",
+   "gloss": "也 sits before the verb, never at the end. It attaches to the subject that is doing the same thing.",
+   "note": "「也」放在动词前面，不能放句末。",
+   "needs": [
+    "也",
+    "是",
+    "去"
+   ],
+   "after": [
+    "dou"
+   ],
+   "near": [
+    "dou"
+   ],
+   "wrong": [
+    "都",
+    "还",
+    "很"
+   ],
+   "eg": [
+    [
+     "我也是学生。",
+     "也",
+     "I am a student too."
+    ],
+    [
+     "他也去。",
+     "也",
+     "He is going too."
+    ],
+    [
+     "我也不知道。",
+     "也",
+     "I do not know either."
+    ]
+   ]
+  },
+  {
+   "id": "mw",
+   "level": 1,
+   "cn": "量词",
+   "pattern": "Num + MW + N",
+   "title": "Measure words",
+   "gloss": "A number never touches a noun directly. 个 is the fallback, but the right measure word is part of the word.",
+   "note": "数词和名词之间一定要有量词。「个」是通用的，但每个名词都有自己合适的量词。",
+   "needs": [
+    "个",
+    "本",
+    "一",
+    "书"
+   ],
+   "after": [
+    "you"
+   ],
+   "near": [
+    "zhena"
+   ],
+   "wrong": [
+    "本",
+    "位",
+    "张"
+   ],
+   "eg": [
+    [
+     "我有一个哥哥。",
+     "个",
+     "I have one older brother."
+    ],
+    [
+     "他买了三本书。",
+     "本",
+     "He bought three books."
+    ],
+    [
+     "这个多少钱？",
+     "个",
+     "How much is this one?"
+    ]
+   ]
+  },
+  {
+   "id": "zhena",
+   "level": 1,
+   "cn": "这/那",
+   "pattern": "这/那 + MW + N",
+   "title": "This and that",
+   "gloss": "这 and 那 also need a measure word before the noun, exactly as numbers do.",
+   "note": "「这」「那」后面同样要加量词才能接名词。",
+   "needs": [
+    "这",
+    "那",
+    "个"
+   ],
+   "after": [
+    "mw"
+   ],
+   "near": [
+    "mw",
+    "nar"
+   ],
+   "wrong": [
+    "哪",
+    "个",
+    "的"
+   ],
+   "eg": [
+    [
+     "这个人是我朋友。",
+     "这",
+     "This person is my friend."
+    ],
+    [
+     "那本书很好。",
+     "那",
+     "That book is good."
+    ],
+    [
+     "这些都是我的。",
+     "这",
+     "These are all mine."
+    ]
+   ]
+  },
+  {
+   "id": "le1",
+   "level": 1,
+   "cn": "了",
+   "pattern": "V + 了",
+   "title": "Completed action 了",
+   "gloss": "了 after the verb says the action finished. It is not a past tense — 明天我吃了饭就去 is future.",
+   "note": "动词后面的「了」表示动作完成，不是过去时。",
+   "needs": [
+    "了",
+    "吃",
+    "买"
+   ],
+   "after": [
+    "bu"
+   ],
+   "near": [
+    "guo",
+    "le2"
+   ],
+   "wrong": [
+    "过",
+    "着",
+    "的"
+   ],
+   "eg": [
+    [
+     "我吃了饭。",
+     "了",
+     "I have eaten."
+    ],
+    [
+     "他买了三本书。",
+     "了",
+     "He bought three books."
+    ],
+    [
+     "下课了。",
+     "了",
+     "Class is over."
+    ]
+   ]
+  },
+  {
+   "id": "xiang",
+   "level": 1,
+   "cn": "想",
+   "pattern": "想 + V",
+   "title": "Want to, would like to",
+   "gloss": "想 before a verb is a wish; before a noun it means to miss or think of.",
+   "note": "「想」后面接动词是「打算」，接名词是「思念」。",
+   "needs": [
+    "想",
+    "去",
+    "吃"
+   ],
+   "after": [
+    "bu"
+   ],
+   "near": [
+    "hui",
+    "xihuan"
+   ],
+   "wrong": [
+    "要",
+    "会",
+    "能"
+   ],
+   "eg": [
+    [
+     "我想去中国。",
+     "想",
+     "I want to go to China."
+    ],
+    [
+     "你想吃什么？",
+     "想",
+     "What would you like to eat?"
+    ],
+    [
+     "我想我妈妈。",
+     "想",
+     "I miss my mother."
+    ]
+   ]
+  },
+  {
+   "id": "hui",
+   "level": 1,
+   "cn": "会",
+   "pattern": "会 + V",
+   "title": "Can, having learned how",
+   "gloss": "会 is a skill you acquired. 能 is being in a position to. 可以 is being allowed to.",
+   "note": "「会」是学会的本领，「能」是有条件做，「可以」是被允许。",
+   "needs": [
+    "会",
+    "能",
+    "说",
+    "汉语"
+   ],
+   "after": [
+    "xiang"
+   ],
+   "near": [
+    "neng"
+   ],
+   "wrong": [
+    "能",
+    "可以",
+    "要"
+   ],
+   "eg": [
+    [
+     "我会说汉语。",
+     "会",
+     "I can speak Chinese."
+    ],
+    [
+     "他会开车。",
+     "会",
+     "He can drive."
+    ],
+    [
+     "你会做饭吗？",
+     "会",
+     "Can you cook?"
+    ]
+   ]
+  },
+  {
+   "id": "neng",
+   "level": 1,
+   "cn": "能",
+   "pattern": "能 + V",
+   "title": "Can, being able to right now",
+   "gloss": "能 is about circumstance and capacity — the skill may be there, the conditions decide.",
+   "note": "「能」说的是条件允许、身体做得到，不是会不会。",
+   "needs": [
+    "能",
+    "会",
+    "来"
+   ],
+   "after": [
+    "hui"
+   ],
+   "near": [
+    "hui"
+   ],
+   "wrong": [
+    "会",
+    "想",
+    "要"
+   ],
+   "eg": [
+    [
+     "我今天不能来。",
+     "能",
+     "I cannot come today."
+    ],
+    [
+     "这里能抽烟吗？",
+     "能",
+     "Can one smoke here?"
+    ],
+    [
+     "他能吃三碗饭。",
+     "能",
+     "He can eat three bowls of rice."
+    ]
+   ]
+  },
+  {
+   "id": "xihuan",
+   "level": 1,
+   "cn": "喜欢",
+   "pattern": "喜欢 + N/V",
+   "title": "To like",
+   "gloss": "喜欢 takes a noun or a whole verb phrase, with no preposition between them.",
+   "note": "「喜欢」后面可以直接接名词，也可以直接接动词短语。",
+   "needs": [
+    "喜欢",
+    "喝",
+    "茶"
+   ],
+   "after": [
+    "xiang"
+   ],
+   "near": [
+    "xiang"
+   ],
+   "wrong": [
+    "想",
+    "爱",
+    "要"
+   ],
+   "eg": [
+    [
+     "我很喜欢喝茶。",
+     "喜欢",
+     "I very much like drinking tea."
+    ],
+    [
+     "他喜欢中国菜。",
+     "喜欢",
+     "He likes Chinese food."
+    ],
+    [
+     "你喜欢什么？",
+     "喜欢",
+     "What do you like?"
+    ]
+   ]
+  },
+  {
+   "id": "qu",
+   "level": 1,
+   "cn": "去",
+   "pattern": "去 / 来 + place",
+   "title": "Go and come",
+   "gloss": "去 moves away from where the speaker is, 来 towards it. The place follows the verb with no preposition.",
+   "note": "「去」是离开说话人，「来」是朝着说话人。地点直接跟在动词后面。",
+   "needs": [
+    "去",
+    "来",
+    "学校"
+   ],
+   "after": [
+    "zai"
+   ],
+   "near": [
+    "zai"
+   ],
+   "wrong": [
+    "来",
+    "在",
+    "回"
+   ],
+   "eg": [
+    [
+     "我去学校。",
+     "去",
+     "I am going to school."
+    ],
+    [
+     "你来我家吧。",
+     "来",
+     "Come to my place."
+    ],
+    [
+     "他回家了。",
+     "回",
+     "He went home."
+    ]
+   ]
+  },
+  {
+   "id": "shijian",
+   "level": 1,
+   "cn": "时间词",
+   "pattern": "S + time + V",
+   "title": "Time before the verb",
+   "gloss": "When something happens is settled before the verb, not after it. English puts it at the end; Chinese does not.",
+   "note": "表示时间的词放在动词前面，不能放句末。",
+   "needs": [
+    "今天",
+    "明天",
+    "去"
+   ],
+   "after": [
+    "qu"
+   ],
+   "near": [
+    "riqi"
+   ],
+   "wrong": [
+    "都",
+    "也",
+    "很"
+   ],
+   "eg": [
+    [
+     "我明天去。",
+     "明天",
+     "I am going tomorrow."
+    ],
+    [
+     "他今天不来。",
+     "今天",
+     "He is not coming today."
+    ],
+    [
+     "我们八点上课。",
+     "八点",
+     "We have class at eight."
+    ]
+   ]
+  },
+  {
+   "id": "riqi",
+   "level": 1,
+   "cn": "年月日",
+   "pattern": "年 → 月 → 号 → 星期",
+   "title": "Dates, largest unit first",
+   "gloss": "Chinese orders time from the biggest container to the smallest, the reverse of English.",
+   "note": "汉语的时间从大到小：年、月、号、星期、上午下午、点。",
+   "needs": [
+    "年",
+    "月",
+    "号",
+    "星期"
+   ],
+   "after": [
+    "shijian"
+   ],
+   "near": [
+    "dian"
+   ],
+   "wrong": [
+    "点",
+    "分钟",
+    "天"
+   ],
+   "eg": [
+    [
+     "今天是三月五号。",
+     "三月五号",
+     "Today is the fifth of March."
+    ],
+    [
+     "我一九九八年出生。",
+     "一九九八年",
+     "I was born in 1998."
+    ],
+    [
+     "下星期一我有课。",
+     "下星期一",
+     "I have class next Monday."
+    ]
+   ]
+  },
+  {
+   "id": "dian",
+   "level": 1,
+   "cn": "点",
+   "pattern": "Num 点 Num 分",
+   "title": "Clock time",
+   "gloss": "点 is the hour, 分 the minute, and 两点 is two o'clock — never 二点.",
+   "note": "钟点用「两点」不用「二点」；「分」是分钟。",
+   "needs": [
+    "点",
+    "分钟",
+    "现在"
+   ],
+   "after": [
+    "riqi"
+   ],
+   "near": [
+    "riqi"
+   ],
+   "wrong": [
+    "分钟",
+    "号",
+    "岁"
+   ],
+   "eg": [
+    [
+     "现在几点？",
+     "点",
+     "What time is it?"
+    ],
+    [
+     "我们两点见。",
+     "点",
+     "Let us meet at two."
+    ],
+    [
+     "八点半上课。",
+     "点",
+     "Class starts at half past eight."
+    ]
+   ]
+  },
+  {
+   "id": "qing",
+   "level": 1,
+   "cn": "请",
+   "pattern": "请 + V",
+   "title": "Please",
+   "gloss": "请 opens a polite request and is followed straight by the verb.",
+   "note": "「请」后面直接接动词，是客气的说法。",
+   "needs": [
+    "请",
+    "请问",
+    "坐"
+   ],
+   "after": [
+    "ma"
+   ],
+   "near": [
+    "bie"
+   ],
+   "wrong": [
+    "别",
+    "要",
+    "让"
+   ],
+   "eg": [
+    [
+     "请坐。",
+     "请",
+     "Please sit."
+    ],
+    [
+     "请问，洗手间在哪儿？",
+     "请问",
+     "Excuse me, where is the toilet?"
+    ],
+    [
+     "请给我一杯水。",
+     "请",
+     "Please give me a glass of water."
+    ]
+   ]
+  },
+  {
+   "id": "he",
+   "level": 1,
+   "cn": "和",
+   "pattern": "N 和 N",
+   "title": "And, between nouns only",
+   "gloss": "和 joins nouns. It does not join two clauses — English 'and' does both, Chinese does not.",
+   "note": "「和」只连接名词，不能连接两个句子。",
+   "needs": [
+    "和",
+    "我",
+    "朋友"
+   ],
+   "after": [
+    "dou"
+   ],
+   "near": [
+    "dou",
+    "gen"
+   ],
+   "wrong": [
+    "都",
+    "也",
+    "跟"
+   ],
+   "eg": [
+    [
+     "我和我朋友去。",
+     "和",
+     "My friend and I are going."
+    ],
+    [
+     "茶和水都可以。",
+     "和",
+     "Tea and water are both fine."
+    ],
+    [
+     "他和我是同学。",
+     "和",
+     "He and I are classmates."
+    ]
+   ]
+  },
+  {
+   "id": "fangwei",
+   "level": 1,
+   "cn": "方位词",
+   "pattern": "N + 上/里/前面/后面",
+   "title": "Localizers come after",
+   "gloss": "Chinese marks place with a word after the noun, where English puts a preposition in front.",
+   "note": "表示位置的词放在名词后面：桌子上、家里、学校前面。",
+   "needs": [
+    "上",
+    "下",
+    "里",
+    "前面",
+    "后面"
+   ],
+   "after": [
+    "zai"
+   ],
+   "near": [
+    "zai"
+   ],
+   "wrong": [
+    "在",
+    "的",
+    "和"
+   ],
+   "eg": [
+    [
+     "书在桌子上。",
+     "上",
+     "The book is on the table."
+    ],
+    [
+     "他在家里。",
+     "里",
+     "He is at home."
+    ],
+    [
+     "学校前面有一个商店。",
+     "前面",
+     "There is a shop in front of the school."
+    ]
+   ]
+  },
+  {
+   "id": "zhengzai",
+   "level": 2,
+   "cn": "正在",
+   "pattern": "(正)在 + V + 呢",
+   "title": "In progress",
+   "gloss": "在 before the verb says the action is under way. 呢 at the end softens it; either alone is enough.",
+   "note": "「在」放在动词前表示动作正在进行，句末可以加「呢」。",
+   "needs": [
+    "在",
+    "做",
+    "呢"
+   ],
+   "after": [
+    "zai"
+   ],
+   "near": [
+    "zhe",
+    "le2"
+   ],
+   "wrong": [
+    "着",
+    "了",
+    "过"
+   ],
+   "eg": [
+    [
+     "他在做饭呢。",
+     "在",
+     "He is cooking."
+    ],
+    [
+     "我正在看书。",
+     "正在",
+     "I am reading."
+    ],
+    [
+     "你在干什么？",
+     "在",
+     "What are you doing?"
+    ]
+   ]
+  },
+  {
+   "id": "le2",
+   "level": 2,
+   "cn": "了",
+   "pattern": "…… 了",
+   "title": "Change of state 了",
+   "gloss": "了 at the end of the sentence reports that things are now different from before.",
+   "note": "句末的「了」表示情况发生了变化，和动词后的「了」不一样。",
+   "needs": [
+    "了",
+    "大",
+    "下雨"
+   ],
+   "after": [
+    "le1"
+   ],
+   "near": [
+    "le1",
+    "guo"
+   ],
+   "wrong": [
+    "过",
+    "着",
+    "的"
+   ],
+   "eg": [
+    [
+     "下雨了。",
+     "了",
+     "It has started raining."
+    ],
+    [
+     "他长大了。",
+     "了",
+     "He has grown up."
+    ],
+    [
+     "我不去了。",
+     "了",
+     "I am not going after all."
+    ]
+   ]
+  },
+  {
+   "id": "guo",
+   "level": 2,
+   "cn": "过",
+   "pattern": "V + 过",
+   "title": "Have ever done",
+   "gloss": "过 records an experience at some point in your life. 了 records that one particular action finished.",
+   "note": "「过」表示曾经有过这个经历，「了」表示某件事做完了。",
+   "needs": [
+    "过",
+    "去",
+    "吃"
+   ],
+   "after": [
+    "le1"
+   ],
+   "near": [
+    "le1",
+    "le2"
+   ],
+   "wrong": [
+    "了",
+    "着",
+    "的"
+   ],
+   "eg": [
+    [
+     "我去过中国。",
+     "过",
+     "I have been to China."
+    ],
+    [
+     "你吃过北京烤鸭吗？",
+     "过",
+     "Have you ever eaten Peking duck?"
+    ],
+    [
+     "他没看过这个电影。",
+     "过",
+     "He has never seen this film."
+    ]
+   ]
+  },
+  {
+   "id": "yaole",
+   "level": 2,
+   "cn": "要…了",
+   "pattern": "(快)要 + V + 了",
+   "title": "About to happen",
+   "gloss": "要…了 brackets an event that is close. 快要…了 and 就要…了 are the same shape, tighter.",
+   "note": "「快要……了」表示事情马上就要发生。",
+   "needs": [
+    "要",
+    "了",
+    "来"
+   ],
+   "after": [
+    "le2"
+   ],
+   "near": [
+    "le2"
+   ],
+   "wrong": [
+    "在",
+    "过",
+    "会"
+   ],
+   "eg": [
+    [
+     "火车要开了。",
+     "要",
+     "The train is about to leave."
+    ],
+    [
+     "快要下雨了。",
+     "快要",
+     "It is about to rain."
+    ],
+    [
+     "他就要来了。",
+     "就要",
+     "He will be here any moment."
+    ]
+   ]
+  },
+  {
+   "id": "bi",
+   "level": 2,
+   "cn": "比",
+   "pattern": "A 比 B + Adj",
+   "title": "Comparison with 比",
+   "gloss": "很 and 非常 cannot appear in a 比 sentence. Degree goes after the adjective: 大一点儿, 大得多.",
+   "note": "「比」字句里不能用「很」「非常」，程度放在形容词后面：大一点儿、大得多。",
+   "needs": [
+    "比",
+    "大",
+    "高"
+   ],
+   "after": [
+    "hen"
+   ],
+   "near": [
+    "yiyang",
+    "meiyoubi"
+   ],
+   "wrong": [
+    "跟",
+    "没有",
+    "更"
+   ],
+   "eg": [
+    [
+     "他比我高。",
+     "比",
+     "He is taller than me."
+    ],
+    [
+     "今天比昨天冷。",
+     "比",
+     "Today is colder than yesterday."
+    ],
+    [
+     "这个比那个贵一点儿。",
+     "比",
+     "This is a bit more expensive than that."
+    ]
+   ]
+  },
+  {
+   "id": "yiyang",
+   "level": 2,
+   "cn": "一样",
+   "pattern": "A 跟 B 一样 (+ Adj)",
+   "title": "The same as",
+   "gloss": "跟…一样 states equality. Negate the 一样, not the 跟: 不一样.",
+   "note": "「跟……一样」表示相同，否定说「跟……不一样」。",
+   "needs": [
+    "跟",
+    "一样",
+    "大"
+   ],
+   "after": [
+    "bi"
+   ],
+   "near": [
+    "bi",
+    "meiyoubi"
+   ],
+   "wrong": [
+    "比",
+    "没有",
+    "像"
+   ],
+   "eg": [
+    [
+     "我跟他一样高。",
+     "一样",
+     "I am as tall as he is."
+    ],
+    [
+     "这两个一样吗？",
+     "一样",
+     "Are these two the same?"
+    ],
+    [
+     "他的书跟我的不一样。",
+     "一样",
+     "His book is not the same as mine."
+    ]
+   ]
+  },
+  {
+   "id": "meiyoubi",
+   "level": 2,
+   "cn": "没有",
+   "pattern": "A 没有 B (这么) Adj",
+   "title": "Less than",
+   "gloss": "没有 is how you say 'not as … as'. 不比 means something else — it denies the comparison, it does not reverse it.",
+   "note": "「A没有B那么……」是「比不上」；「不比」只是否定「比」，意思不一样。",
+   "needs": [
+    "没有",
+    "比",
+    "高"
+   ],
+   "after": [
+    "bi"
+   ],
+   "near": [
+    "bi",
+    "yiyang"
+   ],
+   "wrong": [
+    "比",
+    "不比",
+    "跟"
+   ],
+   "eg": [
+    [
+     "我没有他高。",
+     "没有",
+     "I am not as tall as he is."
+    ],
+    [
+     "今天没有昨天那么冷。",
+     "没有",
+     "Today is not as cold as yesterday."
+    ],
+    [
+     "这个没有那个好。",
+     "没有",
+     "This is not as good as that."
+    ]
+   ]
+  },
+  {
+   "id": "youdianr",
+   "level": 2,
+   "cn": "有点儿",
+   "pattern": "有点儿 + Adj",
+   "title": "A bit (and unwelcome)",
+   "gloss": "有点儿 goes before the adjective and carries a complaint. 一点儿 goes after it and is neutral.",
+   "note": "「有点儿」在形容词前，含不满意的意思；「一点儿」在形容词后，只表示程度小。",
+   "needs": [
+    "有点儿",
+    "一点儿",
+    "贵"
+   ],
+   "after": [
+    "hen"
+   ],
+   "near": [
+    "yidianr"
+   ],
+   "wrong": [
+    "一点儿",
+    "很",
+    "太"
+   ],
+   "eg": [
+    [
+     "这个有点儿贵。",
+     "有点儿",
+     "This is a bit expensive."
+    ],
+    [
+     "我有点儿累。",
+     "有点儿",
+     "I am a little tired."
+    ],
+    [
+     "今天有点儿冷。",
+     "有点儿",
+     "It is a bit cold today."
+    ]
+   ]
+  },
+  {
+   "id": "yidianr",
+   "level": 2,
+   "cn": "一点儿",
+   "pattern": "Adj + 一点儿",
+   "title": "A bit (neutral)",
+   "gloss": "一点儿 after an adjective asks for a small adjustment. 便宜一点儿 is a request; 有点儿便宜 is a remark.",
+   "note": "「一点儿」放在形容词后面，表示要求或比较的差别。",
+   "needs": [
+    "一点儿",
+    "便宜",
+    "快"
+   ],
+   "after": [
+    "youdianr"
+   ],
+   "near": [
+    "youdianr"
+   ],
+   "wrong": [
+    "有点儿",
+    "很",
+    "太"
+   ],
+   "eg": [
+    [
+     "便宜一点儿吧。",
+     "一点儿",
+     "Make it a bit cheaper."
+    ],
+    [
+     "请说慢一点儿。",
+     "一点儿",
+     "Please speak a bit more slowly."
+    ],
+    [
+     "这个大一点儿。",
+     "一点儿",
+     "This one is a bit bigger."
+    ]
+   ]
+  },
+  {
+   "id": "debu",
+   "level": 2,
+   "cn": "得",
+   "pattern": "V + 得 + Adj",
+   "title": "How well it is done",
+   "gloss": "得 introduces a judgement of the action itself. With an object the verb repeats: 他说汉语说得很好.",
+   "note": "「得」后面说的是动作做得怎么样。带宾语时动词要重复：他说汉语说得很好。",
+   "needs": [
+    "得",
+    "说",
+    "好"
+   ],
+   "after": [
+    "hen"
+   ],
+   "near": [
+    "de"
+   ],
+   "wrong": [
+    "的",
+    "地",
+    "了"
+   ],
+   "eg": [
+    [
+     "他说得很好。",
+     "得",
+     "He speaks it well."
+    ],
+    [
+     "你跑得太快了。",
+     "得",
+     "You run too fast."
+    ],
+    [
+     "她汉语说得不错。",
+     "得",
+     "She speaks Chinese quite well."
+    ]
+   ]
+  },
+  {
+   "id": "jieguo",
+   "level": 2,
+   "cn": "结果补语",
+   "pattern": "V + 完/好/到/见",
+   "title": "Result complements",
+   "gloss": "A second verb glued to the first says how it turned out. Negate the pair with 没, not 不.",
+   "note": "结果补语说明动作的结果，否定用「没」：没看见、没做完。",
+   "needs": [
+    "完",
+    "好",
+    "到",
+    "见"
+   ],
+   "after": [
+    "le1"
+   ],
+   "near": [
+    "fangxiang",
+    "keneng"
+   ],
+   "wrong": [
+    "了",
+    "着",
+    "过"
+   ],
+   "eg": [
+    [
+     "我做完了。",
+     "完",
+     "I have finished."
+    ],
+    [
+     "我看见他了。",
+     "见",
+     "I saw him."
+    ],
+    [
+     "作业还没写完。",
+     "完",
+     "The homework is not finished yet."
+    ]
+   ]
+  },
+  {
+   "id": "fangxiang",
+   "level": 2,
+   "cn": "来去补语",
+   "pattern": "V + 来/去",
+   "title": "Direction complements",
+   "gloss": "来 and 去 after a verb say which way the motion runs relative to the speaker.",
+   "note": "「来」「去」放在动词后面，说明动作朝着说话人还是离开说话人。",
+   "needs": [
+    "来",
+    "去",
+    "进",
+    "出"
+   ],
+   "after": [
+    "qu"
+   ],
+   "near": [
+    "jieguo"
+   ],
+   "wrong": [
+    "到",
+    "在",
+    "了"
+   ],
+   "eg": [
+    [
+     "他进来了。",
+     "来",
+     "He came in."
+    ],
+    [
+     "请拿去吧。",
+     "去",
+     "Please take it away."
+    ],
+    [
+     "我上去看看。",
+     "去",
+     "I will go up and have a look."
+    ]
+   ]
+  },
+  {
+   "id": "yinwei",
+   "level": 2,
+   "cn": "因为…所以",
+   "pattern": "因为 A，所以 B",
+   "title": "Because … therefore",
+   "gloss": "Chinese keeps both halves of the pair. English drops one; leaving 所以 out here sounds unfinished.",
+   "note": "「因为」和「所以」常常一起出现，两个都说才完整。",
+   "needs": [
+    "因为",
+    "所以"
+   ],
+   "after": [
+    "bu"
+   ],
+   "near": [
+    "suiran",
+    "ruguo"
+   ],
+   "wrong": [
+    "虽然",
+    "但是",
+    "如果"
+   ],
+   "eg": [
+    [
+     "因为下雨，所以我没去。",
+     "因为",
+     "It rained, so I did not go."
+    ],
+    [
+     "因为他病了，所以没来上课。",
+     "所以",
+     "He was ill, so he did not come to class."
+    ],
+    [
+     "我喜欢中国，因为这里的人很好。",
+     "因为",
+     "I like China, because the people here are kind."
+    ]
+   ]
+  },
+  {
+   "id": "suiran",
+   "level": 2,
+   "cn": "虽然…但是",
+   "pattern": "虽然 A，但是 B",
+   "title": "Although … still",
+   "gloss": "Both halves stay. 虽然 does not cancel 但是 the way English 'although' cancels 'but'.",
+   "note": "「虽然」和「但是」要成对出现，汉语里两个都不省。",
+   "needs": [
+    "虽然",
+    "但是"
+   ],
+   "after": [
+    "yinwei"
+   ],
+   "near": [
+    "yinwei"
+   ],
+   "wrong": [
+    "因为",
+    "所以",
+    "如果"
+   ],
+   "eg": [
+    [
+     "虽然很累，但是很高兴。",
+     "虽然",
+     "Tired, but happy."
+    ],
+    [
+     "他虽然年轻，但是很有经验。",
+     "但是",
+     "Young as he is, he is experienced."
+    ],
+    [
+     "虽然贵，但是很好吃。",
+     "虽然",
+     "Expensive, but delicious."
+    ]
+   ]
+  },
+  {
+   "id": "yibian",
+   "level": 2,
+   "cn": "一边…一边",
+   "pattern": "一边 V，一边 V",
+   "title": "Doing two things at once",
+   "gloss": "Both actions run together. Each 一边 attaches to its own verb.",
+   "note": "「一边……一边……」表示两个动作同时进行。",
+   "needs": [
+    "一边",
+    "听",
+    "走"
+   ],
+   "after": [
+    "zhengzai"
+   ],
+   "near": [
+    "yijiu"
+   ],
+   "wrong": [
+    "一…就",
+    "又…又",
+    "先…再"
+   ],
+   "eg": [
+    [
+     "他一边走一边听音乐。",
+     "一边",
+     "He walks and listens to music."
+    ],
+    [
+     "别一边吃饭一边看手机。",
+     "一边",
+     "Do not eat and look at your phone."
+    ],
+    [
+     "我们一边喝茶一边聊天。",
+     "一边",
+     "We chatted over tea."
+    ]
+   ]
+  },
+  {
+   "id": "congdao",
+   "level": 2,
+   "cn": "从…到",
+   "pattern": "从 A 到 B",
+   "title": "From … to",
+   "gloss": "从…到 spans time or space. Both markers stay put.",
+   "note": "「从……到……」表示时间或空间的起点和终点。",
+   "needs": [
+    "从",
+    "到"
+   ],
+   "after": [
+    "zai"
+   ],
+   "near": [
+    "li"
+   ],
+   "wrong": [
+    "离",
+    "在",
+    "往"
+   ],
+   "eg": [
+    [
+     "从北京到上海很远。",
+     "从",
+     "It is far from Beijing to Shanghai."
+    ],
+    [
+     "我从八点学到十二点。",
+     "到",
+     "I studied from eight to twelve."
+    ],
+    [
+     "从这儿到学校要多久？",
+     "从",
+     "How long does it take from here to school?"
+    ]
+   ]
+  },
+  {
+   "id": "li",
+   "level": 2,
+   "cn": "离",
+   "pattern": "A 离 B + 远/近",
+   "title": "Distance from",
+   "gloss": "离 measures the gap between two fixed points. 从 marks a starting point you move away from.",
+   "note": "「离」说的是两点之间的距离，「从」说的是出发点。",
+   "needs": [
+    "离",
+    "远",
+    "近"
+   ],
+   "after": [
+    "congdao"
+   ],
+   "near": [
+    "congdao"
+   ],
+   "wrong": [
+    "从",
+    "到",
+    "在"
+   ],
+   "eg": [
+    [
+     "我家离学校很近。",
+     "离",
+     "My home is near the school."
+    ],
+    [
+     "这儿离车站远吗？",
+     "离",
+     "Is it far from here to the station?"
+    ],
+    [
+     "离考试还有三天。",
+     "离",
+     "There are three days until the exam."
+    ]
+   ]
+  },
+  {
+   "id": "dui",
+   "level": 2,
+   "cn": "对",
+   "pattern": "对 + N + V",
+   "title": "Towards, to",
+   "gloss": "对 aims the action at someone. It comes before the verb, with the target between them.",
+   "note": "「对」引出动作的对象，放在动词前面。",
+   "needs": [
+    "对",
+    "说",
+    "好"
+   ],
+   "after": [
+    "gei"
+   ],
+   "near": [
+    "gei",
+    "gen"
+   ],
+   "wrong": [
+    "给",
+    "跟",
+    "和"
+   ],
+   "eg": [
+    [
+     "他对我笑了。",
+     "对",
+     "He smiled at me."
+    ],
+    [
+     "这对身体很好。",
+     "对",
+     "This is good for your health."
+    ],
+    [
+     "她对我说了一句话。",
+     "对",
+     "She said something to me."
+    ]
+   ]
+  },
+  {
+   "id": "gei",
+   "level": 2,
+   "cn": "给",
+   "pattern": "给 + N + V",
+   "title": "For, to",
+   "gloss": "给 names who benefits, and sits before the verb. As a main verb it means to give.",
+   "note": "「给」引出接受的人，放在动词前面；单独用时是「给予」的意思。",
+   "needs": [
+    "给",
+    "打电话",
+    "买"
+   ],
+   "after": [
+    "qu"
+   ],
+   "near": [
+    "dui",
+    "rang"
+   ],
+   "wrong": [
+    "对",
+    "跟",
+    "替"
+   ],
+   "eg": [
+    [
+     "我给你打电话。",
+     "给",
+     "I will call you."
+    ],
+    [
+     "他给我买了一本书。",
+     "给",
+     "He bought me a book."
+    ],
+    [
+     "请给我一杯水。",
+     "给",
+     "Please give me a glass of water."
+    ]
+   ]
+  },
+  {
+   "id": "rang",
+   "level": 2,
+   "cn": "让",
+   "pattern": "让 + N + V",
+   "title": "Make, let, have someone do",
+   "gloss": "让 hands the action to someone else. The person comes between 让 and the verb.",
+   "note": "「让」后面先说人，再说他做什么。",
+   "needs": [
+    "让",
+    "做",
+    "去"
+   ],
+   "after": [
+    "gei"
+   ],
+   "near": [
+    "gei",
+    "bei"
+   ],
+   "wrong": [
+    "被",
+    "叫",
+    "给"
+   ],
+   "eg": [
+    [
+     "妈妈让我早点回家。",
+     "让",
+     "Mum told me to come home early."
+    ],
+    [
+     "让我看看。",
+     "让",
+     "Let me have a look."
+    ],
+    [
+     "老师让我们写作业。",
+     "让",
+     "The teacher had us do homework."
+    ]
+   ]
+  },
+  {
+   "id": "yinggai",
+   "level": 2,
+   "cn": "应该",
+   "pattern": "应该 / 可能 / 必须 + V",
+   "title": "Should, might, must",
+   "gloss": "These sit before the verb like 会 and 能, and negate with 不 in front of them.",
+   "note": "「应该」「可能」「必须」都放在动词前面，否定说「不应该」「不可能」。",
+   "needs": [
+    "应该",
+    "可能",
+    "必须"
+   ],
+   "after": [
+    "neng"
+   ],
+   "near": [
+    "hui",
+    "neng"
+   ],
+   "wrong": [
+    "会",
+    "能",
+    "要"
+   ],
+   "eg": [
+    [
+     "你应该多休息。",
+     "应该",
+     "You should rest more."
+    ],
+    [
+     "他可能不来了。",
+     "可能",
+     "He might not come."
+    ],
+    [
+     "明天必须八点到。",
+     "必须",
+     "You must arrive by eight tomorrow."
+    ]
+   ]
+  },
+  {
+   "id": "bie",
+   "level": 2,
+   "cn": "别",
+   "pattern": "别 + V",
+   "title": "Do not",
+   "gloss": "别 forbids. 不要 is the same instruction, one degree more formal.",
+   "note": "「别」和「不要」都是劝阻，「别」更口语。",
+   "needs": [
+    "别",
+    "去",
+    "说"
+   ],
+   "after": [
+    "qing"
+   ],
+   "near": [
+    "qing",
+    "bu"
+   ],
+   "wrong": [
+    "不",
+    "没",
+    "请"
+   ],
+   "eg": [
+    [
+     "别去了。",
+     "别",
+     "Do not go."
+    ],
+    [
+     "别说话！",
+     "别",
+     "Be quiet."
+    ],
+    [
+     "你别担心。",
+     "别",
+     "Do not worry."
+    ]
+   ]
+  },
+  {
+   "id": "zaiyou",
+   "level": 2,
+   "cn": "再/又",
+   "pattern": "再 V / 又 V",
+   "title": "Again, ahead and behind",
+   "gloss": "再 is an again that has not happened yet. 又 is one that already has.",
+   "note": "「再」用于还没发生的重复，「又」用于已经发生的重复。",
+   "needs": [
+    "再",
+    "又",
+    "来"
+   ],
+   "after": [
+    "le1"
+   ],
+   "near": [
+    "ye",
+    "hai"
+   ],
+   "wrong": [
+    "又",
+    "也",
+    "还"
+   ],
+   "eg": [
+    [
+     "明天再来吧。",
+     "再",
+     "Come again tomorrow."
+    ],
+    [
+     "他又迟到了。",
+     "又",
+     "He was late again."
+    ],
+    [
+     "请再说一遍。",
+     "再",
+     "Please say it once more."
+    ]
+   ]
+  },
+  {
+   "id": "jiucai",
+   "level": 2,
+   "cn": "就/才",
+   "pattern": "就 V / 才 V",
+   "title": "Sooner than expected, later than expected",
+   "gloss": "就 says it happened earlier or more easily than you would think; 才 says later or with more effort.",
+   "note": "「就」表示比预想的早或容易，「才」表示比预想的晚或费劲。",
+   "needs": [
+    "就",
+    "才",
+    "来"
+   ],
+   "after": [
+    "zaiyou"
+   ],
+   "near": [
+    "zaiyou"
+   ],
+   "wrong": [
+    "才",
+    "再",
+    "又"
+   ],
+   "eg": [
+    [
+     "他七点就来了。",
+     "就",
+     "He was here as early as seven."
+    ],
+    [
+     "他九点才来。",
+     "才",
+     "He did not come until nine."
+    ],
+    [
+     "我看一遍就懂了。",
+     "就",
+     "I understood after a single read."
+    ]
+   ]
+  },
+  {
+   "id": "haishi",
+   "level": 2,
+   "cn": "还是",
+   "pattern": "A 还是 B？",
+   "title": "Or, in a question",
+   "gloss": "还是 offers a choice in a question; 或者 states one in a statement. They do not swap.",
+   "note": "疑问句里的「或者」要说「还是」；陈述句里才用「或者」。",
+   "needs": [
+    "还是",
+    "或者",
+    "喝"
+   ],
+   "after": [
+    "ma"
+   ],
+   "near": [
+    "ma"
+   ],
+   "wrong": [
+    "或者",
+    "和",
+    "跟"
+   ],
+   "eg": [
+    [
+     "你喝茶还是喝咖啡？",
+     "还是",
+     "Tea or coffee?"
+    ],
+    [
+     "今天去还是明天去？",
+     "还是",
+     "Today or tomorrow?"
+    ],
+    [
+     "我喝茶或者咖啡都行。",
+     "或者",
+     "Tea or coffee, either is fine."
+    ]
+   ]
+  },
+  {
+   "id": "meidou",
+   "level": 2,
+   "cn": "每…都",
+   "pattern": "每 + MW + N + 都",
+   "title": "Every … all",
+   "gloss": "每 nearly always wants 都 later in the sentence. Leaving it out sounds incomplete.",
+   "note": "「每」后面的句子常常要有「都」呼应。",
+   "needs": [
+    "每",
+    "都",
+    "天"
+   ],
+   "after": [
+    "dou"
+   ],
+   "near": [
+    "dou"
+   ],
+   "wrong": [
+    "也",
+    "还",
+    "就"
+   ],
+   "eg": [
+    [
+     "我每天都跑步。",
+     "都",
+     "I run every day."
+    ],
+    [
+     "每个人都来了。",
+     "都",
+     "Everyone came."
+    ],
+    [
+     "他每次都迟到。",
+     "都",
+     "He is late every single time."
+    ]
+   ]
+  },
+  {
+   "id": "shide",
+   "level": 2,
+   "cn": "是…的",
+   "pattern": "是 …… 的",
+   "title": "Focusing on when, where or how",
+   "gloss": "For an action already known to have happened, 是…的 asks not whether but how. 你是坐飞机来的吗 asks about the means.",
+   "note": "动作已经发生，要问或强调时间、地点、方式，就用「是……的」。",
+   "needs": [
+    "是",
+    "的",
+    "来"
+   ],
+   "after": [
+    "le1"
+   ],
+   "near": [
+    "shi",
+    "le1"
+   ],
+   "wrong": [
+    "了",
+    "过",
+    "在"
+   ],
+   "eg": [
+    [
+     "我是坐飞机来的。",
+     "是",
+     "I came by plane."
+    ],
+    [
+     "你是什么时候来的？",
+     "的",
+     "When was it that you came?"
+    ],
+    [
+     "这本书是在北京买的。",
+     "的",
+     "I bought this book in Beijing."
+    ]
+   ]
+  },
+  {
+   "id": "chongdie",
+   "level": 2,
+   "cn": "动词重叠",
+   "pattern": "V V / V 一 V",
+   "title": "Doubling the verb",
+   "gloss": "Repeating a verb makes the action brief and casual — a try rather than a task.",
+   "note": "动词重叠表示动作时间短、语气轻松：看看、说一说。",
+   "needs": [
+    "看",
+    "说",
+    "试"
+   ],
+   "after": [
+    "qing"
+   ],
+   "near": [
+    "yidianr"
+   ],
+   "wrong": [
+    "了",
+    "过",
+    "着"
+   ],
+   "eg": [
+    [
+     "你看看这个。",
+     "看看",
+     "Have a look at this."
+    ],
+    [
+     "我们说一说吧。",
+     "说一说",
+     "Let us talk it over."
+    ],
+    [
+     "让我想想。",
+     "想想",
+     "Let me think."
+    ]
+   ]
+  },
+  {
+   "id": "liang",
+   "level": 2,
+   "cn": "二/两",
+   "pattern": "两 + MW",
+   "title": "Two of something",
+   "gloss": "两 counts things, 二 states the number. 两点 is two o'clock, 二月 is February.",
+   "note": "数东西用「两」，说数字本身用「二」：两个人、二月、十二。",
+   "needs": [
+    "两",
+    "二",
+    "个"
+   ],
+   "after": [
+    "mw"
+   ],
+   "near": [
+    "mw"
+   ],
+   "wrong": [
+    "二",
+    "几",
+    "半"
+   ],
+   "eg": [
+    [
+     "我有两个哥哥。",
+     "两",
+     "I have two older brothers."
+    ],
+    [
+     "现在两点半。",
+     "两",
+     "It is half past two."
+    ],
+    [
+     "二月有二十八天。",
+     "二",
+     "February has twenty-eight days."
+    ]
+   ]
+  },
+  {
+   "id": "kuai",
+   "level": 2,
+   "cn": "快",
+   "pattern": "快 + V + 了",
+   "title": "Nearly",
+   "gloss": "快…了 measures nearness in time, the same bracket as 要…了 with the emphasis on speed.",
+   "note": "「快……了」强调时间上快到了。",
+   "needs": [
+    "快",
+    "了"
+   ],
+   "after": [
+    "yaole"
+   ],
+   "near": [
+    "yaole"
+   ],
+   "wrong": [
+    "要",
+    "就",
+    "还"
+   ],
+   "eg": [
+    [
+     "快到了。",
+     "快",
+     "We are nearly there."
+    ],
+    [
+     "他快毕业了。",
+     "快",
+     "He is about to graduate."
+    ],
+    [
+     "快十二点了。",
+     "快",
+     "It is nearly twelve."
+    ]
+   ]
+  },
+  {
+   "id": "hai",
+   "level": 2,
+   "cn": "还",
+   "pattern": "还 + V",
+   "title": "Still, in addition",
+   "gloss": "还 says the situation has not stopped, or that there is more to add.",
+   "note": "「还」表示情况在继续，或者还有别的。",
+   "needs": [
+    "还",
+    "在",
+    "有"
+   ],
+   "after": [
+    "ye"
+   ],
+   "near": [
+    "ye",
+    "zaiyou"
+   ],
+   "wrong": [
+    "也",
+    "再",
+    "又"
+   ],
+   "eg": [
+    [
+     "他还在睡觉。",
+     "还",
+     "He is still asleep."
+    ],
+    [
+     "我还想买一本。",
+     "还",
+     "I want to buy one more as well."
+    ],
+    [
+     "你还有别的问题吗？",
+     "还",
+     "Do you have any other questions?"
+    ]
+   ]
+  },
+  {
+   "id": "gen",
+   "level": 2,
+   "cn": "跟",
+   "pattern": "跟 + N + V",
+   "title": "With, together with",
+   "gloss": "跟 pairs you with someone for the action. Before nouns it can also mean 和.",
+   "note": "「跟」引出一起做事的人，放在动词前面。",
+   "needs": [
+    "跟",
+    "一起",
+    "去"
+   ],
+   "after": [
+    "he"
+   ],
+   "near": [
+    "he",
+    "dui"
+   ],
+   "wrong": [
+    "和",
+    "对",
+    "给"
+   ],
+   "eg": [
+    [
+     "我跟朋友一起去。",
+     "跟",
+     "I am going with a friend."
+    ],
+    [
+     "跟我来。",
+     "跟",
+     "Come with me."
+    ],
+    [
+     "他跟我说了这件事。",
+     "跟",
+     "He told me about it."
+    ]
+   ]
+  },
+  {
+   "id": "ba",
+   "level": 3,
+   "cn": "把",
+   "pattern": "S 把 O + V + 结果",
+   "title": "Disposal 把",
+   "gloss": "把 moves the object in front of the verb, because the sentence is about what was done to it. The verb can never stand bare — something must follow it.",
+   "note": "「把」把宾语提到动词前，强调对它做了什么处置；动词后面一定要有别的成分。",
+   "needs": [
+    "把",
+    "关",
+    "门"
+   ],
+   "after": [
+    "jieguo"
+   ],
+   "near": [
+    "bei",
+    "rang"
+   ],
+   "wrong": [
+    "被",
+    "让",
+    "给"
+   ],
+   "eg": [
+    [
+     "请把门关上。",
+     "把",
+     "Please close the door."
+    ],
+    [
+     "我把作业写完了。",
+     "把",
+     "I have finished the homework."
+    ],
+    [
+     "他把书放在桌子上。",
+     "把",
+     "He put the book on the table."
+    ]
+   ]
+  },
+  {
+   "id": "bei",
+   "level": 3,
+   "cn": "被",
+   "pattern": "S 被 (N) + V + 了",
+   "title": "Passive 被",
+   "gloss": "被 makes the subject the one it happened to. 让 and 叫 do the same job in speech and need the agent named.",
+   "note": "「被」表示被动，主语是承受动作的一方；口语里也说「让」「叫」，但后面要说出施事。",
+   "needs": [
+    "被",
+    "让",
+    "叫"
+   ],
+   "after": [
+    "ba"
+   ],
+   "near": [
+    "ba",
+    "rang"
+   ],
+   "wrong": [
+    "把",
+    "让",
+    "给"
+   ],
+   "eg": [
+    [
+     "我的自行车被人偷了。",
+     "被",
+     "My bicycle was stolen."
+    ],
+    [
+     "杯子被打破了。",
+     "被",
+     "The cup got broken."
+    ],
+    [
+     "他被老师批评了。",
+     "被",
+     "He was told off by the teacher."
+    ]
+   ]
+  },
+  {
+   "id": "yuelaiyue",
+   "level": 3,
+   "cn": "越来越",
+   "pattern": "越来越 + Adj",
+   "title": "More and more",
+   "gloss": "越来越 tracks change over time. 越 A 越 B ties one increase to another.",
+   "note": "「越来越」表示程度随时间加深；「越……越……」表示一方增加，另一方也跟着增加。",
+   "needs": [
+    "越来越",
+    "冷"
+   ],
+   "after": [
+    "bi"
+   ],
+   "near": [
+    "gengjia"
+   ],
+   "wrong": [
+    "越…越",
+    "更加",
+    "非常"
+   ],
+   "eg": [
+    [
+     "天气越来越冷了。",
+     "越来越",
+     "The weather is getting colder and colder."
+    ],
+    [
+     "他越说越快。",
+     "越",
+     "The more he talked the faster he got."
+    ],
+    [
+     "雨越下越大。",
+     "越",
+     "The rain got heavier and heavier."
+    ]
+   ]
+  },
+  {
+   "id": "yijiu",
+   "level": 3,
+   "cn": "一…就",
+   "pattern": "一 V₁ 就 V₂",
+   "title": "As soon as",
+   "gloss": "The second action follows the first immediately, and 就 is what does the joining.",
+   "note": "「一……就……」表示前一件事发生后紧接着就做后一件。",
+   "needs": [
+    "一",
+    "就",
+    "到"
+   ],
+   "after": [
+    "jiucai"
+   ],
+   "near": [
+    "xianran",
+    "yibian"
+   ],
+   "wrong": [
+    "既…又",
+    "又…又",
+    "边…边"
+   ],
+   "eg": [
+    [
+     "我一到家就给你打电话。",
+     "一",
+     "I will call you the moment I get home."
+    ],
+    [
+     "他一看就懂了。",
+     "就",
+     "He understood at a glance."
+    ],
+    [
+     "一下课学生就走了。",
+     "一",
+     "The students left the instant class ended."
+    ]
+   ]
+  },
+  {
+   "id": "keneng",
+   "level": 3,
+   "cn": "可能补语",
+   "pattern": "V + 得/不 + 结果",
+   "title": "Can and cannot, built into the verb",
+   "gloss": "得 or 不 dropped inside the verb-result pair says whether the result is achievable. 看不清楚 is not the same as 不能看清楚.",
+   "note": "可能补语说的是做不做得到：看得清楚、看不清楚。否定用「不」，不是「没」。",
+   "needs": [
+    "得",
+    "不",
+    "清楚"
+   ],
+   "after": [
+    "jieguo"
+   ],
+   "near": [
+    "jieguo",
+    "debu"
+   ],
+   "wrong": [
+    "无",
+    "别",
+    "没"
+   ],
+   "eg": [
+    [
+     "这个字我看不清楚。",
+     "不",
+     "I cannot see this character clearly."
+    ],
+    [
+     "你听得懂吗？",
+     "得",
+     "Can you understand it?"
+    ],
+    [
+     "东西太多，我拿不了。",
+     "不",
+     "There is too much, I cannot carry it."
+    ]
+   ]
+  },
+  {
+   "id": "chule",
+   "level": 3,
+   "cn": "除了…以外",
+   "pattern": "除了 A 以外，都/也 B",
+   "title": "Except, besides",
+   "gloss": "With 都 it excludes A; with 还 or 也 it includes A and adds more. The second half decides which.",
+   "note": "「除了……以外」后面用「都」是排除，用「还」「也」是包括在内。",
+   "needs": [
+    "除了",
+    "以外",
+    "都"
+   ],
+   "after": [
+    "dou"
+   ],
+   "near": [
+    "budan"
+   ],
+   "wrong": [
+    "不但",
+    "连",
+    "只有"
+   ],
+   "eg": [
+    [
+     "除了他以外，大家都来了。",
+     "除了",
+     "Everyone came except him."
+    ],
+    [
+     "除了汉语，他还会说日语。",
+     "除了",
+     "Besides Chinese, he also speaks Japanese."
+    ],
+    [
+     "除了星期天以外我都上班。",
+     "除了",
+     "I work every day but Sunday."
+    ]
+   ]
+  },
+  {
+   "id": "budan",
+   "level": 3,
+   "cn": "不但…而且",
+   "pattern": "不但 A，而且 B",
+   "title": "Not only … but also",
+   "gloss": "The second clause has to go further than the first. If it does not, the pair is wrong.",
+   "note": "「不但……而且……」后一句要比前一句更进一层。",
+   "needs": [
+    "不但",
+    "而且"
+   ],
+   "after": [
+    "suiran"
+   ],
+   "near": [
+    "chule",
+    "yuqi"
+   ],
+   "wrong": [
+    "虽然",
+    "除了",
+    "不是"
+   ],
+   "eg": [
+    [
+     "他不但会说汉语，而且说得很好。",
+     "不但",
+     "He not only speaks Chinese, he speaks it well."
+    ],
+    [
+     "这个菜不但好吃，而且便宜。",
+     "而且",
+     "This dish is tasty and cheap besides."
+    ],
+    [
+     "她不但聪明，而且很努力。",
+     "不但",
+     "She is clever and hard-working too."
+    ]
+   ]
+  },
+  {
+   "id": "ruguo",
+   "level": 3,
+   "cn": "如果…就",
+   "pattern": "如果 A，就 B",
+   "title": "If … then",
+   "gloss": "如果 sets a condition and 就 delivers the consequence. 的话 can close the first half instead.",
+   "note": "「如果……就……」表示假设；前半句也可以用「……的话」收尾。",
+   "needs": [
+    "如果",
+    "就"
+   ],
+   "after": [
+    "yinwei"
+   ],
+   "near": [
+    "zhiyao",
+    "jishi"
+   ],
+   "wrong": [
+    "因为",
+    "虽然",
+    "即使"
+   ],
+   "eg": [
+    [
+     "如果下雨，我就不去了。",
+     "如果",
+     "If it rains I will not go."
+    ],
+    [
+     "如果有时间，就来我家吧。",
+     "就",
+     "If you have time, come round."
+    ],
+    [
+     "你要是不舒服就早点休息。",
+     "要是",
+     "If you are unwell, get some rest."
+    ]
+   ]
+  },
+  {
+   "id": "zhiyao",
+   "level": 3,
+   "cn": "只要…就",
+   "pattern": "只要 A，就 B",
+   "title": "As long as",
+   "gloss": "只要 names the one thing that is enough. 只有…才 names the one thing without which nothing happens.",
+   "note": "「只要……就……」是充分条件，「只有……才……」是必要条件，两个不一样。",
+   "needs": [
+    "只要",
+    "就",
+    "只有",
+    "才"
+   ],
+   "after": [
+    "ruguo"
+   ],
+   "near": [
+    "ruguo",
+    "zhiyou"
+   ],
+   "wrong": [
+    "只有",
+    "除非",
+    "如果"
+   ],
+   "eg": [
+    [
+     "只要努力，就能成功。",
+     "只要",
+     "As long as you work at it you can succeed."
+    ],
+    [
+     "只要你来，我就高兴。",
+     "只要",
+     "I am happy so long as you come."
+    ],
+    [
+     "只要有时间我就看书。",
+     "只要",
+     "Whenever I have time I read."
+    ]
+   ]
+  },
+  {
+   "id": "zhiyou",
+   "level": 3,
+   "cn": "只有…才",
+   "pattern": "只有 A，才 B",
+   "title": "Only if",
+   "gloss": "只有 marks the sole condition. Take it away and B cannot happen at all.",
+   "note": "「只有……才……」表示唯一的条件，没有它就不行。",
+   "needs": [
+    "只有",
+    "才"
+   ],
+   "after": [
+    "zhiyao"
+   ],
+   "near": [
+    "zhiyao"
+   ],
+   "wrong": [
+    "只要",
+    "除非",
+    "如果"
+   ],
+   "eg": [
+    [
+     "只有努力，才能学好汉语。",
+     "只有",
+     "Only through effort can you master Chinese."
+    ],
+    [
+     "只有他才知道答案。",
+     "只有",
+     "He alone knows the answer."
+    ],
+    [
+     "只有下雨才不去。",
+     "只有",
+     "Only if it rains will we not go."
+    ]
+   ]
+  },
+  {
+   "id": "xianran",
+   "level": 3,
+   "cn": "先…然后",
+   "pattern": "先 A，然后 B",
+   "title": "First … then",
+   "gloss": "先…然后 sets an order of steps. 再 works the same way for the second step.",
+   "note": "「先……然后……」「先……再……」表示做事的先后顺序。",
+   "needs": [
+    "先",
+    "然后",
+    "再"
+   ],
+   "after": [
+    "yijiu"
+   ],
+   "near": [
+    "yijiu"
+   ],
+   "wrong": [
+    "一…就",
+    "一边",
+    "又"
+   ],
+   "eg": [
+    [
+     "先洗手，然后吃饭。",
+     "先",
+     "Wash your hands first, then eat."
+    ],
+    [
+     "我们先去买票，再进去。",
+     "先",
+     "Let us buy tickets first and then go in."
+    ],
+    [
+     "他先学了三年，然后去了中国。",
+     "然后",
+     "He studied three years and then went to China."
+    ]
+   ]
+  },
+  {
+   "id": "youyou",
+   "level": 3,
+   "cn": "又…又",
+   "pattern": "又 A 又 B",
+   "title": "Both … and",
+   "gloss": "又…又 stacks two qualities that hold at once, usually adjectives.",
+   "note": "「又……又……」表示两种性质同时存在。",
+   "needs": [
+    "又",
+    "便宜",
+    "好"
+   ],
+   "after": [
+    "zaiyou"
+   ],
+   "near": [
+    "yibian",
+    "budan"
+   ],
+   "wrong": [
+    "一边",
+    "不但",
+    "越"
+   ],
+   "eg": [
+    [
+     "这个菜又便宜又好吃。",
+     "又",
+     "This dish is cheap and tasty."
+    ],
+    [
+     "他又高又瘦。",
+     "又",
+     "He is tall and thin."
+    ],
+    [
+     "她又会唱歌又会跳舞。",
+     "又",
+     "She can sing and dance."
+    ]
+   ]
+  },
+  {
+   "id": "zhe",
+   "level": 3,
+   "cn": "着",
+   "pattern": "V + 着",
+   "title": "State held in place",
+   "gloss": "着 keeps the result of an action standing. 在 is the doing; 着 is what is left in place afterwards.",
+   "note": "「着」表示状态持续，「在」表示动作进行：门开着，他在开门。",
+   "needs": [
+    "着",
+    "开",
+    "坐"
+   ],
+   "after": [
+    "zhengzai"
+   ],
+   "near": [
+    "zhengzai",
+    "le1"
+   ],
+   "wrong": [
+    "在",
+    "了",
+    "过"
+   ],
+   "eg": [
+    [
+     "门开着。",
+     "着",
+     "The door is open."
+    ],
+    [
+     "他站着说话。",
+     "着",
+     "He spoke standing up."
+    ],
+    [
+     "墙上挂着一张画。",
+     "着",
+     "A painting hangs on the wall."
+    ]
+   ]
+  },
+  {
+   "id": "qilai",
+   "level": 3,
+   "cn": "起来",
+   "pattern": "V + 起来",
+   "title": "Starting up, and judged by trying",
+   "gloss": "起来 either starts an action or frames a judgement: 看起来 is 'looks', 听起来 is 'sounds'.",
+   "note": "「起来」可以表示动作开始，也可以表示从某个角度看：看起来、听起来。",
+   "needs": [
+    "起来",
+    "看",
+    "说"
+   ],
+   "after": [
+    "fangxiang"
+   ],
+   "near": [
+    "xiaqu",
+    "chulai"
+   ],
+   "wrong": [
+    "下去",
+    "出来",
+    "上去"
+   ],
+   "eg": [
+    [
+     "他笑起来了。",
+     "起来",
+     "He burst out laughing."
+    ],
+    [
+     "这个菜看起来很好吃。",
+     "起来",
+     "This dish looks delicious."
+    ],
+    [
+     "说起来容易，做起来难。",
+     "起来",
+     "Easier said than done."
+    ]
+   ]
+  },
+  {
+   "id": "xiaqu",
+   "level": 3,
+   "cn": "下去",
+   "pattern": "V + 下去",
+   "title": "Keep going",
+   "gloss": "下去 carries an action already under way further into the future.",
+   "note": "「下去」表示已经开始的动作继续进行。",
+   "needs": [
+    "下去",
+    "说",
+    "坚持"
+   ],
+   "after": [
+    "qilai"
+   ],
+   "near": [
+    "qilai"
+   ],
+   "wrong": [
+    "起来",
+    "出来",
+    "下来"
+   ],
+   "eg": [
+    [
+     "请说下去。",
+     "下去",
+     "Please go on."
+    ],
+    [
+     "坚持下去就会成功。",
+     "下去",
+     "Keep at it and you will succeed."
+    ],
+    [
+     "我学不下去了。",
+     "下去",
+     "I cannot carry on studying."
+    ]
+   ]
+  },
+  {
+   "id": "chulai",
+   "level": 3,
+   "cn": "出来",
+   "pattern": "V + 出来",
+   "title": "Working it out",
+   "gloss": "出来 marks something becoming apparent — recognised, identified, produced.",
+   "note": "「出来」表示辨认出、想出、做出，从无到有。",
+   "needs": [
+    "出来",
+    "看",
+    "想"
+   ],
+   "after": [
+    "qilai"
+   ],
+   "near": [
+    "qilai",
+    "xiaqu"
+   ],
+   "wrong": [
+    "起来",
+    "下去",
+    "进去"
+   ],
+   "eg": [
+    [
+     "我看出来了。",
+     "出来",
+     "I can tell."
+    ],
+    [
+     "他想出来一个办法。",
+     "出来",
+     "He came up with a plan."
+    ],
+    [
+     "你听出来是谁了吗？",
+     "出来",
+     "Can you tell who it is?"
+    ]
+   ]
+  },
+  {
+   "id": "deshihou",
+   "level": 3,
+   "cn": "的时候",
+   "pattern": "…… 的时候",
+   "title": "When",
+   "gloss": "的时候 closes the clause it applies to. English opens with 'when'; Chinese closes with 的时候.",
+   "note": "「的时候」放在从句后面，不放前面。",
+   "needs": [
+    "的时候",
+    "来",
+    "走"
+   ],
+   "after": [
+    "shijian"
+   ],
+   "near": [
+    "yiqian"
+   ],
+   "wrong": [
+    "以前",
+    "以后",
+    "然后"
+   ],
+   "eg": [
+    [
+     "我来的时候他不在。",
+     "的时候",
+     "He was out when I came."
+    ],
+    [
+     "吃饭的时候别看手机。",
+     "的时候",
+     "Do not look at your phone while eating."
+    ],
+    [
+     "小的时候我住在北京。",
+     "的时候",
+     "When I was small I lived in Beijing."
+    ]
+   ]
+  },
+  {
+   "id": "yiqian",
+   "level": 3,
+   "cn": "以前/以后",
+   "pattern": "…… 以前 / 以后",
+   "title": "Before and after",
+   "gloss": "Both follow the event they anchor to, the reverse of English.",
+   "note": "「以前」「以后」放在事件后面：来中国以前、下课以后。",
+   "needs": [
+    "以前",
+    "以后"
+   ],
+   "after": [
+    "deshihou"
+   ],
+   "near": [
+    "deshihou"
+   ],
+   "wrong": [
+    "的时候",
+    "然后",
+    "后来"
+   ],
+   "eg": [
+    [
+     "来中国以前我不会说汉语。",
+     "以前",
+     "Before coming to China I could not speak it."
+    ],
+    [
+     "下课以后我们去吃饭。",
+     "以后",
+     "After class we will go and eat."
+    ],
+    [
+     "三年以前他就走了。",
+     "以前",
+     "He left three years ago."
+    ]
+   ]
+  },
+  {
+   "id": "dehua",
+   "level": 3,
+   "cn": "的话",
+   "pattern": "…… 的话",
+   "title": "If, tacked on the end",
+   "gloss": "的话 turns the clause before it into a condition, and often pairs with 就.",
+   "note": "「……的话」把前面的句子变成假设，常和「就」搭配。",
+   "needs": [
+    "的话",
+    "就"
+   ],
+   "after": [
+    "ruguo"
+   ],
+   "near": [
+    "ruguo"
+   ],
+   "wrong": [
+    "如果",
+    "要是",
+    "因为"
+   ],
+   "eg": [
+    [
+     "有时间的话，我就去。",
+     "的话",
+     "If I have time I will go."
+    ],
+    [
+     "不喜欢的话就别吃了。",
+     "的话",
+     "If you do not like it, do not eat it."
+    ],
+    [
+     "下雨的话我们改天吧。",
+     "的话",
+     "If it rains, let us make it another day."
+    ]
+   ]
+  },
+  {
+   "id": "liandou",
+   "level": 3,
+   "cn": "连…都",
+   "pattern": "连 A 都/也 B",
+   "title": "Even",
+   "gloss": "连 pushes forward the least likely case, and 都 or 也 has to answer it.",
+   "note": "「连」提出最极端的例子，后面一定要有「都」或「也」。",
+   "needs": [
+    "连",
+    "都",
+    "也"
+   ],
+   "after": [
+    "dou"
+   ],
+   "near": [
+    "dou",
+    "chule"
+   ],
+   "wrong": [
+    "除了",
+    "都",
+    "才"
+   ],
+   "eg": [
+    [
+     "他连饭都没吃就走了。",
+     "连",
+     "He left without even eating."
+    ],
+    [
+     "这个字连老师都不认识。",
+     "连",
+     "Even the teacher does not know this character."
+    ],
+    [
+     "我连一块钱也没有。",
+     "连",
+     "I do not have even one yuan."
+    ]
+   ]
+  },
+  {
+   "id": "buguan",
+   "level": 3,
+   "cn": "不管…都",
+   "pattern": "不管 A，都 B",
+   "title": "No matter what",
+   "gloss": "不管 needs an open question or an either-or after it, and 都 in the second half.",
+   "note": "「不管」后面要跟疑问词或者两种可能，后半句用「都」。",
+   "needs": [
+    "不管",
+    "都"
+   ],
+   "after": [
+    "liandou"
+   ],
+   "near": [
+    "jishi",
+    "wulun"
+   ],
+   "wrong": [
+    "即使",
+    "虽然",
+    "只要"
+   ],
+   "eg": [
+    [
+     "不管天气怎么样，我都去。",
+     "不管",
+     "I am going whatever the weather."
+    ],
+    [
+     "不管你说什么，他都不听。",
+     "不管",
+     "He will not listen whatever you say."
+    ],
+    [
+     "不管远不远都要去。",
+     "不管",
+     "Far or not, we are going."
+    ]
+   ]
+  },
+  {
+   "id": "jishi",
+   "level": 3,
+   "cn": "即使…也",
+   "pattern": "即使 A，也 B",
+   "title": "Even if",
+   "gloss": "即使 grants a hypothetical and 也 refuses to let it change anything.",
+   "note": "「即使……也……」表示退一步说，结果还是不变。",
+   "needs": [
+    "即使",
+    "也"
+   ],
+   "after": [
+    "ruguo"
+   ],
+   "near": [
+    "ruguo",
+    "buguan"
+   ],
+   "wrong": [
+    "如果",
+    "虽然",
+    "不管"
+   ],
+   "eg": [
+    [
+     "即使下雨，我们也要去。",
+     "即使",
+     "Even if it rains we are going."
+    ],
+    [
+     "即使很难，也要试试。",
+     "也",
+     "Even if it is hard, try it."
+    ],
+    [
+     "即使他不来，我们也开始。",
+     "即使",
+     "We will start even if he does not come."
+    ]
+   ]
+  },
+  {
+   "id": "weile",
+   "level": 3,
+   "cn": "为了",
+   "pattern": "为了 + purpose，……",
+   "title": "In order to",
+   "gloss": "为了 states the aim and opens the sentence. 因为 states the cause; they are not interchangeable.",
+   "note": "「为了」说的是目的，「因为」说的是原因。",
+   "needs": [
+    "为了",
+    "因为"
+   ],
+   "after": [
+    "yinwei"
+   ],
+   "near": [
+    "yinwei"
+   ],
+   "wrong": [
+    "因为",
+    "由于",
+    "所以"
+   ],
+   "eg": [
+    [
+     "为了学好汉语，他去了中国。",
+     "为了",
+     "He went to China in order to master Chinese."
+    ],
+    [
+     "为了健康，我每天跑步。",
+     "为了",
+     "I run every day for my health."
+    ],
+    [
+     "他为了工作搬到了上海。",
+     "为了",
+     "He moved to Shanghai for work."
+    ]
+   ]
+  },
+  {
+   "id": "jile",
+   "level": 3,
+   "cn": "极了",
+   "pattern": "Adj + 极了",
+   "title": "Extremely",
+   "gloss": "极了 comes after the adjective, unlike 很 and 非常 which come before it.",
+   "note": "「极了」放在形容词后面，「很」「非常」放在前面。",
+   "needs": [
+    "极了",
+    "好"
+   ],
+   "after": [
+    "tai"
+   ],
+   "near": [
+    "tai",
+    "hen"
+   ],
+   "wrong": [
+    "非常",
+    "很",
+    "太"
+   ],
+   "eg": [
+    [
+     "好极了！",
+     "极了",
+     "Excellent!"
+    ],
+    [
+     "这个菜好吃极了。",
+     "极了",
+     "This dish is superb."
+    ],
+    [
+     "我累极了。",
+     "极了",
+     "I am exhausted."
+    ]
+   ]
+  },
+  {
+   "id": "cishu",
+   "level": 3,
+   "cn": "动量补语",
+   "pattern": "V + 了 + Num + 次/遍",
+   "title": "How many times",
+   "gloss": "The count goes after the verb. With a noun object it usually goes between them.",
+   "note": "动量词放在动词后面：看了三次、说了一遍。",
+   "needs": [
+    "次",
+    "遍",
+    "了"
+   ],
+   "after": [
+    "le1"
+   ],
+   "near": [
+    "shijianliang"
+   ],
+   "wrong": [
+    "个",
+    "本",
+    "位"
+   ],
+   "eg": [
+    [
+     "我看了三次。",
+     "次",
+     "I have seen it three times."
+    ],
+    [
+     "请再说一遍。",
+     "遍",
+     "Please say it once more."
+    ],
+    [
+     "他去过两次北京。",
+     "次",
+     "He has been to Beijing twice."
+    ]
+   ]
+  },
+  {
+   "id": "shijianliang",
+   "level": 3,
+   "cn": "时量补语",
+   "pattern": "V + 了 + duration",
+   "title": "How long",
+   "gloss": "Duration follows the verb, and when there is an object the verb is repeated: 学汉语学了三年.",
+   "note": "时量补语放在动词后面；带宾语时动词要重复：学汉语学了三年。",
+   "needs": [
+    "了",
+    "小时",
+    "年"
+   ],
+   "after": [
+    "cishu"
+   ],
+   "near": [
+    "cishu"
+   ],
+   "wrong": [
+    "次",
+    "遍",
+    "的时候"
+   ],
+   "eg": [
+    [
+     "我学了三年汉语。",
+     "了",
+     "I have studied Chinese for three years."
+    ],
+    [
+     "他等了一个小时。",
+     "了",
+     "He waited an hour."
+    ],
+    [
+     "我睡了八个小时。",
+     "了",
+     "I slept eight hours."
+    ]
+   ]
+  },
+  {
+   "id": "guanyu3",
+   "level": 3,
+   "cn": "关于",
+   "pattern": "关于 + N",
+   "title": "About, concerning",
+   "gloss": "关于 heads a topic; 对于 aims at a target. 关于 can open the sentence, 对于 usually attaches to the verb.",
+   "note": "「关于」引出话题，「对于」引出对象。",
+   "needs": [
+    "关于",
+    "对于"
+   ],
+   "after": [
+    "dui"
+   ],
+   "near": [
+    "dui"
+   ],
+   "wrong": [
+    "对于",
+    "对",
+    "跟"
+   ],
+   "eg": [
+    [
+     "关于这个问题，我们再谈。",
+     "关于",
+     "We will talk about this again."
+    ],
+    [
+     "这是一本关于中国历史的书。",
+     "关于",
+     "This is a book about Chinese history."
+    ],
+    [
+     "对于这件事，我没有意见。",
+     "对于",
+     "On this matter I have no view."
+    ]
+   ]
+  },
+  {
+   "id": "tongguo",
+   "level": 3,
+   "cn": "通过",
+   "pattern": "通过 + N，……",
+   "title": "By means of",
+   "gloss": "通过 names the route or method that made the result possible.",
+   "note": "「通过」引出办法或途径。",
+   "needs": [
+    "通过",
+    "努力"
+   ],
+   "after": [
+    "weile"
+   ],
+   "near": [
+    "weile"
+   ],
+   "wrong": [
+    "为了",
+    "因为",
+    "根据"
+   ],
+   "eg": [
+    [
+     "通过努力，他成功了。",
+     "通过",
+     "Through hard work he succeeded."
+    ],
+    [
+     "通过这件事我学到了很多。",
+     "通过",
+     "I learned a lot from this."
+    ],
+    [
+     "通过朋友介绍我认识了他。",
+     "通过",
+     "I met him through a friend."
+    ]
+   ]
+  },
+  {
+   "id": "yizhi",
+   "level": 3,
+   "cn": "一直",
+   "pattern": "一直 + V",
+   "title": "All along",
+   "gloss": "一直 runs the action or state without a break from then until now.",
+   "note": "「一直」表示动作或状态没有中断。",
+   "needs": [
+    "一直",
+    "在"
+   ],
+   "after": [
+    "hai"
+   ],
+   "near": [
+    "hai",
+    "zongshi"
+   ],
+   "wrong": [
+    "还",
+    "总是",
+    "一定"
+   ],
+   "eg": [
+    [
+     "我一直在等你。",
+     "一直",
+     "I have been waiting for you all along."
+    ],
+    [
+     "他一直很努力。",
+     "一直",
+     "He has always worked hard."
+    ],
+    [
+     "一直走就到了。",
+     "一直",
+     "Keep straight on and you are there."
+    ]
+   ]
+  },
+  {
+   "id": "yiding",
+   "level": 3,
+   "cn": "一定",
+   "pattern": "一定 + V",
+   "title": "Certainly, without fail",
+   "gloss": "一定 promises or insists. 不一定 means 'not necessarily', not 'certainly not'.",
+   "note": "「不一定」是「未必」，不是「一定不」。",
+   "needs": [
+    "一定",
+    "去"
+   ],
+   "after": [
+    "yizhi"
+   ],
+   "near": [
+    "yizhi"
+   ],
+   "wrong": [
+    "一直",
+    "可能",
+    "应该"
+   ],
+   "eg": [
+    [
+     "我一定去。",
+     "一定",
+     "I will definitely go."
+    ],
+    [
+     "他不一定来。",
+     "一定",
+     "He may or may not come."
+    ],
+    [
+     "你一定要小心。",
+     "一定",
+     "You must be careful."
+    ]
+   ]
+  },
+  {
+   "id": "chabuduo",
+   "level": 3,
+   "cn": "差不多",
+   "pattern": "差不多 + Num/Adj",
+   "title": "Roughly",
+   "gloss": "差不多 softens a number or a judgement to 'about' or 'nearly'.",
+   "note": "「差不多」表示大约、接近。",
+   "needs": [
+    "差不多"
+   ],
+   "after": [
+    "yidianr"
+   ],
+   "near": [
+    "yidianr"
+   ],
+   "wrong": [
+    "大概",
+    "几乎",
+    "一点儿"
+   ],
+   "eg": [
+    [
+     "差不多十个人。",
+     "差不多",
+     "About ten people."
+    ],
+    [
+     "我们差不多同时到的。",
+     "差不多",
+     "We arrived at about the same time."
+    ],
+    [
+     "饭差不多好了。",
+     "差不多",
+     "The meal is nearly ready."
+    ]
+   ]
+  },
+  {
+   "id": "gengjia",
+   "level": 3,
+   "cn": "更",
+   "pattern": "更 + Adj",
+   "title": "Even more",
+   "gloss": "更 raises a comparison already in play, and works inside a 比 sentence where 很 cannot.",
+   "note": "「更」表示在原有基础上再加一层，可以用在「比」字句里。",
+   "needs": [
+    "更",
+    "好"
+   ],
+   "after": [
+    "bi"
+   ],
+   "near": [
+    "bi",
+    "yuelaiyue"
+   ],
+   "wrong": [
+    "很",
+    "非常",
+    "最"
+   ],
+   "eg": [
+    [
+     "这个更好。",
+     "更",
+     "This one is better still."
+    ],
+    [
+     "他比我更高。",
+     "更",
+     "He is even taller than me."
+    ],
+    [
+     "明天会更冷。",
+     "更",
+     "Tomorrow will be colder still."
+    ]
+   ]
+  },
+  {
+   "id": "zongshi",
+   "level": 3,
+   "cn": "总是",
+   "pattern": "总是 + V",
+   "title": "Always",
+   "gloss": "总是 reports a habit, often with a hint of complaint.",
+   "note": "「总是」表示习惯性地这样，常带一点不满。",
+   "needs": [
+    "总是"
+   ],
+   "after": [
+    "yizhi"
+   ],
+   "near": [
+    "yizhi"
+   ],
+   "wrong": [
+    "一直",
+    "经常",
+    "一定"
+   ],
+   "eg": [
+    [
+     "他总是迟到。",
+     "总是",
+     "He is always late."
+    ],
+    [
+     "你总是这样。",
+     "总是",
+     "You are always like this."
+    ],
+    [
+     "我总是忘记他的名字。",
+     "总是",
+     "I always forget his name."
+    ]
+   ]
+  },
+  {
+   "id": "bijiao",
+   "level": 3,
+   "cn": "比较",
+   "pattern": "比较 + Adj",
+   "title": "Fairly",
+   "gloss": "比较 is a soft 'rather', weaker than 很 and with no explicit comparison stated.",
+   "note": "「比较」是「还算」的意思，程度比「很」轻。",
+   "needs": [
+    "比较"
+   ],
+   "after": [
+    "hen"
+   ],
+   "near": [
+    "hen",
+    "gengjia"
+   ],
+   "wrong": [
+    "很",
+    "更",
+    "非常"
+   ],
+   "eg": [
+    [
+     "今天比较冷。",
+     "比较",
+     "It is fairly cold today."
+    ],
+    [
+     "这个比较容易。",
+     "比较",
+     "This is fairly easy."
+    ],
+    [
+     "他汉语说得比较好。",
+     "比较",
+     "He speaks Chinese fairly well."
+    ]
+   ]
+  },
+  {
+   "id": "youyu",
+   "level": 4,
+   "cn": "由于",
+   "pattern": "由于 A，因此 B",
+   "title": "Owing to",
+   "gloss": "由于 is the written 因为, and pairs with 因此 or 所以. It states cause, never purpose.",
+   "note": "「由于」是书面的「因为」，常和「因此」搭配；它说原因，不说目的。",
+   "needs": [
+    "由于",
+    "因此"
+   ],
+   "after": [
+    "yinwei"
+   ],
+   "near": [
+    "yinwei",
+    "weile"
+   ],
+   "wrong": [
+    "为了",
+    "虽然",
+    "尽管"
+   ],
+   "eg": [
+    [
+     "由于天气不好，比赛推迟了。",
+     "由于",
+     "The match was postponed owing to the weather."
+    ],
+    [
+     "由于时间有限，我们简单说说。",
+     "由于",
+     "Time being short, we will keep it brief."
+    ],
+    [
+     "由于他的努力，问题解决了。",
+     "由于",
+     "Thanks to his efforts the problem was solved."
+    ]
+   ]
+  },
+  {
+   "id": "jinguan",
+   "level": 4,
+   "cn": "尽管…还是",
+   "pattern": "尽管 A，还是 B",
+   "title": "Despite",
+   "gloss": "尽管 concedes something real, where 即使 supposes something hypothetical.",
+   "note": "「尽管」承认的是事实，「即使」假设的是没发生的事。",
+   "needs": [
+    "尽管",
+    "还是"
+   ],
+   "after": [
+    "suiran"
+   ],
+   "near": [
+    "suiran",
+    "jishi"
+   ],
+   "wrong": [
+    "即使",
+    "如果",
+    "不管"
+   ],
+   "eg": [
+    [
+     "尽管很累，他还是坚持了。",
+     "尽管",
+     "Tired as he was, he kept going."
+    ],
+    [
+     "尽管下着雨，他们还是来了。",
+     "尽管",
+     "They came despite the rain."
+    ],
+    [
+     "尽管我说了很多次，他还是忘了。",
+     "还是",
+     "However often I said it, he still forgot."
+    ]
+   ]
+  },
+  {
+   "id": "wulun",
+   "level": 4,
+   "cn": "无论…都",
+   "pattern": "无论 A，都 B",
+   "title": "Regardless",
+   "gloss": "无论 is the written 不管 and follows the same rule — an open question or an either-or after it.",
+   "note": "「无论」是书面的「不管」，后面同样要跟疑问词或两种可能。",
+   "needs": [
+    "无论",
+    "都"
+   ],
+   "after": [
+    "buguan"
+   ],
+   "near": [
+    "buguan"
+   ],
+   "wrong": [
+    "不管",
+    "即使",
+    "尽管"
+   ],
+   "eg": [
+    [
+     "无论多难，我都要试。",
+     "无论",
+     "However hard it is, I will try."
+    ],
+    [
+     "无论谁来都可以。",
+     "无论",
+     "Whoever comes is welcome."
+    ],
+    [
+     "无论如何都要完成。",
+     "无论",
+     "It must be finished no matter what."
+    ]
+   ]
+  },
+  {
+   "id": "jiran",
+   "level": 4,
+   "cn": "既然…就",
+   "pattern": "既然 A，就 B",
+   "title": "Since, given that",
+   "gloss": "既然 takes something both sides already accept and draws the conclusion from it. 因为 introduces news.",
+   "note": "「既然」说的是双方都已经知道的事实，「因为」才是提供新信息。",
+   "needs": [
+    "既然",
+    "就"
+   ],
+   "after": [
+    "yinwei"
+   ],
+   "near": [
+    "yinwei",
+    "youyu"
+   ],
+   "wrong": [
+    "因为",
+    "由于",
+    "如果"
+   ],
+   "eg": [
+    [
+     "既然来了，就多坐一会儿。",
+     "既然",
+     "Since you are here, stay a while."
+    ],
+    [
+     "既然你知道了，我就不说了。",
+     "既然",
+     "As you already know, I will say no more."
+    ],
+    [
+     "既然不舒服，就早点休息吧。",
+     "就",
+     "Since you feel unwell, get some rest."
+    ]
+   ]
+  },
+  {
+   "id": "bushi",
+   "level": 4,
+   "cn": "不是…而是",
+   "pattern": "不是 A，而是 B",
+   "title": "Not A but B",
+   "gloss": "而是 corrects. 就是 in the same slot means something entirely different — an either-or.",
+   "note": "「不是……而是……」是纠正，「不是……就是……」是二选一。",
+   "needs": [
+    "不是",
+    "而是"
+   ],
+   "after": [
+    "budan"
+   ],
+   "near": [
+    "bushijiushi"
+   ],
+   "wrong": [
+    "就是",
+    "还是",
+    "或者"
+   ],
+   "eg": [
+    [
+     "他不是老师，而是学生。",
+     "而是",
+     "He is not a teacher but a student."
+    ],
+    [
+     "问题不是钱，而是时间。",
+     "而是",
+     "The problem is not money but time."
+    ],
+    [
+     "这不是运气，而是努力。",
+     "不是",
+     "This is not luck but effort."
+    ]
+   ]
+  },
+  {
+   "id": "bushijiushi",
+   "level": 4,
+   "cn": "不是…就是",
+   "pattern": "不是 A，就是 B",
+   "title": "Either A or B",
+   "gloss": "One of the two is certainly the case, and 就是 is what makes it an alternative rather than a correction.",
+   "note": "「不是……就是……」表示二者必居其一。",
+   "needs": [
+    "不是",
+    "就是"
+   ],
+   "after": [
+    "bushi"
+   ],
+   "near": [
+    "bushi"
+   ],
+   "wrong": [
+    "而是",
+    "还是",
+    "或者"
+   ],
+   "eg": [
+    [
+     "他不是在看书，就是在写字。",
+     "就是",
+     "He is either reading or writing."
+    ],
+    [
+     "不是今天，就是明天。",
+     "就是",
+     "Either today or tomorrow."
+    ],
+    [
+     "丢东西的不是他就是我。",
+     "就是",
+     "It was either him or me who lost it."
+    ]
+   ]
+  },
+  {
+   "id": "nandao",
+   "level": 4,
+   "cn": "难道",
+   "pattern": "难道 …… 吗？",
+   "title": "Surely not?",
+   "gloss": "难道 asks a question that expects to be denied. It is not asking for information.",
+   "note": "「难道」是反问，说话人已经有答案，不是真的在问。",
+   "needs": [
+    "难道",
+    "吗"
+   ],
+   "after": [
+    "ma"
+   ],
+   "near": [
+    "daodi",
+    "hebi"
+   ],
+   "wrong": [
+    "到底",
+    "究竟",
+    "何必"
+   ],
+   "eg": [
+    [
+     "难道你不知道吗？",
+     "难道",
+     "Surely you know?"
+    ],
+    [
+     "难道这也错了？",
+     "难道",
+     "Is even this wrong?"
+    ],
+    [
+     "难道他没告诉你？",
+     "难道",
+     "Do you mean he never told you?"
+    ]
+   ]
+  },
+  {
+   "id": "daodi",
+   "level": 4,
+   "cn": "到底",
+   "pattern": "到底 …… ？",
+   "title": "What on earth",
+   "gloss": "到底 presses for a straight answer. It cannot appear with 吗 — the question word carries it.",
+   "note": "「到底」用在疑问句里追问，句末不能再加「吗」。",
+   "needs": [
+    "到底",
+    "究竟"
+   ],
+   "after": [
+    "nandao"
+   ],
+   "near": [
+    "nandao"
+   ],
+   "wrong": [
+    "难道",
+    "何必",
+    "居然"
+   ],
+   "eg": [
+    [
+     "你到底想说什么？",
+     "到底",
+     "What on earth are you trying to say?"
+    ],
+    [
+     "他到底来不来？",
+     "到底",
+     "Is he coming or not?"
+    ],
+    [
+     "究竟是谁做的？",
+     "究竟",
+     "Who exactly did it?"
+    ]
+   ]
+  },
+  {
+   "id": "jingran",
+   "level": 4,
+   "cn": "竟然",
+   "pattern": "竟然 + V",
+   "title": "Astonishingly",
+   "gloss": "竟然 marks the outcome as contrary to what anyone expected. 居然 is the same, a shade stronger in speech.",
+   "note": "「竟然」「居然」都表示出乎意料，「居然」语气更重。",
+   "needs": [
+    "竟然",
+    "居然"
+   ],
+   "after": [
+    "nandao"
+   ],
+   "near": [
+    "fan'er"
+   ],
+   "wrong": [
+    "居然",
+    "反而",
+    "果然"
+   ],
+   "eg": [
+    [
+     "他竟然忘了自己的生日。",
+     "竟然",
+     "He actually forgot his own birthday."
+    ],
+    [
+     "这么简单的题他居然做错了。",
+     "居然",
+     "He got such an easy question wrong, of all things."
+    ],
+    [
+     "她竟然一个人去了。",
+     "竟然",
+     "She went alone, astonishingly."
+    ]
+   ]
+  },
+  {
+   "id": "fan'er",
+   "level": 4,
+   "cn": "反而",
+   "pattern": "反而 + V",
+   "title": "On the contrary",
+   "gloss": "反而 reports the opposite of what the situation led you to expect.",
+   "note": "「反而」表示结果和预想的相反。",
+   "needs": [
+    "反而"
+   ],
+   "after": [
+    "jingran"
+   ],
+   "near": [
+    "jingran"
+   ],
+   "wrong": [
+    "竟然",
+    "却",
+    "反正"
+   ],
+   "eg": [
+    [
+     "吃了药反而更难受了。",
+     "反而",
+     "The medicine made it worse, not better."
+    ],
+    [
+     "雨没停，反而更大了。",
+     "反而",
+     "The rain did not stop; it got heavier."
+    ],
+    [
+     "他不但没生气，反而笑了。",
+     "反而",
+     "Far from being angry, he laughed."
+    ]
+   ]
+  },
+  {
+   "id": "shenzhi",
+   "level": 4,
+   "cn": "甚至",
+   "pattern": "甚至 + N/V",
+   "title": "To the point of",
+   "gloss": "甚至 pushes an example to its limit, one step beyond what came before it.",
+   "note": "「甚至」提出最极端的例子，比前面说的更进一步。",
+   "needs": [
+    "甚至"
+   ],
+   "after": [
+    "liandou"
+   ],
+   "near": [
+    "liandou"
+   ],
+   "wrong": [
+    "连",
+    "而且",
+    "何况"
+   ],
+   "eg": [
+    [
+     "他忙得甚至忘了吃饭。",
+     "甚至",
+     "He was so busy he even forgot to eat."
+    ],
+    [
+     "很多人不知道，甚至没听说过。",
+     "甚至",
+     "Many do not know, have not even heard of it."
+    ],
+    [
+     "他甚至连名字都没留。",
+     "甚至",
+     "He did not even leave a name."
+    ]
+   ]
+  },
+  {
+   "id": "yushi",
+   "level": 4,
+   "cn": "于是",
+   "pattern": "……，于是 ……",
+   "title": "And so",
+   "gloss": "于是 chains the next event to the last one. It reports sequence, not reasoning — 所以 does that.",
+   "note": "「于是」表示接着发生的事，「所以」表示由此得出的结论。",
+   "needs": [
+    "于是"
+   ],
+   "after": [
+    "yinwei"
+   ],
+   "near": [
+    "yinwei",
+    "yinci"
+   ],
+   "wrong": [
+    "所以",
+    "因此",
+    "然后"
+   ],
+   "eg": [
+    [
+     "天黑了，于是我们回家了。",
+     "于是",
+     "It grew dark, so we went home."
+    ],
+    [
+     "他没听懂，于是又问了一遍。",
+     "于是",
+     "He did not follow, so he asked again."
+    ],
+    [
+     "车坏了，于是我走着去。",
+     "于是",
+     "The car broke down, so I walked."
+    ]
+   ]
+  },
+  {
+   "id": "yinci",
+   "level": 4,
+   "cn": "因此",
+   "pattern": "……，因此 ……",
+   "title": "Therefore",
+   "gloss": "因此 draws a conclusion in writing, and pairs naturally with 由于.",
+   "note": "「因此」是书面的「所以」，常和「由于」搭配。",
+   "needs": [
+    "因此"
+   ],
+   "after": [
+    "youyu"
+   ],
+   "near": [
+    "yushi",
+    "youyu"
+   ],
+   "wrong": [
+    "于是",
+    "所以",
+    "从而"
+   ],
+   "eg": [
+    [
+     "他准备得很充分，因此考得很好。",
+     "因此",
+     "He prepared thoroughly and so did well."
+    ],
+    [
+     "资料不足，因此结论不可靠。",
+     "因此",
+     "The data is thin, so the conclusion is shaky."
+    ],
+    [
+     "价格上涨，因此销量下降。",
+     "因此",
+     "Prices rose, hence sales fell."
+    ]
+   ]
+  },
+  {
+   "id": "conger",
+   "level": 4,
+   "cn": "从而",
+   "pattern": "……，从而 ……",
+   "title": "Thereby",
+   "gloss": "从而 links a deliberate action to the result it produced. It never opens a sentence.",
+   "note": "「从而」表示前一个做法带来了后面的结果，不能放句首。",
+   "needs": [
+    "从而"
+   ],
+   "after": [
+    "yinci"
+   ],
+   "near": [
+    "yinci"
+   ],
+   "wrong": [
+    "因此",
+    "于是",
+    "进而"
+   ],
+   "eg": [
+    [
+     "他改进了方法，从而提高了效率。",
+     "从而",
+     "He improved the method and thereby raised efficiency."
+    ],
+    [
+     "政策放宽，从而带动了投资。",
+     "从而",
+     "The rules eased, thereby drawing investment."
+    ],
+    [
+     "减少了浪费，从而降低了成本。",
+     "从而",
+     "Waste fell and costs came down with it."
+    ]
+   ]
+  },
+  {
+   "id": "yibian4",
+   "level": 4,
+   "cn": "以便",
+   "pattern": "……，以便 ……",
+   "title": "So that",
+   "gloss": "以便 states the convenience the first clause was arranged for. 免得 states the trouble it was arranged to avoid.",
+   "note": "「以便」说的是为了方便做某事，「免得」说的是为了避免某事。",
+   "needs": [
+    "以便",
+    "免得"
+   ],
+   "after": [
+    "weile"
+   ],
+   "near": [
+    "miande",
+    "weile"
+   ],
+   "wrong": [
+    "免得",
+    "为了",
+    "以免"
+   ],
+   "eg": [
+    [
+     "请留下电话，以便联系。",
+     "以便",
+     "Leave a number so we can reach you."
+    ],
+    [
+     "早点出发，以便赶上火车。",
+     "以便",
+     "Set off early so as to catch the train."
+    ],
+    [
+     "写清楚一点，以便别人看懂。",
+     "以便",
+     "Write clearly so others can read it."
+    ]
+   ]
+  },
+  {
+   "id": "miande",
+   "level": 4,
+   "cn": "免得",
+   "pattern": "……，免得 ……",
+   "title": "So as not to",
+   "gloss": "免得 names the nuisance being headed off, and always follows the precaution.",
+   "note": "「免得」后面说的是想避免的麻烦。",
+   "needs": [
+    "免得"
+   ],
+   "after": [
+    "yibian4"
+   ],
+   "near": [
+    "yibian4"
+   ],
+   "wrong": [
+    "以便",
+    "为了",
+    "以免"
+   ],
+   "eg": [
+    [
+     "多穿点，免得感冒。",
+     "免得",
+     "Wrap up so you do not catch cold."
+    ],
+    [
+     "早点走，免得堵车。",
+     "免得",
+     "Leave early to avoid the traffic."
+    ],
+    [
+     "先说清楚，免得误会。",
+     "免得",
+     "Say it plainly so there is no misunderstanding."
+    ]
+   ]
+  },
+  {
+   "id": "deliao",
+   "level": 4,
+   "cn": "得了/不了",
+   "pattern": "V + 得了 / 不了",
+   "title": "Can manage, cannot manage",
+   "gloss": "了 here is liǎo and means capacity — whether the amount can be handled at all.",
+   "note": "「V得了/V不了」的「了」读 liǎo，说的是做不做得完、受不受得住。",
+   "needs": [
+    "得",
+    "不"
+   ],
+   "after": [
+    "keneng"
+   ],
+   "near": [
+    "keneng",
+    "laideji"
+   ],
+   "wrong": [
+    "完",
+    "到",
+    "下"
+   ],
+   "eg": [
+    [
+     "这么多菜我吃不了。",
+     "不",
+     "I cannot eat all this food."
+    ],
+    [
+     "你一个人拿得了吗？",
+     "得",
+     "Can you manage it on your own?"
+    ],
+    [
+     "下这么大雨，去不了了。",
+     "不",
+     "With rain like this we cannot go."
+    ]
+   ]
+  },
+  {
+   "id": "laideji",
+   "level": 4,
+   "cn": "来得及",
+   "pattern": "来得及 / 来不及",
+   "title": "In time, too late",
+   "gloss": "A fixed pair about time only. 来不及 says the clock beat you, not that you lacked skill.",
+   "note": "「来得及」「来不及」只说时间够不够，和会不会没有关系。",
+   "needs": [
+    "来得及",
+    "来不及"
+   ],
+   "after": [
+    "deliao"
+   ],
+   "near": [
+    "deliao"
+   ],
+   "wrong": [
+    "得了",
+    "不了",
+    "可以"
+   ],
+   "eg": [
+    [
+     "现在走还来得及。",
+     "来得及",
+     "There is still time if we go now."
+    ],
+    [
+     "我来不及吃早饭了。",
+     "来不及",
+     "I have no time for breakfast."
+    ],
+    [
+     "来得及的话就再检查一遍。",
+     "来得及",
+     "Check it again if there is time."
+    ]
+   ]
+  },
+  {
+   "id": "yifangmian",
+   "level": 4,
+   "cn": "一方面…一方面",
+   "pattern": "一方面 A，一方面 B",
+   "title": "On one hand … on the other",
+   "gloss": "Two aspects of one situation held together, not two options to choose between.",
+   "note": "「一方面……一方面……」说的是同一件事的两个方面。",
+   "needs": [
+    "一方面"
+   ],
+   "after": [
+    "youyou"
+   ],
+   "near": [
+    "youyou"
+   ],
+   "wrong": [
+    "又…又",
+    "不但",
+    "或者"
+   ],
+   "eg": [
+    [
+     "一方面要工作，一方面要照顾家。",
+     "一方面",
+     "There is work on one side and family on the other."
+    ],
+    [
+     "一方面是钱的问题，一方面是时间。",
+     "一方面",
+     "Partly money, partly time."
+    ],
+    [
+     "他一方面高兴，一方面又担心。",
+     "一方面",
+     "He was pleased and worried at once."
+    ]
+   ]
+  },
+  {
+   "id": "yiyebu",
+   "level": 4,
+   "cn": "一…也不",
+   "pattern": "一 + MW + 也/都 + 不/没",
+   "title": "Not a single one",
+   "gloss": "The smallest possible quantity plus 也 or 都 makes an absolute denial.",
+   "note": "「一……也不/都没……」是彻底的否定。",
+   "needs": [
+    "一",
+    "也",
+    "都"
+   ],
+   "after": [
+    "liandou"
+   ],
+   "near": [
+    "liandou"
+   ],
+   "wrong": [
+    "连",
+    "很",
+    "什么"
+   ],
+   "eg": [
+    [
+     "我一点也不累。",
+     "一",
+     "I am not the least bit tired."
+    ],
+    [
+     "他一句话也没说。",
+     "一",
+     "He did not say a word."
+    ],
+    [
+     "一个人都没来。",
+     "一",
+     "Not a single person came."
+    ]
+   ]
+  },
+  {
+   "id": "zaiye",
+   "level": 4,
+   "cn": "再…也",
+   "pattern": "再 + Adj + 也 ……",
+   "title": "However much",
+   "gloss": "再 here concedes any degree at all, and 也 refuses to let it matter.",
+   "note": "「再……也……」表示不管程度多高，结果都一样。",
+   "needs": [
+    "再",
+    "也"
+   ],
+   "after": [
+    "jishi"
+   ],
+   "near": [
+    "jishi",
+    "zenmeye"
+   ],
+   "wrong": [
+    "越",
+    "更",
+    "即使"
+   ],
+   "eg": [
+    [
+     "再难也要做。",
+     "再",
+     "However hard it is, it must be done."
+    ],
+    [
+     "再忙也要吃饭。",
+     "再",
+     "However busy you are, you must eat."
+    ],
+    [
+     "再说也没用。",
+     "再",
+     "There is no point saying more."
+    ]
+   ]
+  },
+  {
+   "id": "zenmeye",
+   "level": 4,
+   "cn": "怎么…也",
+   "pattern": "怎么 V 也 + 不/没",
+   "title": "No matter how you try",
+   "gloss": "An open question word plus 也 covers every method and denies them all.",
+   "note": "「怎么……也……」表示用什么办法都不行。",
+   "needs": [
+    "怎么",
+    "也"
+   ],
+   "after": [
+    "zaiye"
+   ],
+   "near": [
+    "zaiye"
+   ],
+   "wrong": [
+    "再",
+    "无论",
+    "即使"
+   ],
+   "eg": [
+    [
+     "我怎么想也想不起来。",
+     "怎么",
+     "However hard I think, I cannot recall it."
+    ],
+    [
+     "这个门怎么推也推不开。",
+     "怎么",
+     "The door will not open however I push."
+    ],
+    [
+     "他怎么说也不听。",
+     "怎么",
+     "He will not listen whatever you say."
+    ]
+   ]
+  },
+  {
+   "id": "shiling",
+   "level": 4,
+   "cn": "使/令",
+   "pattern": "使 / 令 + N + Adj",
+   "title": "To cause someone to feel",
+   "gloss": "使 and 令 are written causatives, mostly with feelings. 让 is the spoken one and covers instructions too.",
+   "note": "「使」「令」多用于书面，后面常接感受；口语用「让」。",
+   "needs": [
+    "使",
+    "令"
+   ],
+   "after": [
+    "rang"
+   ],
+   "near": [
+    "rang"
+   ],
+   "wrong": [
+    "让",
+    "叫",
+    "给"
+   ],
+   "eg": [
+    [
+     "这件事使我很难过。",
+     "使",
+     "This made me very sad."
+    ],
+    [
+     "他的表现令人失望。",
+     "令",
+     "His performance was disappointing."
+    ],
+    [
+     "消息令大家非常高兴。",
+     "令",
+     "The news delighted everybody."
+    ]
+   ]
+  },
+  {
+   "id": "jiang",
+   "level": 4,
+   "cn": "将",
+   "pattern": "将 + O + V",
+   "title": "Written 把",
+   "gloss": "将 does the job of 把 in formal writing, and also marks future time before a verb.",
+   "note": "「将」是书面的「把」，也可以放在动词前表示将来。",
+   "needs": [
+    "将",
+    "把"
+   ],
+   "after": [
+    "ba"
+   ],
+   "near": [
+    "ba"
+   ],
+   "wrong": [
+    "把",
+    "被",
+    "从"
+   ],
+   "eg": [
+    [
+     "请将文件交给我。",
+     "将",
+     "Please hand me the document."
+    ],
+    [
+     "会议将于明天举行。",
+     "将",
+     "The meeting will be held tomorrow."
+    ],
+    [
+     "他将书放回原处。",
+     "将",
+     "He put the book back."
+    ]
+   ]
+  },
+  {
+   "id": "suo",
+   "level": 4,
+   "cn": "所",
+   "pattern": "(为 N) 所 + V",
+   "title": "Literary passive and 所 clauses",
+   "gloss": "为…所 is the written passive. 所 alone before a verb turns it into what is done: 我所知道的.",
+   "note": "「为……所……」是书面的被动；「所」加动词表示「……的事物」：我所知道的。",
+   "needs": [
+    "所",
+    "为"
+   ],
+   "after": [
+    "bei"
+   ],
+   "near": [
+    "bei"
+   ],
+   "wrong": [
+    "被",
+    "把",
+    "让"
+   ],
+   "eg": [
+    [
+     "他为大家所尊敬。",
+     "所",
+     "He is respected by all."
+    ],
+    [
+     "这是我所知道的全部。",
+     "所",
+     "That is all I know."
+    ],
+    [
+     "他的努力为人所熟知。",
+     "所",
+     "His efforts are widely known."
+    ]
+   ]
+  },
+  {
+   "id": "kejian",
+   "level": 4,
+   "cn": "可见",
+   "pattern": "……，可见 ……",
+   "title": "Which shows that",
+   "gloss": "可见 draws an inference from evidence just given. 因此 draws a consequence; 可见 draws a conclusion about what must be true.",
+   "note": "「可见」是从前面的事实推出结论。",
+   "needs": [
+    "可见"
+   ],
+   "after": [
+    "yinci"
+   ],
+   "near": [
+    "yinci"
+   ],
+   "wrong": [
+    "因此",
+    "于是",
+    "总之"
+   ],
+   "eg": [
+    [
+     "他每天都来，可见很认真。",
+     "可见",
+     "He comes daily, which shows he is serious."
+    ],
+    [
+     "书都翻旧了，可见常看。",
+     "可见",
+     "The book is worn, so it is clearly well read."
+    ],
+    [
+     "大家都同意，可见这个办法不错。",
+     "可见",
+     "All agreed, which shows the plan is sound."
+    ]
+   ]
+  },
+  {
+   "id": "zongzhi",
+   "level": 4,
+   "cn": "总之",
+   "pattern": "……，总之 ……",
+   "title": "In short",
+   "gloss": "总之 closes a list and states what it all comes to.",
+   "note": "「总之」用来总结前面说的内容。",
+   "needs": [
+    "总之"
+   ],
+   "after": [
+    "kejian"
+   ],
+   "near": [
+    "kejian"
+   ],
+   "wrong": [
+    "可见",
+    "因此",
+    "另外"
+   ],
+   "eg": [
+    [
+     "总之，这件事要重新考虑。",
+     "总之",
+     "In short, this needs rethinking."
+    ],
+    [
+     "总之，我不同意。",
+     "总之",
+     "In a word, I disagree."
+    ],
+    [
+     "总之，明天必须完成。",
+     "总之",
+     "At all events it must be done by tomorrow."
+    ]
+   ]
+  },
+  {
+   "id": "buru",
+   "level": 4,
+   "cn": "不如",
+   "pattern": "A 不如 B",
+   "title": "Not as good as, better to",
+   "gloss": "不如 both compares unfavourably and proposes a better course.",
+   "note": "「不如」既表示比不上，也表示建议换一个更好的做法。",
+   "needs": [
+    "不如"
+   ],
+   "after": [
+    "meiyoubi"
+   ],
+   "near": [
+    "meiyoubi",
+    "yuqi"
+   ],
+   "wrong": [
+    "没有",
+    "不比",
+    "与其"
+   ],
+   "eg": [
+    [
+     "今天不如昨天热。",
+     "不如",
+     "Today is not as hot as yesterday."
+    ],
+    [
+     "与其等着，不如先做。",
+     "不如",
+     "Rather than wait, get started."
+    ],
+    [
+     "坐车不如走路快。",
+     "不如",
+     "The bus is slower than walking."
+    ]
+   ]
+  },
+  {
+   "id": "guangshi",
+   "level": 4,
+   "cn": "光/仅",
+   "pattern": "光 / 仅 + N",
+   "title": "Merely",
+   "gloss": "光 in speech and 仅 in writing both narrow to one thing and nothing else.",
+   "note": "「光」是口语，「仅」是书面，都表示「只」。",
+   "needs": [
+    "光",
+    "仅"
+   ],
+   "after": [
+    "zhiyou"
+   ],
+   "near": [
+    "zhiyou"
+   ],
+   "wrong": [
+    "只有",
+    "才",
+    "连"
+   ],
+   "eg": [
+    [
+     "光说不做没有用。",
+     "光",
+     "Talk without action is useless."
+    ],
+    [
+     "仅这一项就花了两万。",
+     "仅",
+     "This item alone cost twenty thousand."
+    ],
+    [
+     "光他一个人就搬了十箱。",
+     "光",
+     "He alone shifted ten boxes."
+    ]
+   ]
+  },
+  {
+   "id": "haobu",
+   "level": 4,
+   "cn": "好/难 + V",
+   "pattern": "好 / 难 + V",
+   "title": "Easy to, hard to",
+   "gloss": "好 and 难 before a verb say how easy the thing is to do, not how well it is done.",
+   "note": "「好」「难」放在动词前，说的是容易不容易：好吃、难写。",
+   "needs": [
+    "好",
+    "难"
+   ],
+   "after": [
+    "debu"
+   ],
+   "near": [
+    "debu"
+   ],
+   "wrong": [
+    "得",
+    "很",
+    "太"
+   ],
+   "eg": [
+    [
+     "这个字很难写。",
+     "难",
+     "This character is hard to write."
+    ],
+    [
+     "这个菜很好吃。",
+     "好",
+     "This dish tastes good."
+    ],
+    [
+     "他的字不好认。",
+     "好",
+     "His handwriting is hard to read."
+    ]
+   ]
+  },
+  {
+   "id": "chufei",
+   "level": 4,
+   "cn": "除非",
+   "pattern": "除非 A，否则 B",
+   "title": "Unless",
+   "gloss": "除非 names the only thing that would change the outcome, and 否则 states what happens without it.",
+   "note": "「除非……否则……」表示唯一的例外条件。",
+   "needs": [
+    "除非",
+    "否则"
+   ],
+   "after": [
+    "zhiyou"
+   ],
+   "near": [
+    "zhiyou"
+   ],
+   "wrong": [
+    "只有",
+    "只要",
+    "如果"
+   ],
+   "eg": [
+    [
+     "除非下雨，否则我们照常出发。",
+     "除非",
+     "Unless it rains we set off as planned."
+    ],
+    [
+     "除非你去，我才去。",
+     "除非",
+     "I will go only if you do."
+    ],
+    [
+     "除非有急事，否则别打电话。",
+     "除非",
+     "Do not ring unless it is urgent."
+    ]
+   ]
+  },
+  {
+   "id": "suizhe",
+   "level": 4,
+   "cn": "随着",
+   "pattern": "随着 A，B",
+   "title": "Along with",
+   "gloss": "随着 ties one change to another that follows it in step.",
+   "note": "「随着」表示一件事跟着另一件事一起变化。",
+   "needs": [
+    "随着"
+   ],
+   "after": [
+    "yuelaiyue"
+   ],
+   "near": [
+    "yuelaiyue"
+   ],
+   "wrong": [
+    "越来越",
+    "按照",
+    "根据"
+   ],
+   "eg": [
+    [
+     "随着年龄增长，他越来越安静。",
+     "随着",
+     "He grew quieter as he aged."
+    ],
+    [
+     "随着经济发展，生活好了。",
+     "随着",
+     "Life improved as the economy grew."
+    ],
+    [
+     "随着时间过去，他慢慢忘了。",
+     "随着",
+     "With time he gradually forgot."
+    ]
+   ]
+  },
+  {
+   "id": "anzhao",
+   "level": 4,
+   "cn": "按照",
+   "pattern": "按照 / 根据 + N",
+   "title": "According to",
+   "gloss": "按照 follows a rule or plan; 根据 rests on evidence or a source.",
+   "note": "「按照」跟的是规定和计划，「根据」跟的是依据和材料。",
+   "needs": [
+    "按照",
+    "根据"
+   ],
+   "after": [
+    "tongguo"
+   ],
+   "near": [
+    "tongguo"
+   ],
+   "wrong": [
+    "根据",
+    "通过",
+    "关于"
+   ],
+   "eg": [
+    [
+     "请按照说明使用。",
+     "按照",
+     "Use it according to the instructions."
+    ],
+    [
+     "根据调查，情况正在好转。",
+     "根据",
+     "The survey shows things are improving."
+    ],
+    [
+     "按照计划，我们下周出发。",
+     "按照",
+     "Under the plan we leave next week."
+    ]
+   ]
+  },
+  {
+   "id": "duiyulaishuo",
+   "level": 4,
+   "cn": "对…来说",
+   "pattern": "对 N 来说",
+   "title": "As far as N is concerned",
+   "gloss": "对…来说 frames whose viewpoint the judgement belongs to.",
+   "note": "「对……来说」表示从谁的角度看。",
+   "needs": [
+    "对",
+    "来说"
+   ],
+   "after": [
+    "dui"
+   ],
+   "near": [
+    "dui",
+    "guanyu3"
+   ],
+   "wrong": [
+    "关于",
+    "对于",
+    "按照"
+   ],
+   "eg": [
+    [
+     "对我来说，这不难。",
+     "对",
+     "For me this is not hard."
+    ],
+    [
+     "对学生来说，时间最宝贵。",
+     "来说",
+     "For students time is the most precious thing."
+    ],
+    [
+     "对他来说，这是第一次。",
+     "对",
+     "For him it is the first time."
+    ]
+   ]
+  },
+  {
+   "id": "bujin",
+   "level": 5,
+   "cn": "不仅…还",
+   "pattern": "不仅 A，还/而且 B",
+   "title": "Not merely",
+   "gloss": "不仅 is the written 不但, and the second clause still has to go further than the first.",
+   "note": "「不仅」是书面的「不但」，后一句仍要更进一层。",
+   "needs": [
+    "不仅",
+    "还"
+   ],
+   "after": [
+    "budan"
+   ],
+   "near": [
+    "budan"
+   ],
+   "wrong": [
+    "不但",
+    "不是",
+    "除了"
+   ],
+   "eg": [
+    [
+     "他不仅会说，还会写。",
+     "不仅",
+     "He can not only speak it but write it."
+    ],
+    [
+     "这不仅是钱的问题。",
+     "不仅",
+     "This is not merely a question of money."
+    ],
+    [
+     "不仅学生喜欢，老师也喜欢。",
+     "不仅",
+     "Not just the students like it — the teachers do too."
+    ]
+   ]
+  },
+  {
+   "id": "ranger",
+   "level": 5,
+   "cn": "然而",
+   "pattern": "……，然而 ……",
+   "title": "However",
+   "gloss": "然而 is the written 但是, and turns the sentence harder than 不过 does.",
+   "note": "「然而」是书面的「但是」，转折比「不过」重。",
+   "needs": [
+    "然而",
+    "不过"
+   ],
+   "after": [
+    "suiran"
+   ],
+   "near": [
+    "suiran"
+   ],
+   "wrong": [
+    "不过",
+    "但是",
+    "可是"
+   ],
+   "eg": [
+    [
+     "他很努力，然而没有成功。",
+     "然而",
+     "He worked hard; even so he did not succeed."
+    ],
+    [
+     "计划很好，然而执行得不好。",
+     "然而",
+     "The plan was good, but poorly carried out."
+    ],
+    [
+     "天气不好，不过我们还是去了。",
+     "不过",
+     "The weather was bad, but we went anyway."
+    ]
+   ]
+  },
+  {
+   "id": "xiangfan",
+   "level": 5,
+   "cn": "相反",
+   "pattern": "……，相反 ……",
+   "title": "Conversely",
+   "gloss": "相反 sets the next statement directly against the last one.",
+   "note": "「相反」引出和前面完全相对的情况。",
+   "needs": [
+    "相反"
+   ],
+   "after": [
+    "fan'er"
+   ],
+   "near": [
+    "fan'er"
+   ],
+   "wrong": [
+    "反而",
+    "然而",
+    "反正"
+   ],
+   "eg": [
+    [
+     "他并不生气，相反还笑了。",
+     "相反",
+     "Far from angry, he actually laughed."
+    ],
+    [
+     "价格没降，相反涨了。",
+     "相反",
+     "Prices did not fall; on the contrary they rose."
+    ],
+    [
+     "这不难，相反很简单。",
+     "相反",
+     "It is not hard — quite the reverse."
+    ]
+   ]
+  },
+  {
+   "id": "nap",
+   "level": 5,
+   "cn": "哪怕",
+   "pattern": "哪怕 A，也 B",
+   "title": "Even if, at the extreme",
+   "gloss": "哪怕 supposes the least likely case and 也 holds the outcome steady. 就算 is its spoken twin.",
+   "note": "「哪怕」和「就算」都是极端的假设，后面用「也」。",
+   "needs": [
+    "哪怕",
+    "也"
+   ],
+   "after": [
+    "jishi"
+   ],
+   "near": [
+    "jishi",
+    "jiusuan"
+   ],
+   "wrong": [
+    "即使",
+    "就算",
+    "尽管"
+   ],
+   "eg": [
+    [
+     "哪怕只有一个人来，我也讲。",
+     "哪怕",
+     "I will speak even if only one person comes."
+    ],
+    [
+     "哪怕再忙也要休息。",
+     "哪怕",
+     "Rest, however busy you are."
+    ],
+    [
+     "哪怕花再多钱也值得。",
+     "哪怕",
+     "It is worth it whatever it costs."
+    ]
+   ]
+  },
+  {
+   "id": "jiusuan",
+   "level": 5,
+   "cn": "就算",
+   "pattern": "就算 A，也 B",
+   "title": "Even supposing",
+   "gloss": "就算 is the conversational 即使 and leans towards conceding an argument.",
+   "note": "「就算」是口语里的「即使」，常用于让步。",
+   "needs": [
+    "就算",
+    "也"
+   ],
+   "after": [
+    "nap"
+   ],
+   "near": [
+    "nap"
+   ],
+   "wrong": [
+    "哪怕",
+    "即使",
+    "尽管"
+   ],
+   "eg": [
+    [
+     "就算他不来，我们也开始。",
+     "就算",
+     "We will start even if he does not turn up."
+    ],
+    [
+     "就算你说得对，也应该客气点。",
+     "就算",
+     "Even granting you are right, be civil."
+    ],
+    [
+     "就算失败了也没关系。",
+     "就算",
+     "It does not matter even if it fails."
+    ]
+   ]
+  },
+  {
+   "id": "yidan",
+   "level": 5,
+   "cn": "一旦",
+   "pattern": "一旦 A，就 B",
+   "title": "Once, should it happen",
+   "gloss": "一旦 looks ahead to a decisive moment and what follows from it. 一…就 is about immediacy, not consequence.",
+   "note": "「一旦」着眼于将来关键的一步，「一……就……」强调时间紧接。",
+   "needs": [
+    "一旦",
+    "就"
+   ],
+   "after": [
+    "yijiu"
+   ],
+   "near": [
+    "yijiu",
+    "ruguo"
+   ],
+   "wrong": [
+    "一…就",
+    "如果",
+    "只要"
+   ],
+   "eg": [
+    [
+     "一旦决定了，就不要后悔。",
+     "一旦",
+     "Once you decide, do not look back."
+    ],
+    [
+     "一旦出问题，后果很严重。",
+     "一旦",
+     "Should anything go wrong, it will be serious."
+    ],
+    [
+     "一旦开始就必须做完。",
+     "一旦",
+     "Once started it has to be finished."
+    ]
+   ]
+  },
+  {
+   "id": "fanshi",
+   "level": 5,
+   "cn": "凡是",
+   "pattern": "凡是 A，都 B",
+   "title": "Any and all",
+   "gloss": "凡是 sweeps in every member of a category and 都 confirms none is excepted.",
+   "note": "「凡是」把符合条件的全部包括进来，后面用「都」。",
+   "needs": [
+    "凡是",
+    "都"
+   ],
+   "after": [
+    "wulun"
+   ],
+   "near": [
+    "wulun"
+   ],
+   "wrong": [
+    "无论",
+    "不管",
+    "只要"
+   ],
+   "eg": [
+    [
+     "凡是来的人都有礼物。",
+     "凡是",
+     "Everyone who comes gets a gift."
+    ],
+    [
+     "凡是他说的话我都相信。",
+     "凡是",
+     "I believe anything he says."
+    ],
+    [
+     "凡是超过一年的都要重新申请。",
+     "凡是",
+     "Anything over a year must be reapplied for."
+    ]
+   ]
+  },
+  {
+   "id": "wanyi",
+   "level": 5,
+   "cn": "万一",
+   "pattern": "万一 A，就 B",
+   "title": "In case, on the off chance",
+   "gloss": "万一 supposes something unlikely and unwelcome, and prepares for it.",
+   "note": "「万一」假设的是可能性很小又不希望发生的事。",
+   "needs": [
+    "万一"
+   ],
+   "after": [
+    "ruguo"
+   ],
+   "near": [
+    "ruguo",
+    "yidan"
+   ],
+   "wrong": [
+    "如果",
+    "一旦",
+    "只要"
+   ],
+   "eg": [
+    [
+     "带上伞，万一下雨呢。",
+     "万一",
+     "Take an umbrella in case it rains."
+    ],
+    [
+     "万一他不来怎么办？",
+     "万一",
+     "What if he does not come?"
+    ],
+    [
+     "万一丢了就麻烦了。",
+     "万一",
+     "It would be a nuisance if it got lost."
+    ]
+   ]
+  },
+  {
+   "id": "yimian",
+   "level": 5,
+   "cn": "以免",
+   "pattern": "……，以免 ……",
+   "title": "Lest",
+   "gloss": "以免 is the written 免得 and names the outcome being guarded against.",
+   "note": "「以免」是书面的「免得」，后面说要避免的结果。",
+   "needs": [
+    "以免"
+   ],
+   "after": [
+    "miande"
+   ],
+   "near": [
+    "miande",
+    "yibian4"
+   ],
+   "wrong": [
+    "免得",
+    "以便",
+    "为了"
+   ],
+   "eg": [
+    [
+     "请提前通知，以免影响工作。",
+     "以免",
+     "Give notice in advance so as not to disrupt work."
+    ],
+    [
+     "注意安全，以免发生事故。",
+     "以免",
+     "Take care lest an accident occur."
+    ],
+    [
+     "写清楚，以免误会。",
+     "以免",
+     "Write clearly to avoid misunderstanding."
+    ]
+   ]
+  },
+  {
+   "id": "ping",
+   "level": 5,
+   "cn": "凭",
+   "pattern": "凭 + N",
+   "title": "On the strength of",
+   "gloss": "凭 names what you rely on to do something — a document, a skill, a claim.",
+   "note": "「凭」引出依靠的东西：凭票、凭本事。",
+   "needs": [
+    "凭"
+   ],
+   "after": [
+    "anzhao"
+   ],
+   "near": [
+    "anzhao",
+    "kao"
+   ],
+   "wrong": [
+    "按照",
+    "根据",
+    "靠"
+   ],
+   "eg": [
+    [
+     "凭票入场。",
+     "凭",
+     "Admission by ticket."
+    ],
+    [
+     "他凭自己的努力成功了。",
+     "凭",
+     "He succeeded on his own efforts."
+    ],
+    [
+     "你凭什么这么说？",
+     "凭",
+     "On what grounds do you say that?"
+    ]
+   ]
+  },
+  {
+   "id": "kao",
+   "level": 5,
+   "cn": "靠",
+   "pattern": "靠 + N + V",
+   "title": "To depend on",
+   "gloss": "靠 is the everyday word for relying on someone or something to get by.",
+   "note": "「靠」表示依靠，语气比「凭」口语。",
+   "needs": [
+    "靠"
+   ],
+   "after": [
+    "ping"
+   ],
+   "near": [
+    "ping"
+   ],
+   "wrong": [
+    "凭",
+    "按照",
+    "随着"
+   ],
+   "eg": [
+    [
+     "他靠打工养活自己。",
+     "靠",
+     "He supports himself by working."
+    ],
+    [
+     "这件事不能靠别人。",
+     "靠",
+     "You cannot leave this to others."
+    ],
+    [
+     "靠自己才靠得住。",
+     "靠",
+     "Only what you do yourself is dependable."
+    ]
+   ]
+  },
+  {
+   "id": "zhendui",
+   "level": 5,
+   "cn": "针对",
+   "pattern": "针对 + N",
+   "title": "Aimed at",
+   "gloss": "针对 points a measure squarely at a particular problem or group.",
+   "note": "「针对」表示专门对着某个问题或对象。",
+   "needs": [
+    "针对"
+   ],
+   "after": [
+    "duiyulaishuo"
+   ],
+   "near": [
+    "duiyulaishuo"
+   ],
+   "wrong": [
+    "对于",
+    "关于",
+    "按照"
+   ],
+   "eg": [
+    [
+     "这项政策针对年轻人。",
+     "针对",
+     "This policy is aimed at young people."
+    ],
+    [
+     "针对这个问题，我们做了调查。",
+     "针对",
+     "We surveyed the matter specifically."
+    ],
+    [
+     "课程针对初学者设计。",
+     "针对",
+     "The course is designed for beginners."
+    ]
+   ]
+  },
+  {
+   "id": "zhiyu",
+   "level": 5,
+   "cn": "至于",
+   "pattern": "……。至于 A，……",
+   "title": "As for",
+   "gloss": "至于 turns to a new topic that the last one raised but did not settle.",
+   "note": "「至于」把话题转到另一件相关的事上。",
+   "needs": [
+    "至于"
+   ],
+   "after": [
+    "guanyu3"
+   ],
+   "near": [
+    "guanyu3"
+   ],
+   "wrong": [
+    "关于",
+    "对于",
+    "不过"
+   ],
+   "eg": [
+    [
+     "时间定了。至于地点，还要商量。",
+     "至于",
+     "The time is fixed; as for the venue, we must discuss it."
+    ],
+    [
+     "至于费用，公司负责。",
+     "至于",
+     "As for the cost, the company covers it."
+    ],
+    [
+     "至于他为什么走，没人知道。",
+     "至于",
+     "Why he left, nobody knows."
+    ]
+   ]
+  },
+  {
+   "id": "yiwei",
+   "level": 5,
+   "cn": "以…为",
+   "pattern": "以 A 为 B",
+   "title": "Take A as B",
+   "gloss": "A written frame that assigns a role: 以质量为主 puts quality first.",
+   "note": "「以……为……」是书面格式，表示把前者当作后者。",
+   "needs": [
+    "以",
+    "为"
+   ],
+   "after": [
+    "suo"
+   ],
+   "near": [
+    "dangzuo"
+   ],
+   "wrong": [
+    "把",
+    "当作",
+    "按照"
+   ],
+   "eg": [
+    [
+     "这本书以历史为主。",
+     "以",
+     "This book is chiefly historical."
+    ],
+    [
+     "公司以质量为生命。",
+     "以",
+     "The firm treats quality as its lifeblood."
+    ],
+    [
+     "以学生为中心。",
+     "以",
+     "Student-centred."
+    ]
+   ]
+  },
+  {
+   "id": "dangzuo",
+   "level": 5,
+   "cn": "当作",
+   "pattern": "把 A 当作 B",
+   "title": "Regard A as B",
+   "gloss": "把…当作 is the spoken counterpart of 以…为, and needs 把 to move the object forward.",
+   "note": "「把……当作……」是口语的「以……为……」。",
+   "needs": [
+    "当作",
+    "把"
+   ],
+   "after": [
+    "ba"
+   ],
+   "near": [
+    "yiwei",
+    "ba"
+   ],
+   "wrong": [
+    "以…为",
+    "看成",
+    "叫作"
+   ],
+   "eg": [
+    [
+     "他把这里当作自己的家。",
+     "当作",
+     "He treats this place as his own home."
+    ],
+    [
+     "别把玩笑当作真话。",
+     "当作",
+     "Do not take a joke for the truth."
+    ],
+    [
+     "我把他当作朋友。",
+     "当作",
+     "I regard him as a friend."
+    ]
+   ]
+  },
+  {
+   "id": "nalaishuo",
+   "level": 5,
+   "cn": "拿…来说",
+   "pattern": "拿 A 来说",
+   "title": "Take A for instance",
+   "gloss": "拿…来说 introduces one case as evidence for the point being made.",
+   "note": "「拿……来说」举一个例子来说明观点。",
+   "needs": [
+    "拿",
+    "来说"
+   ],
+   "after": [
+    "duiyulaishuo"
+   ],
+   "near": [
+    "duiyulaishuo"
+   ],
+   "wrong": [
+    "对…来说",
+    "关于",
+    "至于"
+   ],
+   "eg": [
+    [
+     "拿这件事来说，就很清楚。",
+     "拿",
+     "Take this case — it is plain enough."
+    ],
+    [
+     "拿汉语来说，声调最难。",
+     "拿",
+     "With Chinese, say, tones are the hardest part."
+    ],
+    [
+     "拿去年来说，收入增加了。",
+     "拿",
+     "Last year, for one, income rose."
+    ]
+   ]
+  },
+  {
+   "id": "zaikanlai",
+   "level": 5,
+   "cn": "在…看来",
+   "pattern": "在 N 看来",
+   "title": "In N's view",
+   "gloss": "在…看来 attributes the opinion to someone. 对…来说 states whom it affects.",
+   "note": "「在……看来」是谁的看法，「对……来说」是对谁而言。",
+   "needs": [
+    "在",
+    "看来"
+   ],
+   "after": [
+    "duiyulaishuo"
+   ],
+   "near": [
+    "duiyulaishuo"
+   ],
+   "wrong": [
+    "对…来说",
+    "按照",
+    "根据"
+   ],
+   "eg": [
+    [
+     "在我看来，这不是问题。",
+     "看来",
+     "To my mind this is no problem."
+    ],
+    [
+     "在他看来，努力最重要。",
+     "在",
+     "In his view effort matters most."
+    ],
+    [
+     "在很多人看来，这很奇怪。",
+     "看来",
+     "To many people this seems odd."
+    ]
+   ]
+  },
+  {
+   "id": "conglaikan",
+   "level": 5,
+   "cn": "从…来看",
+   "pattern": "从 A 来看",
+   "title": "Judging from",
+   "gloss": "从…来看 names the angle the judgement is made from.",
+   "note": "「从……来看」表示从哪个角度判断。",
+   "needs": [
+    "从",
+    "来看"
+   ],
+   "after": [
+    "zaikanlai"
+   ],
+   "near": [
+    "zaikanlai"
+   ],
+   "wrong": [
+    "在…看来",
+    "根据",
+    "按照"
+   ],
+   "eg": [
+    [
+     "从目前来看，情况不错。",
+     "从",
+     "As things stand it looks fine."
+    ],
+    [
+     "从价格来看，这个更合适。",
+     "来看",
+     "On price this one suits better."
+    ],
+    [
+     "从这一点来看，他是对的。",
+     "从",
+     "On that score he is right."
+    ]
+   ]
+  },
+  {
+   "id": "deqi",
+   "level": 5,
+   "cn": "得起/不起",
+   "pattern": "V + 得起 / 不起",
+   "title": "Can afford it",
+   "gloss": "得起 and 不起 speak of what you can bear — the price, or the loss of face.",
+   "note": "「买得起」是钱够，「对不起」「看不起」是另一种「起」。",
+   "needs": [
+    "得",
+    "起"
+   ],
+   "after": [
+    "keneng"
+   ],
+   "near": [
+    "keneng",
+    "deliao"
+   ],
+   "wrong": [
+    "得了",
+    "不了",
+    "得下"
+   ],
+   "eg": [
+    [
+     "这个我买不起。",
+     "不起",
+     "I cannot afford this."
+    ],
+    [
+     "房子太贵，谁住得起？",
+     "得起",
+     "Who can afford housing at these prices?"
+    ],
+    [
+     "他看不起这种做法。",
+     "不起",
+     "He has no respect for that sort of thing."
+    ]
+   ]
+  },
+  {
+   "id": "zhide",
+   "level": 5,
+   "cn": "值得",
+   "pattern": "值得 + V",
+   "title": "Worth doing",
+   "gloss": "值得 takes a verb directly and judges the exchange worthwhile.",
+   "note": "「值得」后面直接接动词。",
+   "needs": [
+    "值得"
+   ],
+   "after": [
+    "yinggai"
+   ],
+   "near": [
+    "yinggai"
+   ],
+   "wrong": [
+    "应该",
+    "需要",
+    "必须"
+   ],
+   "eg": [
+    [
+     "这本书值得看。",
+     "值得",
+     "This book is worth reading."
+    ],
+    [
+     "值得再想一想。",
+     "值得",
+     "It is worth another thought."
+    ],
+    [
+     "为了这个生气不值得。",
+     "值得",
+     "It is not worth getting angry over."
+    ]
+   ]
+  },
+  {
+   "id": "mianbuliao",
+   "level": 5,
+   "cn": "免不了",
+   "pattern": "免不了 + V",
+   "title": "Bound to happen",
+   "gloss": "免不了 accepts something as unavoidable, usually a nuisance.",
+   "note": "「免不了」表示避免不了，多用于不好的事。",
+   "needs": [
+    "免不了"
+   ],
+   "after": [
+    "miande"
+   ],
+   "near": [
+    "miande",
+    "bumian"
+   ],
+   "wrong": [
+    "免得",
+    "不免",
+    "难免"
+   ],
+   "eg": [
+    [
+     "刚开始免不了会出错。",
+     "免不了",
+     "Mistakes are inevitable at first."
+    ],
+    [
+     "搬家免不了要花钱。",
+     "免不了",
+     "Moving is bound to cost money."
+    ],
+    [
+     "新手免不了紧张。",
+     "免不了",
+     "A beginner is bound to be nervous."
+    ]
+   ]
+  },
+  {
+   "id": "jinguanyou",
+   "level": 5,
+   "cn": "进而",
+   "pattern": "……，进而 ……",
+   "title": "And go on to",
+   "gloss": "进而 moves to a further step built on the one before. 从而 reports a result; 进而 reports a next move.",
+   "note": "「进而」是在前一步的基础上再做一步，「从而」说的是结果。",
+   "needs": [
+    "进而"
+   ],
+   "after": [
+    "conger"
+   ],
+   "near": [
+    "conger"
+   ],
+   "wrong": [
+    "从而",
+    "因此",
+    "于是"
+   ],
+   "eg": [
+    [
+     "先了解情况，进而提出办法。",
+     "进而",
+     "Understand it first, then go on to propose a fix."
+    ],
+    [
+     "他学会了基础，进而研究理论。",
+     "进而",
+     "He mastered the basics and moved on to theory."
+    ],
+    [
+     "改进流程，进而降低成本。",
+     "进而",
+     "Improve the process and go on to cut costs."
+    ]
+   ]
+  },
+  {
+   "id": "jiyu",
+   "level": 5,
+   "cn": "鉴于",
+   "pattern": "鉴于 A，B",
+   "title": "In view of",
+   "gloss": "鉴于 is a formal 由于, used where a decision is being justified.",
+   "note": "「鉴于」是很正式的「由于」，多用于做出决定的场合。",
+   "needs": [
+    "鉴于"
+   ],
+   "after": [
+    "youyu"
+   ],
+   "near": [
+    "youyu"
+   ],
+   "wrong": [
+    "由于",
+    "既然",
+    "因此"
+   ],
+   "eg": [
+    [
+     "鉴于时间紧张，会议改期。",
+     "鉴于",
+     "In view of the tight schedule the meeting is postponed."
+    ],
+    [
+     "鉴于他的表现，公司决定加薪。",
+     "鉴于",
+     "Given his performance the company raised his pay."
+    ],
+    [
+     "鉴于以上原因，我不同意。",
+     "鉴于",
+     "For the reasons above I disagree."
+    ]
+   ]
+  },
+  {
+   "id": "binqie",
+   "level": 5,
+   "cn": "并且",
+   "pattern": "……，并且 ……",
+   "title": "And moreover",
+   "gloss": "并且 adds a second action or quality of equal weight. 而且 raises the stakes; 并且 keeps them level.",
+   "note": "「并且」是平行地增加一项，「而且」是更进一层。",
+   "needs": [
+    "并且",
+    "而且"
+   ],
+   "after": [
+    "budan"
+   ],
+   "near": [
+    "budan"
+   ],
+   "wrong": [
+    "而且",
+    "不但",
+    "然而"
+   ],
+   "eg": [
+    [
+     "他答应了，并且很快就做了。",
+     "并且",
+     "He agreed, and did it promptly too."
+    ],
+    [
+     "方法简单，并且有效。",
+     "并且",
+     "The method is simple and effective."
+    ],
+    [
+     "我们讨论了，并且做了决定。",
+     "并且",
+     "We discussed it and reached a decision."
+    ]
+   ]
+  },
+  {
+   "id": "buguo5",
+   "level": 5,
+   "cn": "不过",
+   "pattern": "……，不过 ……",
+   "title": "Only, but",
+   "gloss": "不过 turns the sentence gently — a qualification rather than a contradiction.",
+   "note": "「不过」的转折比「但是」轻，是补充说明。",
+   "needs": [
+    "不过"
+   ],
+   "after": [
+    "ranger"
+   ],
+   "near": [
+    "ranger"
+   ],
+   "wrong": [
+    "然而",
+    "但是",
+    "可是"
+   ],
+   "eg": [
+    [
+     "东西不错，不过有点贵。",
+     "不过",
+     "Good stuff, only a little pricey."
+    ],
+    [
+     "我想去，不过没时间。",
+     "不过",
+     "I would like to go, but there is no time."
+    ],
+    [
+     "他年轻，不过很有经验。",
+     "不过",
+     "He is young, but experienced."
+    ]
+   ]
+  },
+  {
+   "id": "queshi",
+   "level": 5,
+   "cn": "却",
+   "pattern": "S 却 V",
+   "title": "Yet, and it sits inside",
+   "gloss": "却 marks a reversal but belongs before the verb, not at the head of the clause.",
+   "note": "「却」表示转折，位置在主语后、动词前，不能放句首。",
+   "needs": [
+    "却"
+   ],
+   "after": [
+    "ranger"
+   ],
+   "near": [
+    "ranger",
+    "fan'er"
+   ],
+   "wrong": [
+    "但是",
+    "然而",
+    "反而"
+   ],
+   "eg": [
+    [
+     "他很累，却还在工作。",
+     "却",
+     "Tired as he is, he is still working."
+    ],
+    [
+     "说了很多，却没人听。",
+     "却",
+     "Much was said, yet nobody listened."
+    ],
+    [
+     "东西便宜，质量却很好。",
+     "却",
+     "It is cheap, and yet well made."
+    ]
+   ]
+  },
+  {
+   "id": "zaiyu",
+   "level": 5,
+   "cn": "在于",
+   "pattern": "A 在于 B",
+   "title": "Lies in",
+   "gloss": "在于 names where the essence of something is located — a written equative.",
+   "note": "「在于」指出关键或本质所在。",
+   "needs": [
+    "在于"
+   ],
+   "after": [
+    "shi"
+   ],
+   "near": [
+    "shi"
+   ],
+   "wrong": [
+    "是",
+    "有",
+    "靠"
+   ],
+   "eg": [
+    [
+     "成功在于坚持。",
+     "在于",
+     "Success lies in persistence."
+    ],
+    [
+     "问题在于时间不够。",
+     "在于",
+     "The trouble is that there is not enough time."
+    ],
+    [
+     "关键在于方法。",
+     "在于",
+     "The method is what matters."
+    ]
+   ]
+  },
+  {
+   "id": "buzai",
+   "level": 5,
+   "cn": "不再",
+   "pattern": "不再 + V",
+   "title": "No longer",
+   "gloss": "不再 stops something that used to hold. 再不 threatens instead.",
+   "note": "「不再」是从此不这样了，「再不」是威胁或催促。",
+   "needs": [
+    "不再"
+   ],
+   "after": [
+    "zaiyou"
+   ],
+   "near": [
+    "zaiyou"
+   ],
+   "wrong": [
+    "再不",
+    "不会",
+    "没有"
+   ],
+   "eg": [
+    [
+     "他不再来了。",
+     "不再",
+     "He does not come any more."
+    ],
+    [
+     "我不再等了。",
+     "不再",
+     "I am not waiting any longer."
+    ],
+    [
+     "这里不再安静了。",
+     "不再",
+     "It is no longer quiet here."
+    ]
+   ]
+  },
+  {
+   "id": "jiuershiyan",
+   "level": 5,
+   "cn": "就…而言",
+   "pattern": "就 A 而言",
+   "title": "As regards",
+   "gloss": "就…而言 narrows the claim to one aspect, in formal register.",
+   "note": "「就……而言」把话限定在某一个方面，语体正式。",
+   "needs": [
+    "就",
+    "而言"
+   ],
+   "after": [
+    "conglaikan"
+   ],
+   "near": [
+    "conglaikan"
+   ],
+   "wrong": [
+    "从…来看",
+    "对…来说",
+    "至于"
+   ],
+   "eg": [
+    [
+     "就质量而言，这个更好。",
+     "就",
+     "In terms of quality this is better."
+    ],
+    [
+     "就目前而言，没有问题。",
+     "而言",
+     "For the present there is no problem."
+    ],
+    [
+     "就我个人而言，我同意。",
+     "就",
+     "Speaking for myself, I agree."
+    ]
+   ]
+  },
+  {
+   "id": "weizhi",
+   "level": 5,
+   "cn": "为止",
+   "pattern": "到 …… 为止",
+   "title": "Up until",
+   "gloss": "到…为止 closes a span at a stated point.",
+   "note": "「到……为止」表示到某个时间或程度就结束。",
+   "needs": [
+    "为止",
+    "到"
+   ],
+   "after": [
+    "congdao"
+   ],
+   "near": [
+    "congdao"
+   ],
+   "wrong": [
+    "以前",
+    "以后",
+    "以来"
+   ],
+   "eg": [
+    [
+     "到今天为止，还没有消息。",
+     "为止",
+     "As of today there is still no news."
+    ],
+    [
+     "到此为止吧。",
+     "为止",
+     "Let us leave it there."
+    ],
+    [
+     "到上个月为止，共有三百人。",
+     "为止",
+     "Up to last month there were three hundred."
+    ]
+   ]
+  },
+  {
+   "id": "yilai",
+   "level": 5,
+   "cn": "以来",
+   "pattern": "…… 以来",
+   "title": "Ever since",
+   "gloss": "以来 measures from a past point up to now, and follows the event.",
+   "note": "「以来」表示从过去某时到现在，放在时间词后面。",
+   "needs": [
+    "以来"
+   ],
+   "after": [
+    "yiqian"
+   ],
+   "near": [
+    "yiqian",
+    "weizhi"
+   ],
+   "wrong": [
+    "以前",
+    "以后",
+    "为止"
+   ],
+   "eg": [
+    [
+     "来中国以来，我认识了很多朋友。",
+     "以来",
+     "Since coming to China I have made many friends."
+    ],
+    [
+     "三年以来他一直住在这里。",
+     "以来",
+     "He has lived here these three years."
+    ],
+    [
+     "开学以来他没请过假。",
+     "以来",
+     "He has not taken a day off since term began."
+    ]
+   ]
+  },
+  {
+   "id": "chubu",
+   "level": 5,
+   "cn": "除此之外",
+   "pattern": "除此之外，……",
+   "title": "Apart from this",
+   "gloss": "除此之外 is the written 除了这个以外, and opens the next item in a list.",
+   "note": "「除此之外」是书面的「除了这个以外」。",
+   "needs": [
+    "除此之外"
+   ],
+   "after": [
+    "chule"
+   ],
+   "near": [
+    "chule"
+   ],
+   "wrong": [
+    "除了",
+    "另外",
+    "此外"
+   ],
+   "eg": [
+    [
+     "除此之外，还有别的问题。",
+     "除此之外",
+     "Apart from this there are other problems."
+    ],
+    [
+     "除此之外，我没有意见。",
+     "除此之外",
+     "Other than that I have no comment."
+    ],
+    [
+     "除此之外，费用也是个问题。",
+     "除此之外",
+     "Besides this, cost is an issue too."
+    ]
+   ]
+  },
+  {
+   "id": "buhui",
+   "level": 5,
+   "cn": "不见得",
+   "pattern": "不见得 + V",
+   "title": "Not necessarily",
+   "gloss": "不见得 doubts a claim without denying it. 不一定 is its everyday equivalent.",
+   "note": "「不见得」是「未必」，不是否定，只是表示怀疑。",
+   "needs": [
+    "不见得"
+   ],
+   "after": [
+    "yiding"
+   ],
+   "near": [
+    "yiding"
+   ],
+   "wrong": [
+    "不一定",
+    "一定不",
+    "不可能"
+   ],
+   "eg": [
+    [
+     "他不见得会来。",
+     "不见得",
+     "He may well not come."
+    ],
+    [
+     "贵的不见得好。",
+     "不见得",
+     "Dearer is not necessarily better."
+    ],
+    [
+     "这样做不见得对。",
+     "不见得",
+     "This is not necessarily right."
+    ]
+   ]
+  },
+  {
+   "id": "haobrang",
+   "level": 5,
+   "cn": "好让",
+   "pattern": "……，好让 ……",
+   "title": "So that someone can",
+   "gloss": "好让 states the purpose in terms of what it enables another person to do.",
+   "note": "「好让」引出目的，重点在让别人能做什么。",
+   "needs": [
+    "好",
+    "让"
+   ],
+   "after": [
+    "yibian4"
+   ],
+   "near": [
+    "yibian4",
+    "rang"
+   ],
+   "wrong": [
+    "以便",
+    "为了",
+    "免得"
+   ],
+   "eg": [
+    [
+     "请说慢点，好让大家听清楚。",
+     "好让",
+     "Speak slowly so everyone can follow."
+    ],
+    [
+     "开着灯，好让他找到路。",
+     "好让",
+     "Leave the light on so he can find his way."
+    ],
+    [
+     "写下来，好让自己记住。",
+     "好让",
+     "Write it down so you will remember."
+    ]
+   ]
+  },
+  {
+   "id": "zaiyeb",
+   "level": 5,
+   "cn": "再也不",
+   "pattern": "再也不/没 + V",
+   "title": "Never again",
+   "gloss": "再也 with a negative closes the door for good.",
+   "note": "「再也不」「再也没」表示从此以后不再这样。",
+   "needs": [
+    "再",
+    "也"
+   ],
+   "after": [
+    "buzai"
+   ],
+   "near": [
+    "buzai"
+   ],
+   "wrong": [
+    "不再",
+    "一直",
+    "从来"
+   ],
+   "eg": [
+    [
+     "我再也不去那儿了。",
+     "再也",
+     "I am never going there again."
+    ],
+    [
+     "他再也没回来过。",
+     "再也",
+     "He never came back."
+    ],
+    [
+     "再也找不到这样的机会了。",
+     "再也",
+     "Such a chance will never come again."
+    ]
+   ]
+  },
+  {
+   "id": "bumian",
+   "level": 6,
+   "cn": "不免",
+   "pattern": "不免 + V",
+   "title": "Cannot help but",
+   "gloss": "不免 says the reaction was unavoidable given the circumstances.",
+   "note": "「不免」表示这种反应免不了会产生。",
+   "needs": [
+    "不免"
+   ],
+   "after": [
+    "mianbuliao"
+   ],
+   "near": [
+    "bujin6",
+    "nanmian"
+   ],
+   "wrong": [
+    "不禁",
+    "难免",
+    "不至于"
+   ],
+   "eg": [
+    [
+     "听到这个消息，他不免有些失望。",
+     "不免",
+     "Hearing this he could not help feeling let down."
+    ],
+    [
+     "第一次上台，不免紧张。",
+     "不免",
+     "A first time on stage is bound to be nerve-racking."
+    ],
+    [
+     "想起往事，不免难过。",
+     "不免",
+     "Recalling it, he could not help feeling sad."
+    ]
+   ]
+  },
+  {
+   "id": "bujin6",
+   "level": 6,
+   "cn": "不禁",
+   "pattern": "不禁 + V",
+   "title": "Could not help doing",
+   "gloss": "不禁 is about an action escaping you — laughing, crying, exclaiming — not a state of mind.",
+   "note": "「不禁」后面是忍不住做出的动作，「不免」后面多是心理状态。",
+   "needs": [
+    "不禁"
+   ],
+   "after": [
+    "bumian"
+   ],
+   "near": [
+    "bumian"
+   ],
+   "wrong": [
+    "不免",
+    "不由",
+    "难免"
+   ],
+   "eg": [
+    [
+     "他不禁笑了起来。",
+     "不禁",
+     "He could not help laughing."
+    ],
+    [
+     "听到这里我不禁流下眼泪。",
+     "不禁",
+     "At that point I could not hold back tears."
+    ],
+    [
+     "大家不禁鼓起掌来。",
+     "不禁",
+     "The room broke into applause despite itself."
+    ]
+   ]
+  },
+  {
+   "id": "nanmian",
+   "level": 6,
+   "cn": "难免",
+   "pattern": "难免 + V",
+   "title": "Hard to avoid",
+   "gloss": "难免 concedes that something unwelcome is difficult to prevent, and can sit before a noun phrase too.",
+   "note": "「难免」表示不容易避免，可以做谓语，也可以修饰后面的句子。",
+   "needs": [
+    "难免"
+   ],
+   "after": [
+    "bumian"
+   ],
+   "near": [
+    "bumian"
+   ],
+   "wrong": [
+    "不免",
+    "不禁",
+    "免不了"
+   ],
+   "eg": [
+    [
+     "工作中难免出错。",
+     "难免",
+     "Mistakes at work are hard to avoid."
+    ],
+    [
+     "他年纪小，难免不懂事。",
+     "难免",
+     "Being young, he is bound to be thoughtless."
+    ],
+    [
+     "这样做难免引起误会。",
+     "难免",
+     "Doing it this way will surely cause misunderstanding."
+    ]
+   ]
+  },
+  {
+   "id": "buyi",
+   "level": 6,
+   "cn": "不宜",
+   "pattern": "不宜 + V",
+   "title": "Not advisable",
+   "gloss": "不宜 judges an action unsuitable in the present circumstances. 不必 says it is unnecessary.",
+   "note": "「不宜」表示现在这样做不合适，「不必」表示没有必要。",
+   "needs": [
+    "不宜"
+   ],
+   "after": [
+    "yinggai"
+   ],
+   "near": [
+    "buzhiyu"
+   ],
+   "wrong": [
+    "不必",
+    "不曾",
+    "不至于"
+   ],
+   "eg": [
+    [
+     "事情还没查清，不宜下结论。",
+     "不宜",
+     "With the facts unclear it is unwise to conclude."
+    ],
+    [
+     "饭后不宜马上运动。",
+     "不宜",
+     "One should not exercise straight after eating."
+    ],
+    [
+     "此事不宜公开。",
+     "不宜",
+     "This should not be made public."
+    ]
+   ]
+  },
+  {
+   "id": "buzhiyu",
+   "level": 6,
+   "cn": "不至于",
+   "pattern": "不至于 + V",
+   "title": "It would not go so far as",
+   "gloss": "不至于 denies that things will reach the extreme being feared.",
+   "note": "「不至于」表示不会严重到那个地步。",
+   "needs": [
+    "不至于"
+   ],
+   "after": [
+    "buyi"
+   ],
+   "near": [
+    "buyi"
+   ],
+   "wrong": [
+    "不宜",
+    "不免",
+    "未必"
+   ],
+   "eg": [
+    [
+     "再忙也不至于连饭都不吃。",
+     "不至于",
+     "However busy, one hardly skips meals entirely."
+    ],
+    [
+     "他不至于说这种话。",
+     "不至于",
+     "He would never go so far as to say that."
+    ],
+    [
+     "情况没那么糟，不至于失败。",
+     "不至于",
+     "It is not so bad as to fail."
+    ]
+   ]
+  },
+  {
+   "id": "hebi",
+   "level": 6,
+   "cn": "何必",
+   "pattern": "何必 …… ？",
+   "title": "Why bother",
+   "gloss": "何必 uses a question to say there was no need. 何况 adds a stronger reason instead.",
+   "note": "「何必」用反问表示没有这个必要，「何况」是更进一层。",
+   "needs": [
+    "何必"
+   ],
+   "after": [
+    "nandao"
+   ],
+   "near": [
+    "hekuang",
+    "nandao"
+   ],
+   "wrong": [
+    "何况",
+    "何以",
+    "何尝"
+   ],
+   "eg": [
+    [
+     "这点小事，何必惊动大家。",
+     "何必",
+     "Such a trifle — why trouble everyone?"
+    ],
+    [
+     "他已经道歉了，你何必生气？",
+     "何必",
+     "He has apologised; why stay angry?"
+    ],
+    [
+     "何必这么着急？",
+     "何必",
+     "Why the rush?"
+    ]
+   ]
+  },
+  {
+   "id": "hekuang",
+   "level": 6,
+   "cn": "何况",
+   "pattern": "……，何况 ……",
+   "title": "Let alone",
+   "gloss": "何况 adds a case even more obvious than the one just made, often after 连…都.",
+   "note": "「何况」提出比前面更明显的理由，常和「连……都……」呼应。",
+   "needs": [
+    "何况"
+   ],
+   "after": [
+    "hebi"
+   ],
+   "near": [
+    "hebi",
+    "shenzhi"
+   ],
+   "wrong": [
+    "何必",
+    "甚至",
+    "况且"
+   ],
+   "eg": [
+    [
+     "大人都搬不动，何况孩子。",
+     "何况",
+     "Even adults cannot lift it, let alone children."
+    ],
+    [
+     "平时都很忙，何况现在。",
+     "何况",
+     "Busy at the best of times, still more so now."
+    ],
+    [
+     "他连汉字都不认识，何况写文章。",
+     "何况",
+     "He cannot read the characters, let alone write essays."
+    ]
+   ]
+  },
+  {
+   "id": "yuqi",
+   "level": 6,
+   "cn": "与其…不如",
+   "pattern": "与其 A，不如 B",
+   "title": "Rather than … better to",
+   "gloss": "与其…不如 rejects the first course and picks the second. 宁可…也不 accepts a cost to avoid something worse.",
+   "note": "「与其……不如……」是否定前者、选择后者；「宁可……也不……」是甘愿承受代价。",
+   "needs": [
+    "与其",
+    "不如"
+   ],
+   "after": [
+    "buru"
+   ],
+   "near": [
+    "ningke",
+    "buru"
+   ],
+   "wrong": [
+    "宁可",
+    "不是",
+    "即使"
+   ],
+   "eg": [
+    [
+     "与其抱怨，不如想办法解决。",
+     "与其",
+     "Rather than complain, find a fix."
+    ],
+    [
+     "与其等他，不如自己去。",
+     "不如",
+     "Better to go yourself than wait for him."
+    ],
+    [
+     "与其买新的，不如修一修。",
+     "与其",
+     "Rather than buy new, get it mended."
+    ]
+   ]
+  },
+  {
+   "id": "ningke",
+   "level": 6,
+   "cn": "宁可…也不",
+   "pattern": "宁可 A，也不 B",
+   "title": "Would rather … than",
+   "gloss": "宁可 takes on a hardship deliberately to avoid something judged worse.",
+   "note": "「宁可……也不……」表示两害相权，甘愿选前者。",
+   "needs": [
+    "宁可"
+   ],
+   "after": [
+    "yuqi"
+   ],
+   "near": [
+    "yuqi"
+   ],
+   "wrong": [
+    "与其",
+    "即使",
+    "哪怕"
+   ],
+   "eg": [
+    [
+     "宁可走路，也不坐那么久的车。",
+     "宁可",
+     "I would sooner walk than sit that long on a bus."
+    ],
+    [
+     "他宁可自己吃亏，也不让朋友为难。",
+     "宁可",
+     "He would take the loss himself rather than embarrass a friend."
+    ],
+    [
+     "宁可慢一点，也不能出错。",
+     "宁可",
+     "Better slow than wrong."
+    ]
+   ]
+  },
+  {
+   "id": "tangruo",
+   "level": 6,
+   "cn": "倘若",
+   "pattern": "倘若 A，就 B",
+   "title": "If, in writing",
+   "gloss": "倘若 is the literary 如果, and belongs in formal prose.",
+   "note": "「倘若」是书面语的「如果」，多用于正式文字。",
+   "needs": [
+    "倘若"
+   ],
+   "after": [
+    "ruguo"
+   ],
+   "near": [
+    "ruguo",
+    "jiaru"
+   ],
+   "wrong": [
+    "既然",
+    "尽管",
+    "以致"
+   ],
+   "eg": [
+    [
+     "倘若明天下雨，运动会就延期。",
+     "倘若",
+     "Should it rain tomorrow the sports day is postponed."
+    ],
+    [
+     "倘若有困难，请及时联系。",
+     "倘若",
+     "Should difficulties arise, do get in touch."
+    ],
+    [
+     "倘若属实，后果严重。",
+     "倘若",
+     "If true, the consequences are grave."
+    ]
+   ]
+  },
+  {
+   "id": "jiaru",
+   "level": 6,
+   "cn": "假如",
+   "pattern": "假如 A，就 B",
+   "title": "Supposing",
+   "gloss": "假如 supposes a case for the sake of argument, slightly more hypothetical than 如果.",
+   "note": "「假如」用于假设，语气比「如果」更像是设想。",
+   "needs": [
+    "假如"
+   ],
+   "after": [
+    "tangruo"
+   ],
+   "near": [
+    "tangruo"
+   ],
+   "wrong": [
+    "倘若",
+    "既然",
+    "除非"
+   ],
+   "eg": [
+    [
+     "假如你是我，你会怎么做？",
+     "假如",
+     "Supposing you were me, what would you do?"
+    ],
+    [
+     "假如再来一次，我还是这样选。",
+     "假如",
+     "Given the chance again I would choose the same."
+    ],
+    [
+     "假如没有他，就没有今天。",
+     "假如",
+     "But for him there would be no today."
+    ]
+   ]
+  },
+  {
+   "id": "weimian",
+   "level": 6,
+   "cn": "未免",
+   "pattern": "未免 + Adj",
+   "title": "Rather too",
+   "gloss": "未免 registers a mild objection that something has gone a bit far. 未必 doubts a claim instead.",
+   "note": "「未免」是委婉地说「有点过分」，「未必」是「不一定」。",
+   "needs": [
+    "未免"
+   ],
+   "after": [
+    "buhui"
+   ],
+   "near": [
+    "weibi"
+   ],
+   "wrong": [
+    "未必",
+    "不免",
+    "不至于"
+   ],
+   "eg": [
+    [
+     "这样说未免太严厉了。",
+     "未免",
+     "That is rather too harsh a way to put it."
+    ],
+    [
+     "价格未免高了一点。",
+     "未免",
+     "The price is somewhat on the high side."
+    ],
+    [
+     "未免有些可惜。",
+     "未免",
+     "It is rather a pity."
+    ]
+   ]
+  },
+  {
+   "id": "weibi",
+   "level": 6,
+   "cn": "未必",
+   "pattern": "未必 + V",
+   "title": "Not necessarily",
+   "gloss": "未必 is the written 不一定 and doubts without denying.",
+   "note": "「未必」是书面的「不一定」，表示怀疑而不是否定。",
+   "needs": [
+    "未必"
+   ],
+   "after": [
+    "weimian"
+   ],
+   "near": [
+    "weimian",
+    "buhui"
+   ],
+   "wrong": [
+    "未免",
+    "不免",
+    "必然"
+   ],
+   "eg": [
+    [
+     "他说的未必是真的。",
+     "未必",
+     "What he says may well not be true."
+    ],
+    [
+     "贵的未必好。",
+     "未必",
+     "Dear is not necessarily good."
+    ],
+    [
+     "这个办法未必行得通。",
+     "未必",
+     "This approach may not work."
+    ]
+   ]
+  },
+  {
+   "id": "guran",
+   "level": 6,
+   "cn": "固然",
+   "pattern": "固然 A，但 B",
+   "title": "Granted that",
+   "gloss": "固然 concedes a point in order to make a different one. 虽然 simply admits a fact.",
+   "note": "「固然」先承认对方有理，再提出自己的看法；「虽然」只是陈述事实。",
+   "needs": [
+    "固然"
+   ],
+   "after": [
+    "jinguan"
+   ],
+   "near": [
+    "jinguan"
+   ],
+   "wrong": [
+    "虽然",
+    "尽管",
+    "即使"
+   ],
+   "eg": [
+    [
+     "这样做固然省事，但不安全。",
+     "固然",
+     "Convenient it may be, but it is not safe."
+    ],
+    [
+     "他固然聪明，可是不够努力。",
+     "固然",
+     "Clever he is, but not diligent enough."
+    ],
+    [
+     "价格固然重要，质量更重要。",
+     "固然",
+     "Price matters, of course; quality matters more."
+    ]
+   ]
+  },
+  {
+   "id": "wufei",
+   "level": 6,
+   "cn": "无非",
+   "pattern": "无非 (是) ……",
+   "title": "Nothing more than",
+   "gloss": "无非 reduces something to a small point, dismissing what looked bigger.",
+   "note": "「无非」表示说到底只不过是这样，含轻视的意味。",
+   "needs": [
+    "无非"
+   ],
+   "after": [
+    "guangshi"
+   ],
+   "near": [
+    "buwaihu"
+   ],
+   "wrong": [
+    "不外乎",
+    "只是",
+    "不过"
+   ],
+   "eg": [
+    [
+     "他说的无非是这些。",
+     "无非",
+     "What he said amounts to no more than this."
+    ],
+    [
+     "原因无非两个。",
+     "无非",
+     "There are only two reasons, really."
+    ],
+    [
+     "无非是想引起注意。",
+     "无非",
+     "It is nothing but a bid for attention."
+    ]
+   ]
+  },
+  {
+   "id": "buwaihu",
+   "level": 6,
+   "cn": "不外乎",
+   "pattern": "不外乎 ……",
+   "title": "Comes down to",
+   "gloss": "不外乎 says the possibilities do not extend past the list about to be given.",
+   "note": "「不外乎」表示范围就这么大，跳不出这几种。",
+   "needs": [
+    "不外乎"
+   ],
+   "after": [
+    "wufei"
+   ],
+   "near": [
+    "wufei"
+   ],
+   "wrong": [
+    "无非",
+    "除此之外",
+    "总之"
+   ],
+   "eg": [
+    [
+     "原因不外乎这几种。",
+     "不外乎",
+     "The reasons come down to these few."
+    ],
+    [
+     "方法不外乎两个。",
+     "不外乎",
+     "There are essentially two methods."
+    ],
+    [
+     "结果不外乎成功或失败。",
+     "不外乎",
+     "The outcome is either success or failure."
+    ]
+   ]
+  },
+  {
+   "id": "yizhiyu",
+   "level": 6,
+   "cn": "以致",
+   "pattern": "……，以致 ……",
+   "title": "With the result that",
+   "gloss": "以致 introduces a bad consequence. 以至于 can also mark a degree so great it produced the result.",
+   "note": "「以致」后面是不好的结果；「以至于」还可以表示程度深到某种地步。",
+   "needs": [
+    "以致",
+    "以至于"
+   ],
+   "after": [
+    "yinci"
+   ],
+   "near": [
+    "yinci",
+    "conger"
+   ],
+   "wrong": [
+    "因此",
+    "从而",
+    "于是"
+   ],
+   "eg": [
+    [
+     "他没有认真检查，以致出了大错。",
+     "以致",
+     "He did not check carefully, with the result that a serious error slipped through."
+    ],
+    [
+     "雨下得太大，以至于路都断了。",
+     "以至于",
+     "The rain was so heavy the road was cut."
+    ],
+    [
+     "准备不足，以致失败。",
+     "以致",
+     "Poor preparation led to failure."
+    ]
+   ]
+  },
+  {
+   "id": "zhisuoyi",
+   "level": 6,
+   "cn": "之所以…是因为",
+   "pattern": "A 之所以 B，是因为 C",
+   "title": "The reason A is B is that C",
+   "gloss": "之所以 puts the result first and the cause last — the reverse of 因为…所以.",
+   "note": "「之所以……是因为……」把结果放前、原因放后，和「因为……所以……」顺序相反。",
+   "needs": [
+    "之所以",
+    "是因为"
+   ],
+   "after": [
+    "yinwei"
+   ],
+   "near": [
+    "yinwei",
+    "youyu"
+   ],
+   "wrong": [
+    "因为",
+    "由于",
+    "既然"
+   ],
+   "eg": [
+    [
+     "他之所以成功，是因为一直努力。",
+     "之所以",
+     "He succeeded because he never stopped trying."
+    ],
+    [
+     "之所以选这里，是因为方便。",
+     "之所以",
+     "We chose here for the convenience."
+    ],
+    [
+     "我之所以不说，是因为不想麻烦你。",
+     "之所以",
+     "I kept quiet so as not to trouble you."
+    ]
+   ]
+  },
+  {
+   "id": "yilaierlai",
+   "level": 6,
+   "cn": "一来…二来",
+   "pattern": "一来 A，二来 B",
+   "title": "For one thing … for another",
+   "gloss": "一来…二来 lists reasons in order, in a conversational register.",
+   "note": "「一来……二来……」用来分条说明原因。",
+   "needs": [
+    "一来",
+    "二来"
+   ],
+   "after": [
+    "yifangmian"
+   ],
+   "near": [
+    "yifangmian"
+   ],
+   "wrong": [
+    "一方面",
+    "首先",
+    "其次"
+   ],
+   "eg": [
+    [
+     "一来时间不够，二来钱也不够。",
+     "一来",
+     "For one thing there is no time, for another no money."
+    ],
+    [
+     "一来太远，二来太贵。",
+     "二来",
+     "Too far, and too dear besides."
+    ],
+    [
+     "一来他不愿意，二来我们也不勉强。",
+     "一来",
+     "He is unwilling, and we will not press him."
+    ]
+   ]
+  },
+  {
+   "id": "shier",
+   "level": 6,
+   "cn": "时而…时而",
+   "pattern": "时而 A，时而 B",
+   "title": "Now this, now that",
+   "gloss": "时而…时而 alternates two states irregularly over time.",
+   "note": "「时而……时而……」表示两种情况交替出现。",
+   "needs": [
+    "时而"
+   ],
+   "after": [
+    "yibian"
+   ],
+   "near": [
+    "yibian"
+   ],
+   "wrong": [
+    "一边",
+    "有时",
+    "忽然"
+   ],
+   "eg": [
+    [
+     "天气时而晴，时而雨。",
+     "时而",
+     "The weather turns from sun to rain and back."
+    ],
+    [
+     "他时而高兴，时而生气。",
+     "时而",
+     "He is cheerful one moment, cross the next."
+    ],
+    [
+     "声音时而大，时而小。",
+     "时而",
+     "The sound rises and falls."
+    ]
+   ]
+  },
+  {
+   "id": "dongzhe",
+   "level": 6,
+   "cn": "动辄",
+   "pattern": "动辄 + V",
+   "title": "At the slightest thing",
+   "gloss": "动辄 marks a reaction that comes far too readily, and disapproves of it.",
+   "note": "「动辄」表示动不动就这样，带批评的意思。",
+   "needs": [
+    "动辄"
+   ],
+   "after": [
+    "zongshi"
+   ],
+   "near": [
+    "zongshi"
+   ],
+   "wrong": [
+    "总是",
+    "往往",
+    "经常"
+   ],
+   "eg": [
+    [
+     "他动辄发脾气。",
+     "动辄",
+     "He loses his temper at the least thing."
+    ],
+    [
+     "动辄批评别人是不对的。",
+     "动辄",
+     "Criticising others at every turn is wrong."
+    ],
+    [
+     "价格动辄上万。",
+     "动辄",
+     "Prices run to tens of thousands as a matter of course."
+    ]
+   ]
+  },
+  {
+   "id": "weiyou",
+   "level": 6,
+   "cn": "唯有…才",
+   "pattern": "唯有 A，才 B",
+   "title": "Only through",
+   "gloss": "唯有 is the literary 只有 and keeps the same 才 in the second clause.",
+   "note": "「唯有」是书面的「只有」，后面同样用「才」。",
+   "needs": [
+    "唯有",
+    "才"
+   ],
+   "after": [
+    "zhiyou"
+   ],
+   "near": [
+    "zhiyou"
+   ],
+   "wrong": [
+    "只有",
+    "惟独",
+    "除非"
+   ],
+   "eg": [
+    [
+     "唯有坚持，才能成功。",
+     "唯有",
+     "Only by persevering can one succeed."
+    ],
+    [
+     "唯有实践才能出真知。",
+     "唯有",
+     "True knowledge comes only from practice."
+    ],
+    [
+     "唯有他知道内情。",
+     "唯有",
+     "He alone knows the inside of it."
+    ]
+   ]
+  },
+  {
+   "id": "weidu",
+   "level": 6,
+   "cn": "惟独",
+   "pattern": "惟独 A ……",
+   "title": "Only this one, and no other",
+   "gloss": "惟独 singles one case out against everything else in the set.",
+   "note": "「惟独」把一个从整体里单独挑出来，和别的都不一样。",
+   "needs": [
+    "惟独"
+   ],
+   "after": [
+    "weiyou"
+   ],
+   "near": [
+    "weiyou"
+   ],
+   "wrong": [
+    "唯有",
+    "只有",
+    "偏偏"
+   ],
+   "eg": [
+    [
+     "大家都同意，惟独他反对。",
+     "惟独",
+     "Everyone agreed — he alone objected."
+    ],
+    [
+     "别的都好，惟独这一点不行。",
+     "惟独",
+     "All the rest is fine; only this will not do."
+    ],
+    [
+     "惟独今天他没来。",
+     "惟独",
+     "Today of all days he did not come."
+    ]
+   ]
+  },
+  {
+   "id": "qibu",
+   "level": 6,
+   "cn": "岂不",
+   "pattern": "岂不 …… ？",
+   "title": "Would that not …?",
+   "gloss": "岂不 asks rhetorically and expects agreement — a literary 难道不.",
+   "note": "「岂不」是书面的反问，等于「难道不……吗」。",
+   "needs": [
+    "岂不"
+   ],
+   "after": [
+    "nandao"
+   ],
+   "near": [
+    "nandao",
+    "hebi"
+   ],
+   "wrong": [
+    "难道",
+    "何必",
+    "莫非"
+   ],
+   "eg": [
+    [
+     "这样岂不更好？",
+     "岂不",
+     "Would that not be better?"
+    ],
+    [
+     "若都如此，岂不乱了？",
+     "岂不",
+     "If all did so, would there not be chaos?"
+    ],
+    [
+     "岂不是白费力气？",
+     "岂不",
+     "Is that not effort wasted?"
+    ]
+   ]
+  },
+  {
+   "id": "mofei",
+   "level": 6,
+   "cn": "莫非",
+   "pattern": "莫非 …… ？",
+   "title": "Can it be that …?",
+   "gloss": "莫非 voices a suspicion the speaker half believes already.",
+   "note": "「莫非」表示猜测，说话人心里已经有了答案。",
+   "needs": [
+    "莫非"
+   ],
+   "after": [
+    "qibu"
+   ],
+   "near": [
+    "qibu"
+   ],
+   "wrong": [
+    "岂不",
+    "难道",
+    "何尝"
+   ],
+   "eg": [
+    [
+     "莫非他已经知道了？",
+     "莫非",
+     "Can it be that he already knows?"
+    ],
+    [
+     "这么晚还不来，莫非出事了？",
+     "莫非",
+     "So late — can something have happened?"
+    ],
+    [
+     "莫非我记错了？",
+     "莫非",
+     "Could I have misremembered?"
+    ]
+   ]
+  },
+  {
+   "id": "hechang",
+   "level": 6,
+   "cn": "何尝",
+   "pattern": "何尝 …… ？",
+   "title": "When have I ever …?",
+   "gloss": "何尝 denies through a question — 我何尝说过 means I never said it.",
+   "note": "「何尝」用反问表示从来没有，等于「并不是」。",
+   "needs": [
+    "何尝"
+   ],
+   "after": [
+    "hebi"
+   ],
+   "near": [
+    "hebi",
+    "qibu"
+   ],
+   "wrong": [
+    "何必",
+    "何况",
+    "岂不"
+   ],
+   "eg": [
+    [
+     "我何尝不想去？",
+     "何尝",
+     "As if I did not want to go."
+    ],
+    [
+     "他何尝说过这样的话。",
+     "何尝",
+     "He never said any such thing."
+    ],
+    [
+     "我们何尝忘记过。",
+     "何尝",
+     "Not for a moment have we forgotten."
+    ]
+   ]
+  },
+  {
+   "id": "gouqie",
+   "level": 6,
+   "cn": "姑且",
+   "pattern": "姑且 + V",
+   "title": "For the moment",
+   "gloss": "姑且 accepts something provisionally, pending something better.",
+   "note": "「姑且」表示暂时先这样，以后再说。",
+   "needs": [
+    "姑且"
+   ],
+   "after": [
+    "zanshi"
+   ],
+   "near": [
+    "zanshi"
+   ],
+   "wrong": [
+    "暂且",
+    "索性",
+    "不妨"
+   ],
+   "eg": [
+    [
+     "这个问题姑且不谈。",
+     "姑且",
+     "Let us leave this question aside for now."
+    ],
+    [
+     "姑且试一试吧。",
+     "姑且",
+     "Let us try it for the time being."
+    ],
+    [
+     "姑且相信他一次。",
+     "姑且",
+     "We will take his word this once."
+    ]
+   ]
+  },
+  {
+   "id": "zanshi",
+   "level": 6,
+   "cn": "不妨",
+   "pattern": "不妨 + V",
+   "title": "Might as well",
+   "gloss": "不妨 suggests there is no harm in trying, softening a recommendation.",
+   "note": "「不妨」表示这样做没有什么妨碍，是一种建议。",
+   "needs": [
+    "不妨"
+   ],
+   "after": [
+    "yinggai"
+   ],
+   "near": [
+    "gouqie"
+   ],
+   "wrong": [
+    "不免",
+    "不禁",
+    "姑且"
+   ],
+   "eg": [
+    [
+     "你不妨问问他。",
+     "不妨",
+     "You might as well ask him."
+    ],
+    [
+     "不妨换个角度想。",
+     "不妨",
+     "It is worth looking at it another way."
+    ],
+    [
+     "不妨先试试这个办法。",
+     "不妨",
+     "There is no harm in trying this first."
+    ]
+   ]
+  },
+  {
+   "id": "suoxing",
+   "level": 6,
+   "cn": "索性",
+   "pattern": "索性 + V",
+   "title": "Might as well go the whole way",
+   "gloss": "索性 abandons half-measures and takes the decisive course.",
+   "note": "「索性」表示干脆彻底地这样做。",
+   "needs": [
+    "索性"
+   ],
+   "after": [
+    "zanshi"
+   ],
+   "near": [
+    "zanshi"
+   ],
+   "wrong": [
+    "不妨",
+    "姑且",
+    "干脆"
+   ],
+   "eg": [
+    [
+     "既然来了，索性多住几天。",
+     "索性",
+     "Since you are here, stay a few days more."
+    ],
+    [
+     "等不到车，索性走回去。",
+     "索性",
+     "No bus came, so he simply walked home."
+    ],
+    [
+     "索性把话说清楚。",
+     "索性",
+     "Let us have it out plainly."
+    ]
+   ]
+  },
+  {
+   "id": "shibi",
+   "level": 6,
+   "cn": "势必",
+   "pattern": "势必 + V",
+   "title": "Is bound to",
+   "gloss": "势必 predicts an outcome as the inevitable consequence of the situation.",
+   "note": "「势必」表示照这个趋势一定会这样。",
+   "needs": [
+    "势必"
+   ],
+   "after": [
+    "yiding"
+   ],
+   "near": [
+    "yiding",
+    "weibi"
+   ],
+   "wrong": [
+    "必然",
+    "未必",
+    "难免"
+   ],
+   "eg": [
+    [
+     "这样下去势必出问题。",
+     "势必",
+     "Carry on like this and trouble is bound to follow."
+    ],
+    [
+     "成本上升势必影响价格。",
+     "势必",
+     "Rising costs will inevitably affect prices."
+    ],
+    [
+     "势必引起讨论。",
+     "势必",
+     "It is bound to provoke discussion."
+    ]
+   ]
+  },
+  {
+   "id": "chengran",
+   "level": 6,
+   "cn": "诚然",
+   "pattern": "诚然 A，但 B",
+   "title": "It is true that",
+   "gloss": "诚然 grants the other side's point openly before turning.",
+   "note": "「诚然」先承认对方说得对，然后提出自己的看法。",
+   "needs": [
+    "诚然"
+   ],
+   "after": [
+    "guran"
+   ],
+   "near": [
+    "guran"
+   ],
+   "wrong": [
+    "固然",
+    "虽然",
+    "当然"
+   ],
+   "eg": [
+    [
+     "诚然，他有他的道理，但结论太急了。",
+     "诚然",
+     "True, he has a point, but the conclusion is hasty."
+    ],
+    [
+     "诚然这需要时间。",
+     "诚然",
+     "Admittedly this will take time."
+    ],
+    [
+     "诚然如此，也不必悲观。",
+     "诚然",
+     "Even so, there is no need for gloom."
+    ]
+   ]
+  },
+  {
+   "id": "naizhi",
+   "level": 6,
+   "cn": "乃至",
+   "pattern": "A、B 乃至 C",
+   "title": "And even",
+   "gloss": "乃至 extends a list to its furthest member. 甚至 does the same job in speech.",
+   "note": "「乃至」是书面的「甚至」，把范围推到最远的一项。",
+   "needs": [
+    "乃至"
+   ],
+   "after": [
+    "shenzhi"
+   ],
+   "near": [
+    "shenzhi"
+   ],
+   "wrong": [
+    "甚至",
+    "以及",
+    "并且"
+   ],
+   "eg": [
+    [
+     "这项技术影响全国乃至世界。",
+     "乃至",
+     "The technology affects the country and even the world."
+    ],
+    [
+     "几天乃至几个月都有可能。",
+     "乃至",
+     "It could be days or even months."
+    ],
+    [
+     "他的作品在本地乃至海外都有读者。",
+     "乃至",
+     "His work is read locally and even abroad."
+    ]
+   ]
+  },
+  {
+   "id": "jier",
+   "level": 6,
+   "cn": "继而",
+   "pattern": "先 ……，继而 ……",
+   "title": "And then, following on",
+   "gloss": "继而 marks the next stage in a sequence, more formal than 然后.",
+   "note": "「继而」表示紧接着发生的下一步，比「然后」正式。",
+   "needs": [
+    "继而"
+   ],
+   "after": [
+    "xianran"
+   ],
+   "near": [
+    "xianran",
+    "jinguanyou"
+   ],
+   "wrong": [
+    "然后",
+    "进而",
+    "于是"
+   ],
+   "eg": [
+    [
+     "他先是吃惊，继而笑了。",
+     "继而",
+     "He was startled at first, then laughed."
+    ],
+    [
+     "雨点落下，继而成了大雨。",
+     "继而",
+     "Drops fell, and then it poured."
+    ],
+    [
+     "先试点，继而推广。",
+     "继而",
+     "Pilot it first, then roll it out."
+    ]
+   ]
+  },
+  {
+   "id": "jingguo",
+   "level": 6,
+   "cn": "一经…就",
+   "pattern": "一经 A，就 B",
+   "title": "Once it has been done",
+   "gloss": "一经 marks a step that, once taken, settles the matter. 一…就 only marks immediacy.",
+   "note": "「一经」表示经过这一步以后事情就定了，语体正式。",
+   "needs": [
+    "一经",
+    "就"
+   ],
+   "after": [
+    "yidan"
+   ],
+   "near": [
+    "yidan",
+    "yijiu"
+   ],
+   "wrong": [
+    "一旦",
+    "一…就",
+    "只要"
+   ],
+   "eg": [
+    [
+     "一经发现，立即处理。",
+     "一经",
+     "Once found it is dealt with at once."
+    ],
+    [
+     "合同一经签订就生效。",
+     "一经",
+     "The contract takes effect once signed."
+    ],
+    [
+     "一经录用，待遇从优。",
+     "一经",
+     "On appointment, terms are generous."
+    ]
+   ]
+  },
+  {
+   "id": "suowei",
+   "level": 6,
+   "cn": "所谓",
+   "pattern": "所谓 A，就是 B",
+   "title": "What is called",
+   "gloss": "所谓 introduces a term about to be defined, or flags one the speaker doubts.",
+   "note": "「所谓」引出要解释的说法，有时也带怀疑的口气。",
+   "needs": [
+    "所谓"
+   ],
+   "after": [
+    "suo"
+   ],
+   "near": [
+    "suo"
+   ],
+   "wrong": [
+    "所",
+    "可谓",
+    "叫做"
+   ],
+   "eg": [
+    [
+     "所谓效率，就是用最少的时间做最多的事。",
+     "所谓",
+     "Efficiency means doing the most in the least time."
+    ],
+    [
+     "所谓的专家其实并不懂。",
+     "所谓",
+     "The so-called expert does not actually understand."
+    ],
+    [
+     "所谓学习，不只是记住。",
+     "所谓",
+     "Learning is not merely memorising."
+    ]
+   ]
+  }
+ ]
+}

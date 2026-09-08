@@ -1,0 +1,68 @@
+name: Report a data error
+description: A wrong pinyin, meaning, stroke count, HSK level or quiz answer.
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you — these are the reports that matter most, because a wrong
+        answer teaches the wrong thing.
+
+        Some of the data is not ours to fix. If the error is in a **dictionary
+        definition**, it belongs to [CC-CEDICT](https://cc-cedict.org/). If it
+        is in **stroke order, radical or decomposition**, it belongs to
+        [Make Me a Hanzi](https://github.com/skishore/makemeahanzi). Filing it
+        here is still useful — we will pass it on — but fixing it upstream is
+        what makes it stick.
+
+  - type: input
+    id: item
+    attributes:
+      label: The character or word
+      placeholder: 上班
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is wrong
+      options:
+        - Meaning or definition
+        - Pinyin or tone
+        - Quiz answer marked incorrectly
+        - Stroke order or stroke count
+        - Radical or decomposition
+        - HSK level
+        - Traditional / simplified mapping
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: shown
+    attributes:
+      label: What the site shows
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What it should say
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: A dictionary, textbook or standard that backs this up.
+      placeholder: 现代汉语词典 7th ed., or the HSK 2012 level 2 list
+
+  - type: input
+    id: where
+    attributes:
+      label: Where you saw it
+      description: The page, and the question text if it was a quiz.
+      placeholder: Practice → HSK 3 → vocabulary

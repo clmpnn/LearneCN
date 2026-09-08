@@ -1,0 +1,57 @@
+name: Something is broken
+description: A page misbehaves, a control does nothing, speech or stroke data fails to load.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For a wrong pinyin, meaning or quiz answer, use **Report a data error**
+        instead — those are tracked separately.
+
+  - type: dropdown
+    id: page
+    attributes:
+      label: Which page
+      options:
+        - Home
+        - Writing & Dictionary
+        - Pinyin & Hanzi
+        - Practice
+        - Add
+        - More than one
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, and what the site did instead.
+      placeholder: |
+        Traced 你 on the writing page. The stroke highlighted red on the first
+        stroke even though it went left to right.
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and operating system
+      placeholder: Firefox 141 on Windows 11
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Console output
+      description: Anything red in the browser console. Optional, but it usually settles the question quickly.
+      render: text
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you file
+      options:
+        - label: I reloaded the page once, in case a data file was mid-fetch.
+        - label: I am on the published site, or serving from the repository root rather than from `html/`.

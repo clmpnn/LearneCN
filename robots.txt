@@ -1,0 +1,21 @@
+# LearneCN — https://clmpnn.github.io/LearneCN/
+#
+# NOTE: on a GitHub *project* page this file is served at
+#   https://clmpnn.github.io/LearneCN/robots.txt
+# and crawlers only ever read the one at the domain root
+#   https://clmpnn.github.io/robots.txt
+# which belongs to the clmpnn.github.io repository, not this one.
+#
+# So this file does nothing today. It is here so that the moment you point a
+# custom domain at the repo, crawling rules and the sitemap are already correct.
+# Until then, submit the sitemap URL directly in Google Search Console and
+# Bing Webmaster Tools — that path does not depend on robots.txt.
+
+User-agent: *
+Allow: /
+
+# The question bank is ~113 large JSON shards. Nothing there renders as a page,
+# and crawling it wastes budget on both sides.
+Disallow: /data/
+
+Sitemap: https://clmpnn.github.io/LearneCN/sitemap.xml

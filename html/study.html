@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!--
+  LearneCN — https://github.com/clmpnn/LearneCN
+  Copyright (C) 2026 clmpnn
+
+  This program is free software: you can redistribute it and/or modify it
+  under the terms of the GNU General Public License as published by the Free
+  Software Foundation, either version 3 of the License, or (at your option)
+  any later version. See the LICENSE file for the full text.
+
+  SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#a82a1c" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171613" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LearneCN">
+<meta name="format-detection" content="telephone=no">
+
+<!-- iOS launch images. iOS matches on exact device size, so a page
+     with no matching entry opens on a blank white screen. -->
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1320x2868.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1320x2868-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1290x2796.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1290x2796-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1206x2622.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1206x2622-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1179x2556.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1179x2556-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1170x2532.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1170x2532-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1125x2436.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1125x2436-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1080x2340.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 360px) and (device-height: 780px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="../icons/splash-1080x2340-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-828x1792.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-828x1792-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-750x1334.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-750x1334-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-2048x2732.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-2048x2732-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-1668x2388.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-1668x2388-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 820px) and (device-height: 1180px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-1640x2360.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 820px) and (device-height: 1180px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-1640x2360-dark.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: light) and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-1536x2048.png">
+<link rel="apple-touch-startup-image" media="(prefers-color-scheme: dark) and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="../icons/splash-1536x2048-dark.png">
+<meta name="description" content="Spaced repetition for Mandarin: recognition, production, pinyin, listening, handwriting from memory and grammar patterns, scheduled so you review a word on the day you were about to forget it.">
+<title>LearneCN — Study</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Karla:wght@400;500;600;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&family=Spectral:wght@400;600&display=swap" rel="stylesheet">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="seal" aria-hidden="true">学</span>Learne<em>CN</em></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="path.html">Path</a>
+      <a href="study.html">Study</a>
+      <a href="writing.html">Writing</a>
+      <a href="characters.html">Pinyin &amp; Hanzi</a>
+      <a href="practice.html">Practice</a>
+      <a href="progress.html">Progress</a>
+      <a href="add.html">Add</a>
+    </nav>
+    <div class="script-toggle" role="group" aria-label="Character set">
+      <button type="button" data-script="simplified" title="Simplified characters">简</button>
+      <button type="button" data-script="traditional" title="Traditional characters">繁</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- ---------- setup ---------- -->
+    <section class="panel" id="setup">
+      <header>
+        <p class="eyebrow">Spaced repetition</p>
+        <div class="sec-head"><span class="cn" lang="zh">复习</span><h2>Study</h2></div>
+      </header>
+
+      <p class="lede" style="margin-top:-6px">
+        Every word you meet is scheduled for the day you were about to forget it —
+        not sooner, which wastes the review, and not later, which wastes the word.
+      </p>
+
+      <p class="stage-banner" id="stageBanner" hidden></p>
+      <div class="due-board" id="dueBoard" aria-live="polite"></div>
+
+      <div class="row" style="margin-top:24px">
+        <button class="btn primary big" id="start" type="button">Start studying</button>
+        <button class="btn" id="toneDrill" type="button" hidden title="Minimal-pair drills on the tones you actually mix up">Tone drill · 声调</button>
+        <button class="btn" id="cram" type="button" title="Review ahead of schedule without affecting the timetable">Cram ahead</button>
+        <span class="spacer"></span>
+        <a class="btn" href="progress.html">See progress →</a>
+      </div>
+      <p class="hint" id="startHint" style="margin-top:12px"></p>
+
+      <details class="deck-config" id="deckConfig">
+        <summary>What to study</summary>
+
+        <div class="toolbar" style="margin-top:16px">
+          <span class="cfg-label">Levels</span>
+          <div class="chips" id="levels" role="group" aria-label="HSK level"></div>
+        </div>
+
+        <div class="toolbar">
+          <span class="cfg-label">Material</span>
+          <div class="chips" id="content" role="group" aria-label="Material">
+            <button class="chip" type="button" data-content="words">Words · 词</button>
+            <button class="chip" type="button" data-content="chars">Characters · 字</button>
+            <button class="chip" type="button" data-content="both">Both</button>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <span class="cfg-label">Grammar</span>
+          <div class="chips" id="grammar" role="group" aria-label="Grammar points">
+            <button class="chip" type="button" data-grammar="on">语法 · Include grammar</button>
+          </div>
+        </div>
+        <p class="hint">
+          A point arrives when the words it leans on are already in rotation,
+          not when its level opens — 把 waits for a result complement behind
+          the verb, and 只有…才 waits for 只要…就 to be confused with.
+        </p>
+
+        <div class="toolbar">
+          <span class="cfg-label">Ask me for</span>
+          <div class="chips" id="modes" role="group" aria-label="Card types"></div>
+        </div>
+        <p class="hint">
+          Recognition comes first for every new item. The others open up once
+          that one is holding — there is no point drilling production of a word
+          you cannot yet read.
+        </p>
+
+        <div class="toolbar tune">
+          <label class="tune-field">
+            <span>New items a day</span>
+            <input type="number" id="newPerDay" min="0" max="200" step="1">
+          </label>
+          <label class="tune-field">
+            <span>Session length</span>
+            <select id="minutes">
+              <option value="5">5 minutes</option>
+              <option value="10">10 minutes</option>
+              <option value="20">20 minutes</option>
+              <option value="30">30 minutes</option>
+              <option value="45">45 minutes</option>
+              <option value="0">No limit</option>
+            </select>
+          </label>
+          <label class="tune-field">
+            <span>Target retention</span>
+            <select id="retention">
+              <option value="0.8">80% — fewest reviews</option>
+              <option value="0.85">85% — efficient</option>
+              <option value="0.9">90% — balanced</option>
+              <option value="0.95">95% — exam soon</option>
+            </select>
+          </label>
+        </div>
+        <p class="hint" id="retentionNote"></p>
+      </details>
+
+      <p class="hint" id="storageWarn" hidden></p>
+    </section>
+
+    <!-- ---------- the session ---------- -->
+    <section class="panel session" id="session" hidden>
+      <div class="session-bar">
+        <div class="session-counts" id="counts"></div>
+        <div class="session-progress"><span id="progressFill"></span></div>
+        <button class="btn mini-btn" id="endSession" type="button">End session</button>
+      </div>
+
+      <div id="card" class="card-stage"></div>
+
+      <div id="grades" class="grades" hidden>
+        <button class="btn grade g1" type="button" data-rating="1">
+          <b>Again</b><span data-int></span><kbd>1</kbd>
+        </button>
+        <button class="btn grade g2" type="button" data-rating="2">
+          <b>Hard</b><span data-int></span><kbd>2</kbd>
+        </button>
+        <button class="btn grade g3" type="button" data-rating="3">
+          <b>Good</b><span data-int></span><kbd>3</kbd>
+        </button>
+        <button class="btn grade g4" type="button" data-rating="4">
+          <b>Easy</b><span data-int></span><kbd>4</kbd>
+        </button>
+      </div>
+
+      <div id="revealRow" class="row" style="margin-top:20px" hidden>
+        <button class="btn primary" id="reveal" type="button">Show answer <kbd>space</kbd></button>
+      </div>
+    </section>
+
+    <!-- ---------- summary ---------- -->
+    <section class="panel" id="summary" hidden>
+      <header>
+        <p class="eyebrow">Session finished</p>
+        <div class="sec-head"><span class="cn" lang="zh">辛苦了</span><h2>Well done</h2></div>
+      </header>
+      <div class="due-board" id="summaryBoard"></div>
+      <div id="summaryNotes"></div>
+      <div class="row" style="margin-top:24px">
+        <button class="btn primary" id="again" type="button">Keep going</button>
+        <a class="btn" href="progress.html">See progress</a>
+        <a class="btn" href="index.html">Done for now</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="mark" lang="zh" aria-hidden="true">学</span>
+    <span>© LearneCN</span>
+    <span class="spacer"></span>
+    <span>Scheduling by <a href="https://github.com/open-spaced-repetition/fsrs4anki" rel="noopener">FSRS</a> ·
+      dictionary <a href="https://cc-cedict.org/" rel="noopener">CC-CEDICT</a> ·
+      characters and strokes <a href="https://github.com/skishore/makemeahanzi" rel="noopener">Make Me a Hanzi</a></span>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script src="../js/pwa.js"></script>
+<script src="../js/srs.js"></script>
+<script src="../vendor/hanzi-writer.min.js"></script>
+<script src="../js/study.js"></script>
+</body>
+</html>

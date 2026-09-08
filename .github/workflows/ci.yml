@@ -1,0 +1,122 @@
+# LearneCN — continuous checks
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# This workflow does NOT deploy. Keep GitHub Pages on
+#   Settings → Pages → Source: "Deploy from a branch" → main / (root)
+#
+# Why: an Actions-based Pages deploy tars the whole site into an artifact and
+# re-uploads it on every push. With ~113 question shards plus the dictionary
+# that is well over 100 MB per run, for a site that needs no build step at all.
+# Branch deploy publishes the same files straight from the commit, instantly
+# and for free. Actions is better spent on catching broken data before it ships.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate data and links
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate JSON, question schema, manifest and internal links
+        run: python3 tools/validate.py
+
+      - name: Check every source file carries its GPL notice
+        run: python3 tools/apply-license-headers.py --check
+
+      - name: Confirm no obscene vocabulary has crept back into the data
+        run: python3 tools/filter-vocabulary.py --check
+
+      - name: Confirm the question bank is still in teaching order
+        run: python3 tools/order-questions.py --check
+
+      - name: Confirm the grammar drills still match the grammar syllabus
+        run: python3 tools/build-grammar-questions.py --check
+
+      - name: Report what the teaching order is worth, and fail if a key pair inverts
+        run: python3 tools/measure-order.py
+
+      - name: Confirm the precomputed study data still matches its sources
+        run: |
+          python3 tools/build-learning-data.py
+          if ! git diff --quiet -- data/learn; then
+            echo "::error::data/learn is stale — run tools/build-learning-data.py and commit the result."
+            git diff --stat -- data/learn
+            exit 1
+          fi
+          echo "data/learn is up to date."
+
+  scheduler:
+    name: Test the scheduler, the pinyin comparison and the palette
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check the memory model behaves the way FSRS says it should
+        run: node tools/test-srs.js
+
+      - name: Check typed readings are compared correctly
+        run: node tools/test-pinyin.js
+
+      - name: Check every colour in the palette can actually be read
+        run: node tools/test-contrast.js
+
+  size:
+    name: Watch the Pages size budget
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Report published size against the 1 GB Pages limit
+        run: |
+          bytes=$(du -sb --exclude=.git --exclude=.github . | cut -f1)
+          mib=$(( bytes / 1048576 ))
+          echo "Published size: ${mib} MiB of the 1024 MiB GitHub Pages limit."
+          echo "### Pages size: ${mib} MiB / 1024 MiB" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$mib" -gt 1024 ]; then
+            echo "::error::Over the 1 GB GitHub Pages limit — the site will stop building."
+            exit 1
+          elif [ "$mib" -gt 750 ]; then
+            echo "::warning::Past 75% of the Pages size limit. Time to prune or shard further."
+          fi
+
+      - name: Fail on any file above the 100 MB Pages ceiling
+        run: |
+          big=$(find . -path ./.git -prune -o -type f -size +100M -print)
+          if [ -n "$big" ]; then
+            echo "::error::These files exceed the 100 MB per-file limit:"
+            echo "$big"
+            exit 1
+          fi
+          echo "No file exceeds 100 MB."

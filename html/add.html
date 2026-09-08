@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--
+  LearneCN — https://github.com/clmpnn/LearneCN
+  Copyright (C) 2026 clmpnn
+
+  This program is free software: you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later
+  version.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License along with
+  this program. If not, see <https://www.gnu.org/licenses/>.
+
+  SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#a82a1c" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171613" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LearneCN">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="Add your own HSK practice questions to LearneCN, including spoken listening prompts and images.">
+<title>LearneCN — Add Content</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Karla:wght@400;500;600;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&family=Spectral:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="seal" aria-hidden="true">学</span>Learne<em>CN</em></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="path.html">Path</a>
+      <a href="study.html">Study</a>
+      <a href="writing.html">Writing</a>
+      <a href="characters.html">Pinyin &amp; Hanzi</a>
+      <a href="practice.html">Practice</a>
+      <a href="progress.html">Progress</a>
+      <a href="add.html">Add</a>
+    </nav>
+    <div class="script-toggle" role="group" aria-label="Character set">
+      <button type="button" data-script="simplified" title="Simplified characters">简</button>
+      <button type="button" data-script="traditional" title="Traditional characters">繁</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="panel">
+      <header>
+        <p class="eyebrow">Your own questions</p>
+        <div class="sec-head"><span class="cn" lang="zh">添加</span><h2>Add practice content</h2></div>
+        <p class="lede">Anything you add shows up in Practice straight away, kept in this
+          browser. Download the file when you want to keep it or put it back in the repo.</p>
+      </header>
+
+      <div class="row" style="gap:16px;align-items:flex-start">
+        <label class="field" style="flex:1 1 160px">
+          <span>Level</span>
+          <select id="fLevel">
+            <option value="1">HSK 1</option>
+            <option value="2">HSK 2</option>
+            <option value="3">HSK 3</option>
+            <option value="4">HSK 4</option>
+            <option value="5">HSK 5</option>
+            <option value="6">HSK 6</option>
+            <option value="7">进阶 · Beyond HSK</option>
+          </select>
+        </label>
+        <label class="field" style="flex:1 1 200px">
+          <span>Section</span>
+          <select id="fSection">
+            <option value="vocabulary">Vocabulary · 词汇</option>
+            <option value="characters">Characters · 汉字</option>
+            <option value="grammar">Grammar · 语法</option>
+            <option value="reading">Reading · 阅读</option>
+            <option value="listening">Listening · 听力</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="field" id="wrapPassage" hidden>
+        <span>Passage — reading only</span>
+        <textarea id="fPassage" rows="4" lang="zh" placeholder="今天是星期六。上午我在家看电视……"></textarea>
+      </label>
+
+      <label class="field" id="wrapSpeak" hidden>
+        <span>Spoken prompt — listening only</span>
+        <input type="text" id="fSpeak" lang="zh" placeholder="现在几点了？">
+      </label>
+      <div class="row" id="wrapSpeakTest" hidden style="margin:-6px 0 16px">
+        <button class="btn" id="testSpeak" type="button">🔊 Hear it</button>
+        <span class="hint">The browser reads this aloud in Mandarin — no audio file needed.</span>
+      </div>
+
+      <label class="field">
+        <span>Question</span>
+        <input type="text" id="fQuestion" placeholder="他 ___ 老师。">
+      </label>
+
+      <div class="field">
+        <span style="display:block;font:500 .78rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">
+          Choices — select the correct one
+        </span>
+        <div class="choice-rows" id="choiceRows"></div>
+      </div>
+
+      <label class="field">
+        <span>Explanation — optional</span>
+        <input type="text" id="fNote" placeholder="是 links two nouns.">
+      </label>
+
+      <label class="field" id="wrapAudio" hidden>
+        <span>Audio file path — optional, listening only</span>
+        <input type="text" id="fAudio" placeholder="../audio/hsk1-01.mp3">
+      </label>
+
+      <label class="field" id="wrapImage" hidden>
+        <span>Image — optional, listening only</span>
+        <input type="file" id="fImage" accept="image/*">
+      </label>
+      <div class="row" id="imagePreviewRow" hidden style="margin:-6px 0 16px">
+        <img class="preview-img" id="imagePreview" alt="Selected image preview">
+        <button class="btn" id="clearImage" type="button">✕ Remove</button>
+      </div>
+      <p class="hint" id="imageHint" hidden style="margin:-8px 0 16px">
+        Images are embedded straight into the question, so there is no separate file to manage.
+        Large ones are shrunk automatically.
+      </p>
+
+      <div class="row" style="margin-top:8px">
+        <button class="btn primary" id="addQuestion" type="button">Add question</button>
+        <button class="btn" id="download" type="button">Download questions.json</button>
+        <button class="btn" id="clearAll" type="button">Clear my additions</button>
+        <span class="spacer"></span>
+        <span class="status" id="addStatus" role="status" aria-live="polite"></span>
+      </div>
+
+      <h3 style="margin-top:30px">Added in this browser</h3>
+      <ul class="added-list" id="addedList"></ul>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="mark" lang="zh" aria-hidden="true">学</span>
+    <span>© LearneCN</span>
+    <span class="spacer"></span>
+    <span>Dictionary <a href="https://cc-cedict.org/" rel="noopener">CC-CEDICT</a> ·
+      characters and strokes <a href="https://github.com/skishore/makemeahanzi" rel="noopener">Make Me a Hanzi</a>
+      · both CC BY-SA / CC BY</span>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script src="../js/pwa.js"></script>
+<script src="../js/add.js"></script>
+</body>
+</html>

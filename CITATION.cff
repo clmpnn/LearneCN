@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+title: "LearneCN: a free Mandarin study site"
+message: "If you use LearneCN or its question bank in teaching or research, please cite it."
+type: software
+authors:
+  - alias: clmpnn
+    website: "https://github.com/clmpnn"
+repository-code: "https://github.com/clmpnn/LearneCN"
+url: "https://clmpnn.github.io/LearneCN/"
+abstract: >-
+  A static, dependency-free Mandarin study site: hanzi stroke-order practice,
+  HSK 1-6 quizzes across vocabulary, characters, grammar, reading and listening,
+  pinyin and zhuyin reference charts, and a built-in Chinese-English dictionary
+  of 121,100 entries. Includes a question bank of 344,461 items written entirely
+  in Chinese.
+keywords:
+  - mandarin
+  - chinese
+  - hanzi
+  - hsk
+  - pinyin
+  - zhuyin
+  - stroke-order
+  - language-learning
+  - spaced-repetition
+  - cc-cedict
+license: GPL-3.0-or-later
